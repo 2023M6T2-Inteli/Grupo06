@@ -1,0 +1,5 @@
+markdown: kramdown
+theme: jekyll-theme-minimal
+title: Template Inteli EC 05
+description: Template Inteli - Engenharia de Computação - Módulo 5
+show_downloads: true

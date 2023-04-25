@@ -47,6 +47,27 @@ Nesse contexto, o projeto é especialmente relevante para a Gerdau, a qual tem c
 
 # Arquitetura do sistema
 ## Requisitos funcionais e não funcionais
+### Funcionais
+1. Detecção de condições atmosféricas, incluindo quantidade de oxigênio, presença de gases tóxicos e temperatura, em diferentes pontos no espaço confinado;
+2. Verificação de condições de segurança da NR33;
+3. Inspeção antes e após a manutenção;
+4. Certificação de que equipamentos de manutenção não foram esquecidos no espaço confinado após o término da operação;
+5. Sensor na base do robô para detectar colisões;
+6. Rotina de retorno ao ponto inicial em caso de erros e/ou colisões;
+7. Movimentação determinada por trilha em fitas;
+8. Movimentação opcional por controle remoto;
+9. Dashboard com apresentação dos dados coletados em tempo real;
+10. Dashboard com vídeo em tempo real;
+11. Geração de relatórios em PDF;
+12. Alerta sonoro na interface gráfica em caso de erros e/ou colisões.
+
+### Não funcionais
+1. Performance otimizada para garantir a eficiência do processo de inspeção: o sistema deve ser capaz de executar as inspeções de forma eficiente, com uma taxa de sucesso de pelo menos 95%.
+2. Confiabilidade na detecção de condições atmosféricas: o sistema deve ser capaz de detectar com precisão a quantidade de oxigênio e a presença de gases tóxicos com uma margem de erro de no máximo 5%.
+3. Funcionamento confiável em ambientes com falta de regularidade (tubulações): o sistema deve ser capaz de navegar em tubulações com uma margem de erro de no máximo 10%.
+4. Rápido tempo de resposta em detecção de obstáculos: o sistema deve ser capaz de detectar obstáculos em no máximo 1 segundo.
+5. Confiança na precisão da detecção de obstáculos: o sistema deve ser capaz de detectar obstáculos com pelo menos 95% de precisão.
+
 ## Viabilidade técnica
 ## Proposta geral
 

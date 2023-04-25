@@ -67,9 +67,11 @@ Nesse contexto, o projeto é especialmente relevante para a Gerdau, a qual tem c
 3. Funcionamento confiável em ambientes com falta de regularidade (tubulações):poderá haver o sistema deve ser capaz de navegar em tubulações com uma margem de erro de no máximo 10%.
 4. Rápido tempo de resposta em detecção de obstáculos: o sistema deve ser capaz de detectar obstáculos em no máximo 1 segundo.
 5. Confiança na precisão da detecção de obstáculos: o sistema deve ser capaz de detectar obstáculos com pelo menos 95% de precisão.
+6. Interação com usuário intuitiva: a interface deve ser fácil de usar e compreender para o usuário final (executante da manutenção) e gestor (dash/relatórios).
 
 ## Viabilidade técnica
 Para que haja uma implementação, então, do AGV Donatello, é necessário considerar alguns aspectos técnicos, como a escolha dos sensores, do hardware e do software. O hardware principal utilizado, como já citado, será o Donatello, que é um módulo robótico TurtleBot3. No caso dos sensores, serão utilizados sensores capazes de medir condições atmosféricas e detectar obstáculos, e como as tubulações serão consideradas superfícies planas por conta da prototipação do sistema para a locomoção do robô, poderá haver algumas limitações na detecção de alguns obstáculos nesse espaço, como pequenos detritos e declives à sua frente e abaixo, por exemplo. Para a medição de condições atmosféricas, serão utilizados sensores de temperatura, de oxigênio e de gases tóxicos. Para a detecção de obstáculos, será utilizado o sensor "LiDAR"(Light Detection and Ranging) que está embutido no módulo robótico TurtleBot3, um sensor capaz de detectar obstáculos por meio da emissão de laser na banda do infravermelho próximo, e com isso, modela a superfície do terreno tridimensionalmente. Além disso, como um monitoramento com a identificação das condições ambientais em tempo real agrega valor ao projeto, será utilizada uma câmera para a captação das imagens e transmissão das condições em tempo real para os operadores. O software utilizado para simular o roteamento da movimentação robótica no ambiente será feita pelo ROS (Robot Operating System), que é um meta sistema operacional que fornece uma estrutura de desenvolvimento, gerenciamento e execução de aplicações robóticas. 
+
 ## Proposta geral
 
 # Referências

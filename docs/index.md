@@ -90,6 +90,21 @@ Ademais, uma inovação para a continuidade desse projeto seria a transmissão d
 <p/>
 <br>
 
+**Legenda**
+
+<p align="center">
+<img src = "../media/arquitetura/legenda.jpg" width="550px">
+<p/>
+<br>
+
+### Tabela de componentes
+
+| Componente / Conexão | Descrição da função | Tipo: entrada / saída / atuador |
+|----------------------|:-------------------:|---------------------------------|
+| TurtleBot3           |                     | AGV                             |
+|                      |                     |                                 |
+|                      |                     |                                 |
+
 
 
 # Referências

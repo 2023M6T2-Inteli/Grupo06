@@ -42,6 +42,16 @@ Nesse contexto, o projeto é especialmente relevante para a Gerdau, a qual tem c
 
 ### Visão do projeto proposto
 
+O setor siderúrgico, onde a Gerdau atua, envolve a manipulação de equipamentos e materiais pesados, altas temperaturas e exposição dos trabalhadores a materiais químicos tóxicos, o que o torna um setor de alto risco em termos de segurança do trabalho.
+
+A segurança dos colaboradores é um dos valores primordiais da Gerdau e, como tal, a empresa busca continuamente formas de garantir maior segurança em suas operações. Neste contexto, um dos principais riscos que causa grande preocupação na Gerdau são os espaços confinados.
+
+O trabalho em espaços confinados é considerado uma das modalidades mais perigosas, já que os colaboradores estão expostos a diversos riscos e o ambiente favorece a ocorrência de acidentes graves e frequentes. Em uma conversa com o parceiro, foi constatado que o processo atual é realizado externamente ao espaço e antes da manutenção, o que torna impossível ter uma visão real da situação dentro do espaço confinado.
+
+Nesse cenário, o projeto apresenta uma grande importância para a Gerdau. Ao implementar inspeções automatizadas para vistorias preventivas de manutenção, será possível elevar ainda mais a segurança no trabalho, padrões de qualidade em vistorias e proporcionar maior satisfação aos colaboradores.
+
+
+
 ## Sistema produto-design
 ## Sustentabilidade ambiental
 

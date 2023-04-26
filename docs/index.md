@@ -46,6 +46,8 @@ Nesse contexto, o projeto é especialmente relevante para a Gerdau, a qual tem c
 ## Sustentabilidade ambiental
 
 # Arquitetura do sistema
+A arquitetura da solução para o projeto de AGV de inspeção de espaços confinados será composta por três principais elementos: hardware, software e comunicação. O hardware incluirá o próprio AGV, equipado com sensores de colisão, sensores de gás, câmeras de vídeo, sensores de temperatura e um sistema de monitoramento das condições atmosféricas do ambiente. O software será responsável por controlar o movimento do AGV, detectar obstáculos e alterar a rota do AGV quando necessário. Também será responsável pela interface com o usuário, permitindo o controle remoto do AGV e a visualização dos dados e relatórios gerados durante a inspeção. Por fim, a comunicação será realizada via rede sem fio, permitindo a transmissão dos dados e relatórios gerados em tempo real para o gestor responsável pelo monitoramento do sistema. Com essa arquitetura, o sistema será capaz de realizar a inspeção de forma autônoma, segura e eficiente, proporcionando ao usuário final a tranquilidade e agilidade necessárias para a realização de uma manutenção confiável.
+
 ## Requisitos funcionais e não funcionais
 ### Funcionais
 1. Detecção de condições atmosféricas, incluindo quantidade de oxigênio, presença de gases tóxicos e temperatura, em diferentes pontos no espaço confinado;
@@ -81,8 +83,7 @@ O objeto da proposta geral do sistema é o desenvolvimento de um AGV (Automated 
 
 Ademais, uma inovação para a continuidade desse projeto seria a transmissão dos vídeos em tempo real para um óculos VR. Isso permitiria ao técnico visualizar o ambiente inspecionado de forma imersiva, aumentando sua percepção e familiarização com o espaço confinado. Essa tecnologia poderia ser usada não apenas para inspeção pré e pós-manutenção, mas também para treinamento de novos técnicos, permitindo que eles se familiarizem com o ambiente antes mesmo de entrar nele. Além disso, o uso de óculos VR permitiria que outras pessoas, como engenheiros e gestores, visualizem a inspeção em tempo real de forma mais detalhada, ajudando-os a tomar decisões mais informadas. Essa inovação pode trazer uma vantagem competitiva para a empresa, agregando valor ao produto final e aumentando a eficiência do processo de manutenção.
 
-## Arquitetura da solução
-A arquitetura da solução para o projeto de AGV de inspeção de espaços confinados será composta por três principais elementos: hardware, software e comunicação. O hardware incluirá o próprio AGV, equipado com sensores de colisão, sensores de gás, câmeras de vídeo, sensores de temperatura e um sistema de monitoramento das condições atmosféricas do ambiente. O software será responsável por controlar o movimento do AGV, detectar obstáculos e alterar a rota do AGV quando necessário. Também será responsável pela interface com o usuário, permitindo o controle remoto do AGV e a visualização dos dados e relatórios gerados durante a inspeção. Por fim, a comunicação será realizada via rede sem fio, permitindo a transmissão dos dados e relatórios gerados em tempo real para o gestor responsável pelo monitoramento do sistema. Com essa arquitetura, o sistema será capaz de realizar a inspeção de forma autônoma, segura e eficiente, proporcionando ao usuário final a tranquilidade e agilidade necessárias para a realização de uma manutenção confiável.
+## Diagrama de blocos
 
 <p align="center">
 <img src = "../media/arquitetura/arquitetura_sprint_1.jpg" width="550px">

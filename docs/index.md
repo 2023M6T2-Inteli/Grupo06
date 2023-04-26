@@ -144,6 +144,9 @@ How much does an AGV cost? Disponível em: <https://www.flexqube.com/news/how-mu
 
 Crescimento do investimento na Indústria 4.0. Disponível em: <https://www.redutoresibr.com.br/noticia/crescimento-do-investimento-na-industria-4-0>. Acesso em: 24 abr. 2023.
 
+Lei Federal de Resíduos Tóxicos e Perigosos. Disponível em: <https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12305.htm>.
+Acesso em: 26 abr. 2023.
+
 Sobre nós. Disponível em: <https://www2.gerdau.com.br/sobre-nos/>.
 
 Vale investe em robôs para retirar empregados de situação de risco e aumentar a segurança de suas operações. Disponível em: <https://ibram.org.br/noticia/vale-investe-em-robos-para-retirar-empregados-de-situacao-de-risco-e-aumentar-a-seguranca-de-suas-operacoes/>. Acesso em: 24 abr. 2023.

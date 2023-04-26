@@ -99,12 +99,20 @@ Ademais, uma inovação para a continuidade desse projeto seria a transmissão d
 
 ### Tabela de componentes
 
-| Componente / Conexão | Descrição da função | Tipo: entrada / saída / atuador |
-|----------------------|:-------------------:|---------------------------------|
-| TurtleBot3           |                     | AGV                             |
-|                      |                     |                                 |
-|                      |                     |                                 |
-
+| Componente / Conexão      |                                                                                                                      Descrição da função                                                                                                                      | Tipo         |
+|---------------------------|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|--------------|
+| TurtleBot3                | Veículo automaticamente guiado que transporta a câmera e os sensores pelo espaço confinado a fim de se averiguar as condições de segurança para certa operação. Utiliza ROS2 como software de controle e fitas de guia como referência para sua movimentação. | AGV          |
+| Script de vídeo           | Recebe o vídeo capturado pela câmera e o processa para envio ao servidor em tempo real                                                                                                                                                                        | Script/nó    |
+| Detecção de sensores      | Recebe inputs dos sensores e os processo para envio ao servidor em tempo real                                                                                                                                                                                 | Script/nó    |
+| Detecção de infravermelho | Recebe leituras do sensor de infravermelho sobre as fitas de guia e corrige o movimento segundo a trajetória previamente definida                                                                                                                             | Script/nó    |
+| POST                      | Realiza requisições do tipo POST para o servidor                                                                                                                                                                                                              | Serviço ROS2 |
+| /movimento                | Tópico onde o script de infravermelho posta comandos de movimentação para o controlador do robô, que é um subscriber nesse tópico                                                                                                                             | Tópico ROS2  |
+| DonatelloController       | Script que controla a movimentação do robô em si                                                                                                                                                                                                              | Script/nó    |
+| Câmera                    | Câmera para gravação da operação                                                                                                                                                                                                                              | Entrada      |
+| Sensor de qualidade do ar | Sensor para detectar gases no ambiente                                                                                                                                                                                                                        | Entrada      |
+| Sensor de oxigênio        | Sensor para medir a quantidade de oxigênio no ambiente                                                                                                                                                                                                        | Entrada      |
+| Sensor de temperatura     | Sensor para medir a temperatura em diferentes pontos do ambiente                                                                                                                                                                                              | Entrada      |
+| Sensor de infravermelho   | Sensor para identificar as fitas de guia na superfície e corrigir o movimento do robô                                                                                                                                                                         | Entrada      |
 
 
 # Referências

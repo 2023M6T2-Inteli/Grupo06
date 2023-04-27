@@ -13,8 +13,21 @@
 </center></font>
 
 # Entendimento de negócios
+
 ## Matriz de oceano azul
+
+Utilizamos a matriz oceano azul no projeto de AGV para que nossa equipe possa descobrir novas oportunidades de mercado e criar um produto único e de alta qualidade, diferente dos concorrentes. Também podemos entender o que o cliente precisa e adaptar o produto para atender às suas necessidades e expectativas.
+
+![image](https://user-images.githubusercontent.com/99210055/234965116-99a5d334-5e35-495f-abf0-d325f4258792.png)
+
+Ao comparar o processo atualmente utilizado pela Gerdau com o novo processo proposto, é possível observar diversos ganhos significativos, especialmente em relação à automação. Através de entrevistas com o cliente e análise de material presente no Tapi, identificamos que a automação permitirá um grande avanço quando a segurança dos contribuíntes e análise dos espaços.
+
+
 ## Matriz de risco
+A matriz de risco é uma das ferramentas que nos permite identificar, avaliar e priorizar os riscos associados ao projeto. É uma tabela que organiza os possíveis riscos em um ou mais eixos, e os classifica em termos de probabilidade e impacto. A partir dessa classificação, é possível determinar quais riscos precisam de atenção imediata e quais podem ser gerenciados com menos urgência.
+
+O uso de uma matriz de risco é essencial para documentar as estratégias de gerenciamento de riscos em uma organização. Ela fornece uma maneira clara e sistemática de identificar as ameaças que podem impactar o sucesso de um projeto ou processo, permitindo que os responsáveis tomem decisões informadas sobre como gerenciá-los. Em resumo, a matriz de risco é uma ferramenta valiosa para garantir que os riscos sejam gerenciados de forma eficiente e eficaz, minimizando potenciais perdas e maximizando o sucesso.
+
 <img src="../media/matriz_risco/matriz_risco.jpg">
 
 ### Riscos
@@ -44,7 +57,7 @@
 22. Aumento da quantidade de dados sobre a infraestrutura fabril.
 23. Melhoria no monitoramento de riscos
 
-### Mitigação de Riscos
+### Mitigação de riscos
 
 1. Devemos estudar e planejar previamente nossas interações de hardware com o TurtleBot3, além de garantirmos um funcionamento correto na simulação antes de executarmos na prática.
 2. Devemos estar em contato recorrente com o parceiro e tirar dúvidas relacionadas ao desenvolvimento do projeto sempre que necessário.
@@ -60,6 +73,18 @@
 
 
 ## Canvas de proposta de valor
+<img src="./../media/negócios/canvas.png">
+
+O canvas de proposta de valor é uma ferramenta utilizada para descrever de forma sucinta os principais elementos de uma oferta de produto ou serviço. Ele é composto por três categorias principais: tarefas, dores e analgésicos, que descrevem, respectivamente, as atividades que o cliente realiza, os problemas que enfrenta e as soluções que o produto ou serviço oferece.
+
+Neste contexto, o canvas de proposta de valor foi utilizado para descrever uma solução de inspeção de espaços confinados para a Gerdau, utilizando um AGV conectado a um dashboard para visualização dos dados coletados em tempo real e historicamente. O objetivo dessa solução é garantir a segurança do ambiente durante a inspeção, além de aumentar a acuracidade na medição de gases e evitar gargalos operacionais.
+
+Para isso, foram identificadas as principais tarefas que precisam ser realizadas, como garantir a segurança do ambiente, inspecionar o espaço confinado no início e no final da operação, e checar se nenhum equipamento foi esquecido no ambiente. Em seguida, foram identificadas as dores, como a falta de acuracidade na medição de gases, a criação de gargalos operacionais devido aos espaços confinados e a exposição a riscos durante a inspeção.
+
+Por fim, foram propostos os analgésicos, como sensores acurados de qualidade do ar e temperatura, retorno autônomo ao ponto de saída e movimentação por controle remoto, se necessário, e AGV com trajetória definida através dos espaços confinados. Além disso, foram identificados os criadores de ganho, como geração de relatórios em PDF e captura de vídeo, e os ganhos, como a análise histórica das inspeções em certo espaço e o acompanhamento em tempo real das atividades.
+
+Com a utilização do canvas de proposta de valor, é possível ter uma visão geral da solução proposta, além de identificar de forma clara as principais necessidades do cliente e como o produto ou serviço pode atendê-las de forma eficiente e eficaz.
+
 ## Análise financeira
 
 # Entendimento de metadesign
@@ -161,14 +186,14 @@ O objeto da proposta geral do sistema é o desenvolvimento de um AGV (Automated 
 ## Diagrama de blocos
 
 <p align="center">
-<img src = "../media/arquitetura/arquitetura_sprint_1.jpg" width="550px">
+<img src = "../media/arquitetura/arquitetura_sprint_1.jpg">
 <p/>
 <br>
 
 **Legenda**
 
 <p align="center">
-<img src = "../media/arquitetura/legenda.jpg" width="550px">
+<img src = "../media/arquitetura/legenda.jpg">
 <p/>
 <br>
 

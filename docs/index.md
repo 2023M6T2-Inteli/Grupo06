@@ -15,6 +15,50 @@
 # Entendimento de negócios
 ## Matriz de oceano azul
 ## Matriz de risco
+<img src="../media/matriz_risco/matriz_risco.jpg">
+
+### Riscos
+1. Danificar o TurtleBot 3
+2. Demora do parceiro fornecer materiais necessários
+3. Incapacidade de realizar testes fidedignos à demanda do projeto
+4. Queima de componentes eletrônicos
+5. Conflito de merge no GIT
+6. Ausência de membros
+7. Falta de comunicação
+8. Incerteza com a expectativa dos professores em relação aos entregáveis
+9. Baixa precisão dos sensores utilizados
+10. Diferença entre repertório acadêmico entre os membros
+11. Falta de rotatividade das funções do projeto
+
+### Oportunidades
+12. O MVP ser adotado pelo parceiro
+13. Redução significativa de acidentes nas inspeções de rotina
+14. Teste in loco (Gerdau) do MVP
+15. Mapeamento bem-sucedido como adicional ao projeto
+16. Impossibilidade de instalar as referências necessárias nos espaços confinados para corrigir a trajetória do robô
+17. Conscientização, por parte do nosso grupo, da relevância da segurança para a continuidade de processo e ganhos em produtividade
+18. Integração da solução com nova tecnologia 5g
+19. Aumento significativo para o objetivo de risco zero
+20. Melhoria no planejamento de inspeções
+21. Redução do tempo de inspeção
+22. Aumento da quantidade de dados sobre a infraestrutura fabril.
+23. Melhoria no monitoramento de riscos
+
+### Mitigação de Riscos
+
+1. Devemos estudar e planejar previamente nossas interações de hardware com o TurtleBot3, além de garantirmos um funcionamento correto na simulação antes de executarmos na prática.
+2. Devemos estar em contato recorrente com o parceiro e tirar dúvidas relacionadas ao desenvolvimento do projeto sempre que necessário.
+3. O grupo de desenvolvimento do projeto deve sempre estar alinhado com os conhecimentos de pré-requisitos necessários para a realização dos testes e da integração dos pontos do projeto como um todo.
+4. O Grupo deve orientar-se sobre o funcionamento dos componentes eletrônicos que serão utilizados no projeto, e na hora da implementação desses no sistema, devem procurar orientação do técnico de laboratório ou professores.
+5. Utilização do Merge Editor do VSCode para melhor compreensão do controle de versão dos arquivos e utilização de branches.
+6. O grupo deve comunicar previamente as possíveis ausências para que uma nova organização de tarefas seja realizada levando em conta aquela ocasião
+7. Realização de todas as cerimônias do Scrum e utilização os grupos do Slack e WhatsApp
+8.  Devemos validar nossos entregáveis, com os professores avaliadores, sempre que houver dúvidas por parte do grupo
+9. Tratamos os dados e verificamos possíveis vieses entre os sensores, além de aumentarmos as margens de condição para identificar algum problema durante a fiscalização do espaço.
+10. Alinhamento geral da base dos autoestudos.
+11. Planejamento e organização eficiente das tarefas antes do início das Sprints.
+
+
 ## Canvas de proposta de valor
 ## Análise financeira
 

@@ -182,14 +182,14 @@ O objeto da proposta geral do sistema é o desenvolvimento de um AGV (Automated 
 ## Diagrama de blocos
 
 <p align="center">
-<img src = "../media/arquitetura/arquitetura_sprint_1.jpg" width="550px">
+<img src = "../media/arquitetura/arquitetura_sprint_1.jpg">
 <p/>
 <br>
 
 **Legenda**
 
 <p align="center">
-<img src = "../media/arquitetura/legenda.jpg" width="550px">
+<img src = "../media/arquitetura/legenda.jpg">
 <p/>
 <br>
 

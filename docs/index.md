@@ -19,7 +19,9 @@
 ## Análise financeira
 
 # Entendimento de metadesign
+
 ## Fatores mercadológicos
+
 ### Orientação ao mercado e precificação
 Os AGVs são veículos automatizados que seguem uma trajetória previamente definida. Eles são capazes de transportar grandes cargas de forma repetitiva, com sensores e câmeras para evitar colisões, e podem ser usados em ambientes confinados onde há riscos à segurança dos trabalhadores. 
 
@@ -41,8 +43,30 @@ Em ambientes confinados, onde o acesso humano é limitado ou arriscado, a utiliz
 Nesse contexto, o projeto é especialmente relevante para a Gerdau, a qual tem como valores fundamentais a inovação constante em processos produtivos para maximizar a segurança de seus funcionários (“Sobre nós”, [s.d.]). Com a introdução de inspeções automatizadas antes e depois de sessões de manutenção, será possível atingir níveis ainda maiores de qualidade de ambiente de trabalho e satisfação de seus operários, além de aumentar a eficiência e produtividade da companhia.
 
 ### Visão do projeto proposto
+O projeto visionado pela LinCORE é estruturado sobre a detecção de gases tóxicos em locais potencialmente contaminados, de maneira que trabalhadores não sejam expostos a perigos desnecessários.
+
+Tendo em mente a legislação vigente no Brasil sobre o o direito a um meio ambiente saudável, incluindo a Lei Federal de Resíduos Tóxicos e Perigosos (Lei nº 12.305/2010), que estabelece regras para o gerenciamento de resíduos perigosos, a LinCORE pensou num robô que tenha potencial de realizar filmagens e enviar dados do local para os usuários do produto, que necessitam ter conhecimento da segurança do ambiente.
+
+Uma gama de possibilidades para a execução do projeto é alicerçada por esse fato, concebidas na criação de uma interface gráfica para o recebimento de dados, como um executável ou WebApp, de preferência transmitidos em tempo real; modos de controle, que podem ser definidos como autônomo ou por controle remoto; mecanismos para assegurar o robô. Tais mecanismos incluem sensores para evitar colisões, para mapear os locais e medir temperaturas, a exemplo de sensores lidar, que utilizam feixes de laser infravermelho para mapear a superfície; os ultrassônicos, que ao emitirem ondas ultrassônicas, com base no tempo de propagação e do ricochete, possibilitam o cálculo da distância; e também os infravermelhos, que utilizam radiação infravermelha para medir a temperatura de objetos.
 
 ## Sistema produto-design
+
+### Missão do projeto
+A missão do projeto consiste em diminuir a exposição desnecessária de trabalhadores humanos a riscos industriais através da aplicação bem-sucedida de princípios da robótica e da Indústria 4.0, promovendo um ambiente que, além de salubre a todos os colaboradores, independente de sua área de atuação, também os desenvolve como líderes futuros.
+
+Essa missão não é um mero objetivo; porém um propósito, deveras nobre, que penetra todas as superfícies da Gerdau, uma instituição que valoriza acima de tudo a vida humana; que, com imanência, preza pela constante melhora do ambiente em que operam seus trabalhadores; que investe em tecnologias que esse fim ajudem a alicerçar; e não apenas para lucro, mas por um futuro melhor; e não apenas para eles, mas para todos.
+
+Um ideal sem dúvidas magnânimo; um ideal que poderia-se inclusive dizer é a visão institucional em-si; o espírito da empresa, feito realidade através da inovação tecnológica; e, iluminando todos os níveis da corporação, também ilumina sobre o desenvolvimento deste projeto pois, para o nosso humilde time de desenvolvedores, nenhum resultado possui valor maior do que a bem-sucedida preservação e perpetuação da vida humana.
+
+### Unidade formal entre o design do produto, as formas de divulgação e venda
+O design físico do produto é de um robô de inspeção para espaços confinados que, a partir de sensores e câmeras, coletará dados sobre gases da atmosfera local, e filmagens sobre a higidez da estrutura inspecionada. A princípio, o robô não possuirá funcionamento autônomo.
+
+O design ideológico do produto é de um instrumento que, diminuindo a exposição desnecessária de trabalhadores humanos a riscos industriais, edifique a imagem da empresa cliente como uma instituição que valoriza acima de tudo a vida humana; que, com imanência, preza pela constante melhora do ambiente em que operam seus trabalhadores; que investe em tecnologias que esse fim ajudem a alicerçar; e não apenas para lucro, mas por um futuro melhor; e não apenas para eles, mas para todos.
+
+Como unidade formal, ambos lados do design unem-se unilateralmente como um austero ideal que adquire materialidade através da inovação tecnológica; da aplicação bem-sucedida de princípios da robótica e da Indústria 4.0; para fins tanto capitalistas quanto humanitários.
+
+Marx enfatizou que uma commodity nunca é apenas um simples objeto meramente para compra e consumo; uma commodity é um objeto carregado de qualidades ideológicas e metafísicas, cuja presença sempre reflete uma transcendência invisível. Com base nesse fato, a execução da segunda unidade formal, constituída pelo design supramencionado unido a fatores de divulgação e marketing, revela-se: através de tais lentes, o produto pode ser facilmente publicizado e comercializado; não apenas um robô para uso meramente utilitário, mas sim um meio de contribuir para com a evolução da raça humana como um todo.
+
 ## Sustentabilidade ambiental
 
 # Arquitetura do sistema
@@ -131,6 +155,9 @@ Ademais, uma inovação para a continuidade desse projeto seria a transmissão d
 How much does an AGV cost? Disponível em: <https://www.flexqube.com/news/how-much-does-an-agv-cost/#:~:text=Based%20on%20the%20main%20product>.
 
 Crescimento do investimento na Indústria 4.0. Disponível em: <https://www.redutoresibr.com.br/noticia/crescimento-do-investimento-na-industria-4-0>. Acesso em: 24 abr. 2023.
+
+Lei Federal de Resíduos Tóxicos e Perigosos. Disponível em: <https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12305.htm>.
+Acesso em: 26 abr. 2023.
 
 Sobre nós. Disponível em: <https://www2.gerdau.com.br/sobre-nos/>.
 

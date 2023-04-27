@@ -15,6 +15,50 @@
 # Entendimento de negócios
 ## Matriz de oceano azul
 ## Matriz de risco
+<img src="../media/matriz_risco/matriz_risco.jpg">
+
+### Riscos
+1. Danificar o TurtleBot 3
+2. Demora do parceiro fornecer materiais necessários
+3. Incapacidade de realizar testes fidedignos à demanda do projeto
+4. Queima de componentes eletrônicos
+5. Conflito de merge no GIT
+6. Ausência de membros
+7. Falta de comunicação
+8. Incerteza com a expectativa dos professores em relação aos entregáveis
+9. Baixa precisão dos sensores utilizados
+10. Diferença entre repertório acadêmico entre os membros
+11. Falta de rotatividade das funções do projeto
+
+### Oportunidades
+12. O MVP ser adotado pelo parceiro
+13. Redução significativa de acidentes nas inspeções de rotina
+14. Teste in loco (Gerdau) do MVP
+15. Mapeamento bem-sucedido como adicional ao projeto
+16. Impossibilidade de instalar as referências necessárias nos espaços confinados para corrigir a trajetória do robô
+17. Conscientização, por parte do nosso grupo, da relevância da segurança para a continuidade de processo e ganhos em produtividade
+18. Integração da solução com nova tecnologia 5g
+19. Aumento significativo para o objetivo de risco zero
+20. Melhoria no planejamento de inspeções
+21. Redução do tempo de inspeção
+22. Aumento da quantidade de dados sobre a infraestrutura fabril.
+23. Melhoria no monitoramento de riscos
+
+### Mitigação de Riscos
+
+1. Devemos estudar e planejar previamente nossas interações de hardware com o TurtleBot3, além de garantirmos um funcionamento correto na simulação antes de executarmos na prática.
+2. Devemos estar em contato recorrente com o parceiro e tirar dúvidas relacionadas ao desenvolvimento do projeto sempre que necessário.
+3. O grupo de desenvolvimento do projeto deve sempre estar alinhado com os conhecimentos de pré-requisitos necessários para a realização dos testes e da integração dos pontos do projeto como um todo.
+4. O Grupo deve orientar-se sobre o funcionamento dos componentes eletrônicos que serão utilizados no projeto, e na hora da implementação desses no sistema, devem procurar orientação do técnico de laboratório ou professores.
+5. Utilização do Merge Editor do VSCode para melhor compreensão do controle de versão dos arquivos e utilização de branches.
+6. O grupo deve comunicar previamente as possíveis ausências para que uma nova organização de tarefas seja realizada levando em conta aquela ocasião
+7. Realização de todas as cerimônias do Scrum e utilização os grupos do Slack e WhatsApp
+8.  Devemos validar nossos entregáveis, com os professores avaliadores, sempre que houver dúvidas por parte do grupo
+9. Tratamos os dados e verificamos possíveis vieses entre os sensores, além de aumentarmos as margens de condição para identificar algum problema durante a fiscalização do espaço.
+10. Alinhamento geral da base dos autoestudos.
+11. Planejamento e organização eficiente das tarefas antes do início das Sprints.
+
+
 ## Canvas de proposta de valor
 ## Análise financeira
 
@@ -67,13 +111,16 @@ Como unidade formal, ambos lados do design unem-se unilateralmente como um auste
 
 Marx enfatizou que uma commodity nunca é apenas um simples objeto meramente para compra e consumo; uma commodity é um objeto carregado de qualidades ideológicas e metafísicas, cuja presença sempre reflete uma transcendência invisível. Com base nesse fato, a execução da segunda unidade formal, constituída pelo design supramencionado unido a fatores de divulgação e marketing, revela-se: através de tais lentes, o produto pode ser facilmente publicizado e comercializado; não apenas um robô para uso meramente utilitário, mas sim um meio de contribuir para com a evolução da raça humana como um todo.
 
-## Sustentabilidade ambiental
+### Sustentabilidade ambiental
 Com a aplicação do nosso projeto, nosso principal objetivo é a redução de acidentes na planta industrial em que nossa tecnologia for aplicada, reduzindo o risco de vazamento de gases para fora da tubulação e até mesmo evitando a explosão de gases inflamáveis, o que resultaria em um aumento de CO2 na atmosfera.
 
 Além disso, temos como um dos possíveis ganhos o aumento da produtividade, tanto das operações quanto dos trabalhadores em espaços confinados. Em um primeiro momento, garantimos a segurança do local onde o trabalhador realizará a operação. Caso alguma irregularidade seja encontrada, transmitimos a informação em tempo real para o trabalhador, permitindo que ele inicie imediatamente o protocolo mais adequado para aquela ocorrência.
 
 Por fim, Donatello é um AGV movido por baterias recarregáveis, diminuindo o impacto ambiental no fornecimento de energia em comparação com combustíveis fósseis. Com isso, será possível aumentar a eficiência de toda a operação em que este projeto for aplicado, resultando em um produto ecoeficiente.
 
+### Proposta inovadora
+
+Uma inovação para a continuidade desse projeto seria a transmissão dos vídeos em tempo real para um óculos VR. Isso permitiria ao técnico visualizar o ambiente inspecionado de forma imersiva, aumentando sua percepção e familiarização com o espaço confinado. Essa tecnologia poderia ser usada não apenas para inspeção pré e pós-manutenção, mas também para treinamento de novos técnicos, permitindo que eles se familiarizem com o ambiente antes mesmo de entrar nele. Além disso, o uso de óculos VR permitiria que outras pessoas, como engenheiros e gestores, visualizem a inspeção em tempo real de forma mais detalhada, ajudando-os a tomar decisões mais informadas. Essa inovação pode trazer uma vantagem competitiva para a empresa, agregando valor ao produto final e aumentando a eficiência do processo de manutenção.
 
 # Arquitetura do sistema
 A arquitetura da solução para o projeto de AGV de inspeção de espaços confinados será composta por três principais elementos: hardware, software e comunicação. O hardware incluirá o próprio AGV, equipado com sensores de colisão, sensores de gás, câmeras de vídeo, sensores de temperatura e um sistema de monitoramento das condições atmosféricas do ambiente. O software será responsável por controlar o movimento do AGV, detectar obstáculos e alterar a rota do AGV quando necessário. Também será responsável pela interface com o usuário, permitindo o controle remoto do AGV e a visualização dos dados e relatórios gerados durante a inspeção. Por fim, a comunicação será realizada via rede sem fio, permitindo a transmissão dos dados e relatórios gerados em tempo real para o gestor responsável pelo monitoramento do sistema. Com essa arquitetura, o sistema será capaz de realizar a inspeção de forma autônoma, segura e eficiente, proporcionando ao usuário final a tranquilidade e agilidade necessárias para a realização de uma manutenção confiável.
@@ -110,8 +157,6 @@ Por fim, o software utilizado para simular o roteamento da movimentação robót
 
 ## Proposta geral
 O objeto da proposta geral do sistema é o desenvolvimento de um AGV (Automated Guided Vehicle) para inspeção pré-manutenção e pós-manutenção de espaços confinados, com foco em tubulações. O sistema será capaz de examinar as condições atmosféricas em diferentes pontos, detectar a presença de gases e a quantidade de oxigênio, além de alertar o operador sobre possíveis obstáculos para sua locomoção na tubulação. A interface com dados e vídeo em tempo real permitirá a geração de relatórios em PDF e vídeos da inspeção. O sistema será projetado para melhorar as condições de segurança do operador e a eficiência do processo de inspeção, reduzindo o tempo necessário para realizar a inspeção e evitando a possibilidade de esquecimento de ferramentas ou equipamentos no interior dos tubos. O usuário final do sistema será o executante da manutenção, enquanto o usuário indireto será o gestor responsável por visualizar os dados e relatórios gerados pelo sistema.
-
-Ademais, uma inovação para a continuidade desse projeto seria a transmissão dos vídeos em tempo real para um óculos VR. Isso permitiria ao técnico visualizar o ambiente inspecionado de forma imersiva, aumentando sua percepção e familiarização com o espaço confinado. Essa tecnologia poderia ser usada não apenas para inspeção pré e pós-manutenção, mas também para treinamento de novos técnicos, permitindo que eles se familiarizem com o ambiente antes mesmo de entrar nele. Além disso, o uso de óculos VR permitiria que outras pessoas, como engenheiros e gestores, visualizem a inspeção em tempo real de forma mais detalhada, ajudando-os a tomar decisões mais informadas. Essa inovação pode trazer uma vantagem competitiva para a empresa, agregando valor ao produto final e aumentando a eficiência do processo de manutenção.
 
 ## Diagrama de blocos
 
@@ -170,3 +215,7 @@ Sobre nós. Disponível em: <https://www2.gerdau.com.br/sobre-nos/>.
 Vale investe em robôs para retirar empregados de situação de risco e aumentar a segurança de suas operações. Disponível em: <https://ibram.org.br/noticia/vale-investe-em-robos-para-retirar-empregados-de-situacao-de-risco-e-aumentar-a-seguranca-de-suas-operacoes/>. Acesso em: 24 abr. 2023.
 
 ARTES, L. Aumento no mercado de robótica e automação em 2022 > VDI Brasil. Disponível em: <https://www.vdibrasil.com/aumento-no-mercado-de-robotica-e-automacao-em-2022/#:~:text=No%20n%C3%ADvel%20global%2C%20as%20proje%C3%A7%C3%B5es>. Acesso em: 24 abr. 2023.
+
+LIDAR — Divisão de Sensoriamento Remoto. Disponível em: <http://www.dsr.inpe.br/DSR/areas-de-atuacao/sensores-plataformas/lidar#:~:text=O%20LIDAR%20(Light%20Detection%20and>. Acesso em: 25 abr. 2023.
+
+‌

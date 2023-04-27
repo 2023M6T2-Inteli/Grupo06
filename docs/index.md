@@ -13,7 +13,16 @@
 </center></font>
 
 # Entendimento de negócios
+
 ## Matriz de oceano azul
+
+Utilizamos a matriz oceano azul no projeto de AGV para que nossa equipe possa descobrir novas oportunidades de mercado e criar um produto único e de alta qualidade, diferente dos concorrentes. Também podemos entender o que o cliente precisa e adaptar o produto para atender às suas necessidades e expectativas.
+
+![image](https://user-images.githubusercontent.com/99210055/234965116-99a5d334-5e35-495f-abf0-d325f4258792.png)
+
+Ao comparar o processo atualmente utilizado pela Gerdau com o novo processo proposto, é possível observar diversos ganhos significativos, especialmente em relação à automação. Através de entrevistas com o cliente e análise de material presente no Tapi, identificamos que a automação permitirá um grande avanço quando a segurança dos contribuíntes e análise dos espaços.
+
+
 ## Matriz de risco
 <img src="../media/matriz_risco/matriz_risco.jpg">
 

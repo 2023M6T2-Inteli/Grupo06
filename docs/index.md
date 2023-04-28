@@ -86,6 +86,12 @@ Por fim, foram propostos os analgésicos, como sensores acurados de qualidade do
 Com a utilização do canvas de proposta de valor, é possível ter uma visão geral da solução proposta, além de identificar de forma clara as principais necessidades do cliente e como o produto ou serviço pode atendê-las de forma eficiente e eficaz.
 
 ## Análise financeira
+Os principais custos relacionados seriam o da compra do AGV e da implementação técnica sendo ela feita por engenheiros. Levando em consideração que trabalhe 3 engenheiros por 40h semanais durante 4 meses, utilizando dados da valor/hora médio de engenharia (81) é feito o cálculo do custo de implementação. Para o cálculo do hardware do AGV foi utilizado um robô de inspeção de tubulação sanitária como modelo que possui funções e equipamentos semelhantes aos que serão usados no projeto.
+<br>
+<p align = "center">
+<img src="./../media/analise-financeira/analise-financeira.jpeg" width = 650px>
+</p>
+<br>
 
 # Entendimento de metadesign
 
@@ -187,14 +193,14 @@ O objeto da proposta geral do sistema é o desenvolvimento de um AGV (Automated 
 
 <p align="center">
 <img src = "../media/arquitetura/arquitetura_sprint_1.jpg">
-<p/>
+</p>
 <br>
 
 **Legenda**
 
 <p align="center">
 <img src = "../media/arquitetura/legenda.jpg">
-<p/>
+</p>
 <br>
 
 ### Tabela de componentes
@@ -242,5 +248,13 @@ Vale investe em robôs para retirar empregados de situação de risco e aumentar
 ARTES, L. Aumento no mercado de robótica e automação em 2022 > VDI Brasil. Disponível em: <https://www.vdibrasil.com/aumento-no-mercado-de-robotica-e-automacao-em-2022/#:~:text=No%20n%C3%ADvel%20global%2C%20as%20proje%C3%A7%C3%B5es>. Acesso em: 24 abr. 2023.
 
 LIDAR — Divisão de Sensoriamento Remoto. Disponível em: <http://www.dsr.inpe.br/DSR/areas-de-atuacao/sensores-plataformas/lidar#:~:text=O%20LIDAR%20(Light%20Detection%20and>. Acesso em: 25 abr. 2023.
+
+Pipeline Sistema De Inspeção De Tubulação De Esgoto Inspeção Robô Para Tubo De Canalização De Drenagem - Buy Plumbing Drain Camera,Pipeline Sewer Inspection System,Plumbing Inspection Camera Product on Alibaba.com. Disponível em: <https://portuguese.alibaba.com/product-detail/Pipeline-Sewer-Inspection-System-Pipe-Inspection-62110539013.html>. Acesso em: 25 abr. 2023.
+
+AMANDA MENESES. Piso salarial 2023: quanto ganham as principais profissões? Disponível em: <https://investnews.com.br/geral/piso-salarial/#:~:text=Engenheiro>. Acesso em: 25 abr. 2023.
+
+‌
+
+‌
 
 ‌

@@ -121,20 +121,25 @@ Em ambientes confinados, onde o acesso humano é limitado ou arriscado, a utiliz
 Nesse contexto, o projeto é especialmente relevante para a Gerdau, a qual tem como valores fundamentais a inovação constante em processos produtivos para maximizar a segurança de seus funcionários (“Sobre nós”, [s.d.]). Com a introdução de inspeções automatizadas antes e depois de sessões de manutenção, será possível atingir níveis ainda maiores de qualidade de ambiente de trabalho e satisfação de seus operários, além de aumentar a eficiência e produtividade da companhia.
 
 ### Visão do projeto proposto
-O projeto visionado pela LinCORE é estruturado sobre a detecção de gases tóxicos em locais potencialmente contaminados, de maneira que trabalhadores não sejam expostos a perigos desnecessários.
+A visão da Gerdau de "ser global e referência nos negócios em que atua" alinha perfeitamente com a visão do produto oferecido - um robô de inspeção. Tecnologia de ponta, o robô apresenta o potencial de revolucionar a maneira como a Gerdau realiza inspeções, visando providenciar serviços para inspeção ágil, precisa, e eficiente, que, além de aumentar segurança e produtividade, também reduz custos.
 
-Tendo em mente a legislação vigente no Brasil sobre o o direito a um meio ambiente saudável, incluindo a Lei Federal de Resíduos Tóxicos e Perigosos (Lei nº 12.305/2010), que estabelece regras para o gerenciamento de resíduos perigosos, a LinCORE pensou num robô que tenha potencial de realizar filmagens e enviar dados do local para os usuários do produto, que necessitam ter conhecimento da segurança do ambiente.
+Quanto à potencialidade projetual do produto, ela mostra-se elevada: há uma grande demanda por soluções de inspeção de espaços confinados na indústria de aço longo. Da mesma maneira, legislação vigente, que exige que as empresas garantam a segurança dos trabalhadores em áreas de risco, também tornam o projeto cada vez mais relevante e necessário.
 
-Uma gama de possibilidades para a execução do projeto é alicerçada por esse fato, concebidas na criação de uma interface gráfica para o recebimento de dados, como um executável ou WebApp, de preferência transmitidos em tempo real; modos de controle, que podem ser definidos como autônomo ou por controle remoto; mecanismos para assegurar o robô. Tais mecanismos incluem sensores para evitar colisões, para mapear os locais e medir temperaturas, a exemplo de sensores lidar, que utilizam feixes de laser infravermelho para mapear a superfície; os ultrassônicos, que ao emitirem ondas ultrassônicas, com base no tempo de propagação e do ricochete, possibilitam o cálculo da distância; e também os infravermelhos, que utilizam radiação infravermelha para medir a temperatura de objetos.
+No Brasil, a legislação que trata da segurança e saúde do trabalhador é a Norma Regulamentadora 1 (NR-1), que estabelece as disposições gerais sobre as demais NRs e define as responsabilidades dos empregadores e trabalhadores quanto à segurança e saúde no trabalho.
+
+Em conclusão, não há dúvidas de que, ao adotar um robô de inspeção inovador e de alta qualidade, a Gerdau contribuiria significativamente para o alcance de sua visão de "ser global e referência nos negócios em que atua".
+
 
 ## Sistema produto-design
 
 ### Missão do projeto
-A missão do projeto consiste em diminuir a exposição desnecessária de trabalhadores humanos a riscos industriais através da aplicação bem-sucedida de princípios da robótica e da Indústria 4.0, promovendo um ambiente que, além de salubre a todos os colaboradores, independente de sua área de atuação, também os desenvolve como líderes futuros.
+A missão da Gerdau de "Gerar valor para nossos clientes, acionistas, equipes e a sociedade, atuando na indústria do aço de forma sustentável", alinha perfeitamente com o produto oferecido - um robô de inspeção. O robô certamente ajudará a empresa a alcançar sua missão, pois oferece uma maneira mais rápida, eficiente, precisa, e segura, de inspecionar produtos de aço, ao mesmo tempo em que reduz o impacto ambiental.
 
-Essa missão não é um mero objetivo; porém um propósito, deveras nobre, que penetra todas as superfícies da Gerdau, uma instituição que valoriza acima de tudo a vida humana; que, com imanência, preza pela constante melhora do ambiente em que operam seus trabalhadores; que investe em tecnologias que esse fim ajudem a alicerçar; e não apenas para lucro, mas por um futuro melhor; e não apenas para eles, mas para todos.
+- Robôs de inspeção, ao substituir humanos, reduzem o número de acidentes e o número de variáveis envolvidas, reduzindo o número de erros presentes nos processos de produção, o que por sua vez reduz desperdício e consumo de energia. Isso ajuda a reduzir a pegada de carbono do processo de produção.
+- Robôs de inspeção podem coletar dados em tempo real sobre variáveis de produção, como temperatura e pressão, que podem ser utilizados para otimizar o processo de produção e reduzir o consumo de energia. Isso pode levar a significativas economias de energia e uma pegada de carbono reduzida.
+- Robôs de inspeção também podem ajudar a identificar e resolver potenciais problemas de manutenção antes que se agravem, o que pode reduzir a necessidade de reparos ou substituições de equipamentos. Isso pode ajudar a reduzir a pegada de carbono associada à produção e descarte de equipamentos.
 
-Um ideal sem dúvidas magnânimo; um ideal que poderia-se inclusive dizer é a visão institucional em-si; o espírito da empresa, feito realidade através da inovação tecnológica; e, iluminando todos os níveis da corporação, também ilumina sobre o desenvolvimento deste projeto pois, para o nosso humilde time de desenvolvedores, nenhum resultado possui valor maior do que a bem-sucedida preservação e perpetuação da vida humana.
+Em conclusão, ao oferecer uma solução de inspeção inovadora e de alta qualidade, o projeto contribui para a realização da missão da Gerdau, melhorando qualidade e segurança, reduzindo o impacto ambiental, e gerando valor para seus clientes, stakeholders e equipes.
 
 ### Unidade formal entre o design do produto, as formas de divulgação e venda
 O design físico do produto é de um robô de inspeção para espaços confinados que, a partir de sensores e câmeras, coletará dados sobre gases da atmosfera local, e filmagens sobre a higidez da estrutura inspecionada. A princípio, o robô não possuirá funcionamento autônomo.
@@ -244,7 +249,9 @@ Crescimento do investimento na Indústria 4.0. Disponível em: <https://www.redu
 Lei Federal de Resíduos Tóxicos e Perigosos. Disponível em: <https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12305.htm>.
 Acesso em: 26 abr. 2023.
 
-Sobre nós. Disponível em: <https://www2.gerdau.com.br/sobre-nos/>.
+GERDAU. Perfil. Disponível em: https://www2.gerdau.com/pt-br/sobre-nos/perfil. Acesso em: 29 abr. 2023.
+
+BRASIL. Ministério do Trabalho e Emprego. Norma Regulamentadora nº 1: Disposições Gerais. Brasília, DF: MTE, 1978. Disponível em: http://trabalho.gov.br/images/Documentos/SST/NR/NR01.pdf. Acesso em: 29 abr. 2023.‌
 
 Vale investe em robôs para retirar empregados de situação de risco e aumentar a segurança de suas operações. Disponível em: <https://ibram.org.br/noticia/vale-investe-em-robos-para-retirar-empregados-de-situacao-de-risco-e-aumentar-a-seguranca-de-suas-operacoes/>. Acesso em: 24 abr. 2023.
 
@@ -256,8 +263,3 @@ Pipeline Sistema De Inspeção De Tubulação De Esgoto Inspeção Robô Para Tu
 
 AMANDA MENESES. Piso salarial 2023: quanto ganham as principais profissões? Disponível em: <https://investnews.com.br/geral/piso-salarial/#:~:text=Engenheiro>. Acesso em: 25 abr. 2023.
 
-‌
-
-‌
-
-‌

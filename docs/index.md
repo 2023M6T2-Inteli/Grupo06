@@ -89,10 +89,16 @@ Por fim, foram propostos os analgésicos, como sensores acurados de qualidade do
 Com a utilização do canvas de proposta de valor, é possível ter uma visão geral da solução proposta, além de identificar de forma clara as principais necessidades do cliente e como o produto ou serviço pode atendê-las de forma eficiente e eficaz.
 
 ## Análise financeira
- Para a análise financeira  os principais  fatores que foram levados em conta foi à compra do AGV e a implementação técnica do robô, que será realizada por engenheiros. Para estimar o custo da implementação técnica, foi considerado que três engenheiros trabalharão por um período de 4 meses, durante 40 horas por semana. Com base no valor/hora médio de engenharia, que é de R$ 81, é possível calcular o custo total da implementação técnica. Já para estimar o custo do hardware do AGV, o texto utiliza um robô de inspeção de tubulação sanitária como modelo. Esse robô possui funções e equipamentos semelhantes aos que serão utilizados no projeto. Dessa forma, o custo do hardware do AGV será estimado com base no custo do equipamento de referência mencionado. Com essas informações, é possível estimar com mais detalhes os custos envolvidos na implementação do AGV no projeto, considerando tanto o custo da implementação técnica como o custo do hardware do robô.
+Para a análise financeira do projeto que envolve a implementação de um AGV, foram considerados os principais fatores que afetam os custos: a compra do robô e a implementação técnica do mesmo, que será realizada por uma equipe de engenheiros.
+
+No que se refere à implementação técnica, foram estimados os custos com base no trabalho de três engenheiros que irão trabalhar durante um período de quatro meses, com uma carga horária semanal de 40 horas. Utilizando o valor/hora médio de engenharia, que é de R$ 200, é possível calcular o custo total da implementação técnica.
+
+Quanto ao custo do hardware do AGV, foi utilizado como modelo um robô de inspeção de tubulação sanitária, que possui funções e equipamentos semelhantes ao robô que será utilizado no projeto. Com base no custo do equipamento de referência mencionado, é possível estimar o custo do hardware do AGV.
+
+Com essas informações, é possível fazer uma estimativa mais detalhada dos custos envolvidos na implementação do AGV no projeto, considerando tanto o custo da implementação técnica como o custo do hardware do robô.
 <br>
 <p align = "center">
-<img src="./../media/analise-financeira/analise-financeira.jpeg" width = 650px>
+<img src="./../media/negocios/analise-financeira.jpeg" width = 650px>
 </p>
 <br>
 
@@ -121,34 +127,31 @@ Em ambientes confinados, onde o acesso humano é limitado ou arriscado, a utiliz
 Nesse contexto, o projeto é especialmente relevante para a Gerdau, a qual tem como valores fundamentais a inovação constante em processos produtivos para maximizar a segurança de seus funcionários (“Sobre nós”, [s.d.]). Com a introdução de inspeções automatizadas antes e depois de sessões de manutenção, será possível atingir níveis ainda maiores de qualidade de ambiente de trabalho e satisfação de seus operários, além de aumentar a eficiência e produtividade da companhia.
 
 ### Visão do projeto proposto
-A visão da Gerdau de "ser global e referência nos negócios em que atua" alinha perfeitamente com a visão do produto oferecido - um robô de inspeção. Tecnologia de ponta, o robô apresenta o potencial de revolucionar a maneira como a Gerdau realiza inspeções, visando providenciar serviços para inspeção ágil, precisa, e eficiente, que, além de aumentar segurança e produtividade, também reduz custos.
+A visão da Gerdau de "ser global e referência nos negócios em que atua" (“Missão, Visão e Valores, uma forma poderosa de dar foco, inspirar, motivar e engajar pessoas!”, [s.d.]) é um dos pilares da estratégia da empresa para manter sua posição de liderança no setor de aço longo. Para alcançar esse objetivo, a empresa está sempre em busca de soluções inovadoras e tecnologias avançadas que possam melhorar seus processos e aumentar sua eficiência operacional.
 
-Quanto à potencialidade projetual do produto, ela mostra-se elevada: há uma grande demanda por soluções de inspeção de espaços confinados na indústria de aço longo. Da mesma maneira, legislação vigente, que exige que as empresas garantam a segurança dos trabalhadores em áreas de risco, também tornam o projeto cada vez mais relevante e necessário.
+Nesse contexto, a adoção do robô de inspeção Donatello se alinha perfeitamente com a visão da empresa. Ele tem o potencial de revolucionar a maneira como a Gerdau realiza inspeções, proporcionando serviços de inspeção ágeis, precisos e eficientes que aumentam a segurança e a produtividade e reduzem custos.
 
-No Brasil, a legislação que trata da segurança e saúde do trabalhador é a Norma Regulamentadora 1 (NR-1), que estabelece as disposições gerais sobre as demais NRs e define as responsabilidades dos empregadores e trabalhadores quanto à segurança e saúde no trabalho.
+Além disso, a potencialidade projetual do produto é elevada, uma vez que a indústria de aço longo demanda soluções de inspeção de espaços confinados. No Brasil, a legislação de segurança e saúde do trabalhador é regida pela Norma Regulamentadora 1 (NR-1), que estabelece disposições gerais sobre as demais NRs e define as responsabilidades dos empregadores e trabalhadores em relação à segurança e saúde no trabalho. Nela, é evidenciado o fato de que o bem-estar dos funcionários deve ser prioridade para qualquer companhia.
 
-Em conclusão, não há dúvidas de que, ao adotar um robô de inspeção inovador e de alta qualidade, a Gerdau contribuiria significativamente para o alcance de sua visão de "ser global e referência nos negócios em que atua".
-
+Portanto, a adoção do robô de inspeção Donatello pela Gerdau não só contribuiria para o alcance de sua visão de ser uma empresa global e referência em seus negócios, mas também seria uma escolha estratégica que trará benefícios significativos para seus processos operacionais e para a segurança dos trabalhadores.
 
 ## Sistema produto-design
 
 ### Missão do projeto
-A missão da Gerdau de "Gerar valor para nossos clientes, acionistas, equipes e a sociedade, atuando na indústria do aço de forma sustentável", alinha perfeitamente com o produto oferecido - um robô de inspeção. O robô certamente ajudará a empresa a alcançar sua missão, pois oferece uma maneira mais rápida, eficiente, precisa, e segura, de inspecionar produtos de aço, ao mesmo tempo em que reduz o impacto ambiental.
+A missão da Gerdau de "gerar valor para nossos clientes, acionistas, equipes e a sociedade, atuando na indústria do aço de forma sustentável" (GIFE, [s.d.]) está intrinsicamente ligada ao nosso produto. O Donatello oferece muitas vantagens para a Gerdau alcançar sua missão, por ser mais rápido, eficiente, preciso e seguro em inspecionar espaços confinados, enquanto reduz o impacto ambiental.
 
-- Robôs de inspeção, ao substituir humanos, reduzem o número de acidentes e o número de variáveis envolvidas, reduzindo o número de erros presentes nos processos de produção, o que por sua vez reduz desperdício e consumo de energia. Isso ajuda a reduzir a pegada de carbono do processo de produção.
-- Robôs de inspeção podem coletar dados em tempo real sobre variáveis de produção, como temperatura e pressão, que podem ser utilizados para otimizar o processo de produção e reduzir o consumo de energia. Isso pode levar a significativas economias de energia e uma pegada de carbono reduzida.
-- Robôs de inspeção também podem ajudar a identificar e resolver potenciais problemas de manutenção antes que se agravem, o que pode reduzir a necessidade de reparos ou substituições de equipamentos. Isso pode ajudar a reduzir a pegada de carbono associada à produção e descarte de equipamentos.
+Os robôs de inspeção substituem os humanos em muitas tarefas, o que pode reduzir o número de acidentes e o número de variáveis envolvidas, diminuindo a quantidade de erros nos processos de produção e, consequentemente, diminuindo o desperdício e consumo de energia. Isso também limita a pegada de carbono das operações industriais. Além disso, produtos como o Donatello ajudam a identificar e resolver potenciais problemas de manutenção antes que se agravem, o que pode reduzir a necessidade de reparos ou substituições de equipamentos.
 
-Em conclusão, ao oferecer uma solução de inspeção inovadora e de alta qualidade, o projeto contribui para a realização da missão da Gerdau, melhorando qualidade e segurança, reduzindo o impacto ambiental, e gerando valor para seus clientes, stakeholders e equipes.
+Em conclusão, ao adotar uma solução de inspeção inovadora e de alta qualidade, a Gerdau contribui para a realização de sua missão, melhorando a qualidade e segurança, reduzindo o impacto ambiental e gerando valor para seus clientes, stakeholders e equipes.
 
 ### Unidade formal entre o design do produto, as formas de divulgação e venda
 O design físico do produto é de um robô de inspeção para espaços confinados que, a partir de sensores e câmeras, coletará dados sobre gases da atmosfera local, e filmagens sobre a higidez da estrutura inspecionada. A princípio, o robô não possuirá funcionamento autônomo.
 
-O design ideológico do produto é de um instrumento que, diminuindo a exposição desnecessária de trabalhadores humanos a riscos industriais, edifique a imagem da empresa cliente como uma instituição que valoriza acima de tudo a vida humana; que, com imanência, preza pela constante melhora do ambiente em que operam seus trabalhadores; que investe em tecnologias que esse fim ajudem a alicerçar; e não apenas para lucro, mas por um futuro melhor; e não apenas para eles, mas para todos.
+O design ideológico do produto é de um instrumento que, diminuindo a exposição desnecessária de trabalhadores humanos a riscos industriais, edifique a imagem da empresa cliente como uma instituição que valoriza acima de tudo a vida humana; que, com imanência, preza pela constante melhora do ambiente em que operam seus trabalhadores; que investe em tecnologias que esse fim ajudem a alicerçar, e não apenas por lucro, mas por um futuro melhor; e não apenas para eles, mas para todos.
 
-Como unidade formal, ambos lados do design unem-se unilateralmente como um austero ideal que adquire materialidade através da inovação tecnológica; da aplicação bem-sucedida de princípios da robótica e da Indústria 4.0; para fins tanto capitalistas quanto humanitários.
+Como unidade formal, ambos os lados do design unem-se unilateralmente como um austero ideal que adquire materialidade através da inovação tecnológica; da aplicação bem-sucedida de princípios da robótica e da Indústria 4.0; para fins tanto capitalistas quanto humanitários.
 
-Marx enfatizou que uma commodity nunca é apenas um simples objeto meramente para compra e consumo; uma commodity é um objeto carregado de qualidades ideológicas e metafísicas, cuja presença sempre reflete uma transcendência invisível. Com base nesse fato, a execução da segunda unidade formal, constituída pelo design supramencionado unido a fatores de divulgação e marketing, revela-se: através de tais lentes, o produto pode ser facilmente publicizado e comercializado; não apenas um robô para uso meramente utilitário, mas sim um meio de contribuir para com a evolução da raça humana como um todo.
+Marx enfatizou que uma commodity nunca é apenas um simples objeto meramente para compra e consumo; uma commodity é um objeto carregado de qualidades ideológicas e metafísicas, cuja presença sempre reflete uma transcendência invisível (MARX; REGINALDO SANT'ANNA, 2008). Com base nesse fato, a execução da segunda unidade formal, constituída pelo design supramencionado unido a fatores de divulgação e marketing, revela-se: através de tais lentes, o produto pode ser facilmente publicizado e comercializado; não apenas um robô para uso meramente utilitário, mas sim um meio de contribuir para com a evolução das condições trabalhistas como um todo na indústria brasileira.
 
 ### Sustentabilidade ambiental
 Com a aplicação do nosso projeto, nosso principal objetivo é a redução de acidentes na planta industrial em que nossa tecnologia for aplicada, reduzindo o risco de vazamento de gases para fora da tubulação e até mesmo evitando a explosão de gases inflamáveis, o que resultaria em um aumento de CO2 na atmosfera.
@@ -159,7 +162,11 @@ Por fim, Donatello é um AGV movido por baterias recarregáveis, diminuindo o im
 
 ### Proposta inovadora
 
-Uma inovação para a continuidade desse projeto seria a transmissão dos vídeos em tempo real para um óculos VR. Isso permitiria ao técnico visualizar o ambiente inspecionado de forma imersiva, aumentando sua percepção e familiarização com o espaço confinado. Essa tecnologia poderia ser usada não apenas para inspeção pré e pós-manutenção, mas também para treinamento de novos técnicos, permitindo que eles se familiarizem com o ambiente antes mesmo de entrar nele. Além disso, o uso de óculos VR permitiria que outras pessoas, como engenheiros e gestores, visualizem a inspeção em tempo real de forma mais detalhada, ajudando-os a tomar decisões mais informadas. Essa inovação pode trazer uma vantagem competitiva para a empresa, agregando valor ao produto final e aumentando a eficiência do processo de manutenção.
+Uma excelente forma de ampliar a inovação nesse projeto seria implementar a transmissão dos vídeos em tempo real para óculos VR de última geração, com tecnologia de ponta. Isso proporcionaria ao técnico uma experiência inspecionando o ambiente de maneira imersiva e aprimorada, ampliando sua percepção e entendimento do espaço confinado. Essa tecnologia não só seria aplicável para as inspeções pré e pós-manutenção, mas também para o treinamento de novos técnicos, permitindo que eles adquiram conhecimentos e se familiarizem com o ambiente antes mesmo de adentrá-lo.
+
+O uso de óculos VR possibilitaria que outras pessoas, como engenheiros e gestores, visualizassem a inspeção em tempo real de forma mais detalhada e abrangente, facilitando a tomada de decisões mais informadas. Essa inovação pode trazer uma grande vantagem competitiva para a empresa, acrescentando valor ao produto final e potencializando a eficiência do processo de manutenção.
+
+Além disso, é importante salientar que o uso de tecnologia de ponta como essa pode melhorar a segurança dos funcionários, reduzindo o risco de acidentes de trabalho em áreas confinadas e diminuindo a necessidade de interrupção do trabalho para correção de problemas. A implementação dessa tecnologia pode, portanto, não apenas ser benéfica para a empresa, mas também para a segurança e bem-estar de seus funcionários.
 
 # Arquitetura do sistema
 A arquitetura da solução para o projeto de AGV de inspeção de espaços confinados será composta por três principais elementos: hardware, software e comunicação. O hardware incluirá o próprio AGV, equipado com sensores de colisão, sensores de gás, câmeras de vídeo, sensores de temperatura e um sistema de monitoramento das condições atmosféricas do ambiente. O software será responsável por controlar o movimento do AGV, detectar obstáculos e alterar a rota do AGV quando necessário. Também será responsável pela interface com o usuário, permitindo o controle remoto do AGV e a visualização dos dados e relatórios gerados durante a inspeção. Por fim, a comunicação será realizada via rede sem fio, permitindo a transmissão dos dados e relatórios gerados em tempo real para o gestor responsável pelo monitoramento do sistema. Com essa arquitetura, o sistema será capaz de realizar a inspeção de forma autônoma, segura e eficiente, proporcionando ao usuário final a tranquilidade e agilidade necessárias para a realização de uma manutenção confiável.
@@ -262,4 +269,10 @@ LIDAR — Divisão de Sensoriamento Remoto. Disponível em: <http://www.dsr.inpe
 Pipeline Sistema De Inspeção De Tubulação De Esgoto Inspeção Robô Para Tubo De Canalização De Drenagem - Buy Plumbing Drain Camera,Pipeline Sewer Inspection System,Plumbing Inspection Camera Product on Alibaba.com. Disponível em: <https://portuguese.alibaba.com/product-detail/Pipeline-Sewer-Inspection-System-Pipe-Inspection-62110539013.html>. Acesso em: 25 abr. 2023.
 
 AMANDA MENESES. Piso salarial 2023: quanto ganham as principais profissões? Disponível em: <https://investnews.com.br/geral/piso-salarial/#:~:text=Engenheiro>. Acesso em: 25 abr. 2023.
+
+MARX, K.; REGINALDO SANT'ANNA. O capital / 4, Livro Terceiro : O processo global da produção capitalista. Rio De Janeiro: Civilização Brasileira, 2008.
+
+GIFE. Gerdau. Disponível em: <https://gife.org.br/associados/gerdau/>.
+
+Missão, Visão e Valores, uma forma poderosa de dar foco, inspirar, motivar e engajar pessoas! Disponível em: <https://www.linkedin.com/pulse/miss%C3%A3o-vis%C3%A3o-e-valores-um-forma-poderosa-de-dar-foco-bertolino/?originalSubdomain=pt>. Acesso em: 1 maio. 2023.
 

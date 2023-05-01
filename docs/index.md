@@ -22,8 +22,15 @@ Utilizamos a matriz oceano azul no projeto de AGV para que nossa equipe possa de
 
 Ao comparar o processo atualmente utilizado pela Gerdau com o novo processo proposto, é possível observar diversos ganhos significativos, especialmente em relação à automação. Através de entrevistas com o cliente e análise de material presente no Tapi, identificamos que a automação permitirá um grande avanço quando a segurança dos contribuíntes e análise dos espaços.
 
+Com base na análise da matriz oceano azul, é possível observar que a implementação do robô resultará em uma redução significativa nos CUSTOS, uma vez que, após o investimento inicial, a manutenção do equipamento será de baixo custo, e não haverá mais o risco de incidentes trabalhistas nessa área, o que poderia acarretar em altos custos para a Gerdau. Além disso, a utilização do robô aumentará a SEGURANÇA, uma vez que não haverá mais pessoas operando em espaços confinados, o que diminuirá significativamente as chances de acidentes. Entretanto, é importante ressaltar que falhas humanas ainda podem ocorrer, mesmo após a inspeção robótica.
+
+O principal objetivo do projeto é a AUTOMAÇÃO, que ainda não está presente no modelo atual. Com a implementação do robô, os DASHBOARDS poderão ser automatizados e fornecerão dados com alta precisão e confiabilidade. Além disso, a solução será altamente EFICIENTE, o que resultará em uma COLETA DE DADOS mais completa e abrangente.
 
 ## Matriz de risco
+A matriz de risco é uma das ferramentas que nos permite identificar, avaliar e priorizar os riscos associados ao projeto. É uma tabela que organiza os possíveis riscos em um ou mais eixos, e os classifica em termos de probabilidade e impacto. A partir dessa classificação, é possível determinar quais riscos precisam de atenção imediata e quais podem ser gerenciados com menos urgência.
+
+O uso de uma matriz de risco é essencial para documentar as estratégias de gerenciamento de riscos em uma organização. Ela fornece uma maneira clara e sistemática de identificar as ameaças que podem impactar o sucesso de um projeto ou processo, permitindo que os responsáveis tomem decisões informadas sobre como gerenciá-los. Em resumo, a matriz de risco é uma ferramenta valiosa para garantir que os riscos sejam gerenciados de forma eficiente e eficaz, minimizando potenciais perdas e maximizando o sucesso.
+
 <img src="../media/matriz_risco/matriz_risco.jpg">
 
 ### Riscos
@@ -82,6 +89,12 @@ Por fim, foram propostos os analgésicos, como sensores acurados de qualidade do
 Com a utilização do canvas de proposta de valor, é possível ter uma visão geral da solução proposta, além de identificar de forma clara as principais necessidades do cliente e como o produto ou serviço pode atendê-las de forma eficiente e eficaz.
 
 ## Análise financeira
+ Para a análise financeira  os principais  fatores que foram levados em conta foi à compra do AGV e a implementação técnica do robô, que será realizada por engenheiros. Para estimar o custo da implementação técnica, foi considerado que três engenheiros trabalharão por um período de 4 meses, durante 40 horas por semana. Com base no valor/hora médio de engenharia, que é de R$ 81, é possível calcular o custo total da implementação técnica. Já para estimar o custo do hardware do AGV, o texto utiliza um robô de inspeção de tubulação sanitária como modelo. Esse robô possui funções e equipamentos semelhantes aos que serão utilizados no projeto. Dessa forma, o custo do hardware do AGV será estimado com base no custo do equipamento de referência mencionado. Com essas informações, é possível estimar com mais detalhes os custos envolvidos na implementação do AGV no projeto, considerando tanto o custo da implementação técnica como o custo do hardware do robô.
+<br>
+<p align = "center">
+<img src="./../media/analise-financeira/analise-financeira.jpeg" width = 650px>
+</p>
+<br>
 
 # Entendimento de metadesign
 
@@ -108,20 +121,25 @@ Em ambientes confinados, onde o acesso humano é limitado ou arriscado, a utiliz
 Nesse contexto, o projeto é especialmente relevante para a Gerdau, a qual tem como valores fundamentais a inovação constante em processos produtivos para maximizar a segurança de seus funcionários (“Sobre nós”, [s.d.]). Com a introdução de inspeções automatizadas antes e depois de sessões de manutenção, será possível atingir níveis ainda maiores de qualidade de ambiente de trabalho e satisfação de seus operários, além de aumentar a eficiência e produtividade da companhia.
 
 ### Visão do projeto proposto
-O projeto visionado pela LinCORE é estruturado sobre a detecção de gases tóxicos em locais potencialmente contaminados, de maneira que trabalhadores não sejam expostos a perigos desnecessários.
+A visão da Gerdau de "ser global e referência nos negócios em que atua" alinha perfeitamente com a visão do produto oferecido - um robô de inspeção. Tecnologia de ponta, o robô apresenta o potencial de revolucionar a maneira como a Gerdau realiza inspeções, visando providenciar serviços para inspeção ágil, precisa, e eficiente, que, além de aumentar segurança e produtividade, também reduz custos.
 
-Tendo em mente a legislação vigente no Brasil sobre o o direito a um meio ambiente saudável, incluindo a Lei Federal de Resíduos Tóxicos e Perigosos (Lei nº 12.305/2010), que estabelece regras para o gerenciamento de resíduos perigosos, a LinCORE pensou num robô que tenha potencial de realizar filmagens e enviar dados do local para os usuários do produto, que necessitam ter conhecimento da segurança do ambiente.
+Quanto à potencialidade projetual do produto, ela mostra-se elevada: há uma grande demanda por soluções de inspeção de espaços confinados na indústria de aço longo. Da mesma maneira, legislação vigente, que exige que as empresas garantam a segurança dos trabalhadores em áreas de risco, também tornam o projeto cada vez mais relevante e necessário.
 
-Uma gama de possibilidades para a execução do projeto é alicerçada por esse fato, concebidas na criação de uma interface gráfica para o recebimento de dados, como um executável ou WebApp, de preferência transmitidos em tempo real; modos de controle, que podem ser definidos como autônomo ou por controle remoto; mecanismos para assegurar o robô. Tais mecanismos incluem sensores para evitar colisões, para mapear os locais e medir temperaturas, a exemplo de sensores lidar, que utilizam feixes de laser infravermelho para mapear a superfície; os ultrassônicos, que ao emitirem ondas ultrassônicas, com base no tempo de propagação e do ricochete, possibilitam o cálculo da distância; e também os infravermelhos, que utilizam radiação infravermelha para medir a temperatura de objetos.
+No Brasil, a legislação que trata da segurança e saúde do trabalhador é a Norma Regulamentadora 1 (NR-1), que estabelece as disposições gerais sobre as demais NRs e define as responsabilidades dos empregadores e trabalhadores quanto à segurança e saúde no trabalho.
+
+Em conclusão, não há dúvidas de que, ao adotar um robô de inspeção inovador e de alta qualidade, a Gerdau contribuiria significativamente para o alcance de sua visão de "ser global e referência nos negócios em que atua".
+
 
 ## Sistema produto-design
 
 ### Missão do projeto
-A missão do projeto consiste em diminuir a exposição desnecessária de trabalhadores humanos a riscos industriais através da aplicação bem-sucedida de princípios da robótica e da Indústria 4.0, promovendo um ambiente que, além de salubre a todos os colaboradores, independente de sua área de atuação, também os desenvolve como líderes futuros.
+A missão da Gerdau de "Gerar valor para nossos clientes, acionistas, equipes e a sociedade, atuando na indústria do aço de forma sustentável", alinha perfeitamente com o produto oferecido - um robô de inspeção. O robô certamente ajudará a empresa a alcançar sua missão, pois oferece uma maneira mais rápida, eficiente, precisa, e segura, de inspecionar produtos de aço, ao mesmo tempo em que reduz o impacto ambiental.
 
-Essa missão não é um mero objetivo; porém um propósito, deveras nobre, que penetra todas as superfícies da Gerdau, uma instituição que valoriza acima de tudo a vida humana; que, com imanência, preza pela constante melhora do ambiente em que operam seus trabalhadores; que investe em tecnologias que esse fim ajudem a alicerçar; e não apenas para lucro, mas por um futuro melhor; e não apenas para eles, mas para todos.
+- Robôs de inspeção, ao substituir humanos, reduzem o número de acidentes e o número de variáveis envolvidas, reduzindo o número de erros presentes nos processos de produção, o que por sua vez reduz desperdício e consumo de energia. Isso ajuda a reduzir a pegada de carbono do processo de produção.
+- Robôs de inspeção podem coletar dados em tempo real sobre variáveis de produção, como temperatura e pressão, que podem ser utilizados para otimizar o processo de produção e reduzir o consumo de energia. Isso pode levar a significativas economias de energia e uma pegada de carbono reduzida.
+- Robôs de inspeção também podem ajudar a identificar e resolver potenciais problemas de manutenção antes que se agravem, o que pode reduzir a necessidade de reparos ou substituições de equipamentos. Isso pode ajudar a reduzir a pegada de carbono associada à produção e descarte de equipamentos.
 
-Um ideal sem dúvidas magnânimo; um ideal que poderia-se inclusive dizer é a visão institucional em-si; o espírito da empresa, feito realidade através da inovação tecnológica; e, iluminando todos os níveis da corporação, também ilumina sobre o desenvolvimento deste projeto pois, para o nosso humilde time de desenvolvedores, nenhum resultado possui valor maior do que a bem-sucedida preservação e perpetuação da vida humana.
+Em conclusão, ao oferecer uma solução de inspeção inovadora e de alta qualidade, o projeto contribui para a realização da missão da Gerdau, melhorando qualidade e segurança, reduzindo o impacto ambiental, e gerando valor para seus clientes, stakeholders e equipes.
 
 ### Unidade formal entre o design do produto, as formas de divulgação e venda
 O design físico do produto é de um robô de inspeção para espaços confinados que, a partir de sensores e câmeras, coletará dados sobre gases da atmosfera local, e filmagens sobre a higidez da estrutura inspecionada. A princípio, o robô não possuirá funcionamento autônomo.
@@ -170,11 +188,11 @@ A arquitetura da solução para o projeto de AGV de inspeção de espaços confi
 6. Interação com usuário intuitiva: a interface deve ser fácil de usar e compreender para o usuário final (executante da manutenção) e gestor (dash/relatórios).
 
 ## Viabilidade técnica
-Para que haja uma implementação, então, do AGV Donatello, é necessário considerar alguns aspectos técnicos, como a escolha dos sensores, do hardware e do software e suas limitações. O hardware principal utilizado, como já citado, será o Donatello, que é um módulo robótico TurtleBot3, e apesar de ser um sistema com baixo custo de implementação e versátil ele pode ter velocidade e autonomia um pouco limitados por conta do seu processador de baixa potência. No caso dos sensores, serão utilizados sensores capazes de medir condições atmosféricas e detectar obstáculos, e como as tubulações serão consideradas superfícies planas por conta da prototipação do sistema para a locomoção do robô, poderá haver algumas limitações na detecção de alguns obstáculos nesse espaço, como pequenos detritos e declives à sua frente e abaixo, por exemplo. 
+Para que haja uma implementação, então, do AGV Donatello, é necessário considerar alguns aspectos técnicos, como a escolha dos sensores, do hardware e do software e suas limitações. O hardware principal utilizado, como já citado, será o Donatello, que é um módulo robótico TurtleBot3, e apesar de ser um sistema com baixo custo de implementação e versátil ele pode ter velocidade e autonomia reduzidas dado limitações do seu processador embarcado. No caso dos sensores, serão utilizados sensores capazes de medir condições atmosféricas e detectar obstáculos, e como as tubulações serão consideradas superfícies planas por conta da prototipação do sistema para a locomoção do robô, poderá haver algumas limitações na detecção de alguns obstáculos nesse espaço, como pequenos detritos e declives à sua frente e abaixo, por exemplo. 
 
-Considerando-se ainda a aquisição de dados físicos do espaço, para a medição de condições atmosféricas, serão utilizados sensores de temperatura, de oxigênio e de gases tóxicos, e tais sensores podem ter uma limitação quanto à resolução e precisão da aquisição dessas medições físicas.  Em relação à detecção de obstáculos, será utilizado o sensor "LiDAR"(Light Detection and Ranging) que está embutido no módulo robótico TurtleBot3, um sensor capaz de detectar obstáculos por meio da emissão de laser na banda do infravermelho próximo, e com isso, modela a superfície do terreno tridimensionalmente, mas pode ser que as tubulações dificultem a aquisição de dados do ambiente e um grande volume de dados pode interferir no processamento desse sensor também. Além disso, como um monitoramento com a identificação das condições ambientais em tempo real agrega valor ao projeto, será utilizada uma câmera para a captação das imagens e transmissão das condições em tempo real para os operadores, contudo, dependendo da iluminação do ambiente, o envio das imagens pode ser prejudicado. 
+Considerando-se ainda a aquisição de dados físicos do espaço, para a medição de condições atmosféricas, serão utilizados sensores de temperatura, de oxigênio e de gases tóxicos, e tais sensores podem ter uma limitação quanto à resolução e precisão da aquisição dessas medições físicas.  Em relação à detecção de obstáculos, será utilizado o sensor "LiDAR"(Light Detection and Ranging) que está embutido no módulo robótico TurtleBot3, um sensor capaz de detectar obstáculos por meio da emissão de laser na banda do infravermelho próximo, mas pode ser que as tubulações dificultem a aquisição de dados do ambiente e um grande volume de dados pode interferir no processamento desse sensor também. Além disso, como um monitoramento com a identificação das condições ambientais em tempo real agrega valor ao projeto, será utilizada uma câmera para a captação das imagens e transmissão das condições em tempo real para os operadores, contudo, dependendo da iluminação do ambiente, o envio das imagens pode ser prejudicado. 
 
-Por fim, o software utilizado para simular o roteamento da movimentação robótica no ambiente será feita pelo ROS (Robot Operating System), que é um meta sistema operacional que fornece uma estrutura de desenvolvimento, gerenciamento e execução de aplicações robóticas, no entanto, por ser uma tecnologia mais recente e está em constante evolução, a implementação deste software traz uma complexidade maior para a simulação e, além disso, pode apresentar também vulnerabilidades de segurança ao usar um ambiente de rede compartilhada. 
+Por fim, o software utilizado para controlar o roteamento da movimentação robótica no ambiente será feita pelo ROS (Robot Operating System), que é um meta sistema operacional que fornece uma estrutura de desenvolvimento, gerenciamento e execução de aplicações robóticas, no entanto, por ser uma tecnologia mais recente e está em constante evolução, a implementação deste software traz uma complexidade maior para a simulação e, além disso, pode apresentar também vulnerabilidades de segurança ao usar um ambiente de rede compartilhada. 
 
 ## Proposta geral
 O objeto da proposta geral do sistema é o desenvolvimento de um AGV (Automated Guided Vehicle) para inspeção pré-manutenção e pós-manutenção de espaços confinados, com foco em tubulações. O sistema será capaz de examinar as condições atmosféricas em diferentes pontos, detectar a presença de gases e a quantidade de oxigênio, além de alertar o operador sobre possíveis obstáculos para sua locomoção na tubulação. A interface com dados e vídeo em tempo real permitirá a geração de relatórios em PDF e vídeos da inspeção. O sistema será projetado para melhorar as condições de segurança do operador e a eficiência do processo de inspeção, reduzindo o tempo necessário para realizar a inspeção e evitando a possibilidade de esquecimento de ferramentas ou equipamentos no interior dos tubos. O usuário final do sistema será o executante da manutenção, enquanto o usuário indireto será o gestor responsável por visualizar os dados e relatórios gerados pelo sistema.
@@ -183,14 +201,14 @@ O objeto da proposta geral do sistema é o desenvolvimento de um AGV (Automated 
 
 <p align="center">
 <img src = "../media/arquitetura/arquitetura_sprint_1.jpg">
-<p/>
+</p>
 <br>
 
 **Legenda**
 
 <p align="center">
 <img src = "../media/arquitetura/legenda.jpg">
-<p/>
+</p>
 <br>
 
 ### Tabela de componentes
@@ -231,7 +249,9 @@ Crescimento do investimento na Indústria 4.0. Disponível em: <https://www.redu
 Lei Federal de Resíduos Tóxicos e Perigosos. Disponível em: <https://www.planalto.gov.br/ccivil_03/_ato2007-2010/2010/lei/l12305.htm>.
 Acesso em: 26 abr. 2023.
 
-Sobre nós. Disponível em: <https://www2.gerdau.com.br/sobre-nos/>.
+GERDAU. Perfil. Disponível em: https://www2.gerdau.com/pt-br/sobre-nos/perfil. Acesso em: 29 abr. 2023.
+
+BRASIL. Ministério do Trabalho e Emprego. Norma Regulamentadora nº 1: Disposições Gerais. Brasília, DF: MTE, 1978. Disponível em: http://trabalho.gov.br/images/Documentos/SST/NR/NR01.pdf. Acesso em: 29 abr. 2023.‌
 
 Vale investe em robôs para retirar empregados de situação de risco e aumentar a segurança de suas operações. Disponível em: <https://ibram.org.br/noticia/vale-investe-em-robos-para-retirar-empregados-de-situacao-de-risco-e-aumentar-a-seguranca-de-suas-operacoes/>. Acesso em: 24 abr. 2023.
 
@@ -239,4 +259,7 @@ ARTES, L. Aumento no mercado de robótica e automação em 2022 > VDI Brasil. Di
 
 LIDAR — Divisão de Sensoriamento Remoto. Disponível em: <http://www.dsr.inpe.br/DSR/areas-de-atuacao/sensores-plataformas/lidar#:~:text=O%20LIDAR%20(Light%20Detection%20and>. Acesso em: 25 abr. 2023.
 
-‌
+Pipeline Sistema De Inspeção De Tubulação De Esgoto Inspeção Robô Para Tubo De Canalização De Drenagem - Buy Plumbing Drain Camera,Pipeline Sewer Inspection System,Plumbing Inspection Camera Product on Alibaba.com. Disponível em: <https://portuguese.alibaba.com/product-detail/Pipeline-Sewer-Inspection-System-Pipe-Inspection-62110539013.html>. Acesso em: 25 abr. 2023.
+
+AMANDA MENESES. Piso salarial 2023: quanto ganham as principais profissões? Disponível em: <https://investnews.com.br/geral/piso-salarial/#:~:text=Engenheiro>. Acesso em: 25 abr. 2023.
+

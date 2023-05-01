@@ -98,7 +98,7 @@ Quanto ao custo do hardware do AGV, foi utilizado como modelo um robô de inspe�
 Com essas informações, é possível fazer uma estimativa mais detalhada dos custos envolvidos na implementação do AGV no projeto, considerando tanto o custo da implementação técnica como o custo do hardware do robô.
 <br>
 <p align = "center">
-<img src="./../media/negocios/analise-financeira.jpeg" width = 650px>
+<img src="./../media/negócios/analise_financeira.png" width = 650px>
 </p>
 <br>
 

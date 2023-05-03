@@ -12,6 +12,39 @@
 
 </center></font>
 
+- [Entendimento de negócios](#entendimento-de-negócios)
+  - [Matriz de oceano azul](#matriz-de-oceano-azul)
+  - [Matriz de risco](#matriz-de-risco)
+    - [Riscos](#riscos)
+    - [Oportunidades](#oportunidades)
+    - [Mitigação de riscos](#mitigação-de-riscos)
+  - [Personas](#personas)
+  - [Canvas de proposta de valor](#canvas-de-proposta-de-valor)
+  - [User stories](#user-stories)
+    - [Técnico](#técnico)
+    - [Supervisora](#supervisora)
+  - [Análise financeira](#análise-financeira)
+- [Entendimento de metadesign](#entendimento-de-metadesign)
+  - [Fatores mercadológicos](#fatores-mercadológicos)
+    - [Orientação ao mercado e precificação](#orientação-ao-mercado-e-precificação)
+    - [Cenário do mercado](#cenário-do-mercado)
+    - [Visão do projeto proposto](#visão-do-projeto-proposto)
+  - [Sistema produto-design](#sistema-produto-design)
+    - [Missão do projeto](#missão-do-projeto)
+    - [Unidade formal entre o design do produto, as formas de divulgação e venda](#unidade-formal-entre-o-design-do-produto-as-formas-de-divulgação-e-venda)
+    - [Sustentabilidade ambiental](#sustentabilidade-ambiental)
+    - [Proposta inovadora](#proposta-inovadora)
+- [Arquitetura do sistema](#arquitetura-do-sistema)
+  - [Requisitos funcionais e não funcionais](#requisitos-funcionais-e-não-funcionais)
+    - [Funcionais](#funcionais)
+    - [Não funcionais](#não-funcionais)
+  - [Viabilidade técnica](#viabilidade-técnica)
+  - [Proposta geral](#proposta-geral)
+  - [Diagrama de blocos](#diagrama-de-blocos)
+    - [Tabela de componentes](#tabela-de-componentes)
+- [Referências](#referências)
+
+
 # Entendimento de negócios
 
 ## Matriz de oceano azul
@@ -74,6 +107,18 @@ O uso de uma matriz de risco é essencial para documentar as estratégias de ger
 10. Alinhamento geral da base dos autoestudos.
 11. Planejamento e organização eficiente das tarefas antes do início das Sprints.
 
+## Personas
+
+As personas são representações fictícias de pessoas reais que são criadas com base em dados e informações obtidos por meio de entrevistas com o parceiro e pesquisas sobre a área de atuação. Elas são usadas para ajudar a equipe do projeto a entender melhor as necessidades, objetivos, desafios e comportamentos dos usuários finais do produto ou serviço. Com isso, é possível desenvolver soluções mais adequadas e personalizadas para atender às necessidades dos usuários.
+
+No caso do projeto Donatello, as personas de João Cabral e Anna Colombo foram criadas a partir de informações obtidas em entrevistas com técnicos de manutenção e supervisores da Gerdau, bem como pesquisas sobre a indústria de aço longo e normas de segurança. Essas informações foram usadas para criar um perfil detalhado de cada persona, incluindo suas características demográficas, habilidades, experiências, desafios e objetivos.
+
+<img src="./../media/negócios/tecnico.png">
+<img src="./../media/negócios/supervisora.png">
+
+Ao criar essas personas, a equipe do projeto pode visualizar como o robô Donatello pode ser útil para João Cabral, por exemplo, permitindo que ele faça inspeções de tubulações com mais rapidez e segurança, além de facilitar a realização de manutenções preventivas e corretivas. Já para Anna Colombo, o robô pode ajudá-la a gerenciar melhor a segurança no trabalho, permitindo que ela faça planos de manutenção preventiva e corretiva para os equipamentos da usina de forma mais eficiente.
+
+Com as personas definidas, a equipe do projeto pode entender melhor as necessidades e objetivos dos usuários finais e criar soluções personalizadas que atendam a essas necessidades de forma eficiente e eficaz.
 
 ## Canvas de proposta de valor
 <img src="./../media/negócios/canvas.png">
@@ -88,6 +133,11 @@ Por fim, foram propostos os analgésicos, como sensores acurados de qualidade do
 
 Com a utilização do canvas de proposta de valor, é possível ter uma visão geral da solução proposta, além de identificar de forma clara as principais necessidades do cliente e como o produto ou serviço pode atendê-las de forma eficiente e eficaz.
 
+## User stories
+
+### Técnico
+### Supervisora
+
 ## Análise financeira
 Para a análise financeira do projeto que envolve a implementação de um AGV, foram considerados os principais fatores que afetam os custos: a compra do robô e a implementação técnica do mesmo, que será realizada por uma equipe de engenheiros.
 
@@ -96,6 +146,7 @@ No que se refere à implementação técnica, foram estimados os custos com base
 Quanto ao custo do hardware do AGV, foi utilizado como modelo um robô de inspeção de tubulação sanitária, que possui funções e equipamentos semelhantes ao robô que será utilizado no projeto. Com base no custo do equipamento de referência mencionado, é possível estimar o custo do hardware do AGV.
 
 Com essas informações, é possível fazer uma estimativa mais detalhada dos custos envolvidos na implementação do AGV no projeto, considerando tanto o custo da implementação técnica como o custo do hardware do robô.
+
 <br>
 <p align = "center">
 <img src="./../media/negócios/analise_financeira.png" width = 650px>

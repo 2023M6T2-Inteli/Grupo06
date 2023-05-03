@@ -88,6 +88,24 @@ Por fim, foram propostos os analgésicos, como sensores acurados de qualidade do
 
 Com a utilização do canvas de proposta de valor, é possível ter uma visão geral da solução proposta, além de identificar de forma clara as principais necessidades do cliente e como o produto ou serviço pode atendê-las de forma eficiente e eficaz.
 
+## User Stories
+User Stories são uma etapa importante do desenvolvimento ágil, ele coloca os usuários no centro das ações da solução, auxiliando a equipe de desenvolvimento no excencial e ajudando a estimar o esforço destinado cada tópico do projeto e seu valor para o usuário final.
+
+A seguir, as user stories desenvolvidas para o projeto Donatello, junto aos épicos respectivos e a prioridade de cada um:
+
+Épico 1: Como técnico, quero um robô que adentre locais possivelmente tóxicos para manter a segurança dos funcionários
+- Como técnico, quero garantias que perdas de sinal não inutilizem o robô, para não precisar mandar ninguém resgatá-lo. (Prioridade média)
+- Como técnico, quero obter o máximo de informações possíveis (com prioridade para a medição de gases) para análise de dados. (Prioridade baixa)
+- Como técnico, quero que o robô tenha mecânismos de segurança para evitar possíveis danos a ele mesmo e a aos outros. (Prioridade alta)
+- Como técnico, quero que o robô tenha uma opção tanto atonôma, quanto maual de controle para poder me adaptar a situações específicas. (Prioridade média)
+
+Épico 2: Como técnico, quero uma interface gráfica para vizualizar os dados obtidos pelo robô.
+- Como técnico, quero vizualizar os dados obtidos pelo robô em tempo real para a tomada de decisões ser agilizada. (Prioridade média)
+- Como técnico, quero armazenar rotas definidas para o robô se deslocar por elas. (Prioridade média)
+- Como técnico, quero o histórico das missões para analisar ações do robô. (Prioridade baixa)
+- Como técnico, quero ter o campo de visão do robô para conferir seus status. (Prioridade alta)
+- Como técnico, quero um campo simulado do trajeto do robô para conferir sua localização. (Prioridade média)
+
 ## Análise financeira
 Para a análise financeira do projeto que envolve a implementação de um AGV, foram considerados os principais fatores que afetam os custos: a compra do robô e a implementação técnica do mesmo, que será realizada por uma equipe de engenheiros.
 

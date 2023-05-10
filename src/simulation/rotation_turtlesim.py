@@ -19,7 +19,7 @@ class Pose(TPose):
         
     def __repr__(self):
         """Modifica a forma como aparece a classe no `print`"""
-        return f"(x={self.x:.2f}, theta={self.y:.2f})"
+        return f"(x={self.x:.2f}, y={self.y:.2f}, theta={self.theta:.2f})"
     
     def __add__(self, other):
         """Overload do operador `+`"""
@@ -96,6 +96,7 @@ class TurtleController(Node):
         if self.pose == self.setpoint:
             msg.linear.x, msg.linear.y = 0.0, 0.0
             self.get_logger().info(f"Mbappé chegou em {self.setpoint}")
+            exit()
         if abs(y_diff) > MAX_DIFF:
             msg.linear.y = 0.5 if y_diff > 0 else -0.5
         else:
@@ -115,12 +116,14 @@ class TurtleController(Node):
         self.pose = Pose(x=msg.x, y=msg.y, theta=msg.theta)
         # Se for a primeira vez passando por aqui, cria o setpoint.
         if self.setpoint.x == -40.0:
+            self.get_logger().info(f"Primeira pose recebida: {self.pose}")
             self.setpoint = self.pose + self.setpoint_rel
+            self.get_logger().info(f"Setpoint: {self.setpoint}")
 
 
 def main(args=None):
     rclpy.init(args=args)
-    tc = TurtleController(Pose(x=10.0, y=0.0))
+    tc = TurtleController(Pose(x=1.0, theta=0.0))
     rclpy.spin(tc)
     tc.destroy_node()
     rclpy.shutdown()

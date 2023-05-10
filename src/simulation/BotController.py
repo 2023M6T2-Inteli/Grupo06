@@ -1,37 +1,20 @@
-import rclpy
 from rclpy.node import Node
 
 from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry
 from tf_transformations import euler_from_quaternion
+from Pose import Pose
+MAX_DIFF = 0.5
 
-MAX_DIFF = 0.1
 
-class Pose(Odometry):
-    def __init__(self, x = 0.0, y = 0.0, theta=0.0):
-        self.x = x
-        self.y = y
-        self.theta = theta
-    
-    def __repr__(self):
-        return f"x={self.x}, y={self.y}"
-    
-    def __add__(self, other):
-        return Pose(self.x + other.x, self.y + other.y)
 
-    def __sub__(self, other):
-        return Pose(self.x - other.x, self.y - other.y)
-
-    def __eq__(self, other):
-        return abs(self.x - other.x) < MAX_DIFF \
-            and abs(self.y - other.y) < MAX_DIFF
-
-class TurtleController(Node):
-
-    def __init__(self, control_period=0.02): 
-        super().__init__("turtle_controller")
+class BotController(Node):
+    def __init__(self, mission_control, control_period=0.02):
+        super().__init__("mission_controller")
 
         self.initiated = False
+
+        self.mission_control = mission_control
 
         self.pose = Pose(x=0, y=0, theta=0)
 
@@ -41,6 +24,7 @@ class TurtleController(Node):
             timer_period_sec=control_period, 
             callback=self.control_callback
         )
+
         self.subscription = self.create_subscription(
             msg_type=Odometry,
             topic="odom",
@@ -63,7 +47,8 @@ class TurtleController(Node):
         if self.pose == self.setpoint:
             self.get_logger().info("Chegou no destino!")
             msg.linear.x = 0.0
-            exit()
+            msg.linear.y = 0.0
+            self.update_setpoint()
         
         x_diff = self.setpoint.x - self.pose.x
         y_diff = self.setpoint.y - self.pose.y
@@ -76,6 +61,16 @@ class TurtleController(Node):
         
         self.publisher.publish(msg)
 
+    def update_setpoint(self):
+        """ Método responsável por buscar um novo setpoint na fila"""
+        try:
+            self.setpoint = self.pose + self.mission_control.dequeue()
+            self.get_logger().info(f"Mbpappé chegou em {self.pose}, \
+                                   andando para {self.setpoint}")
+        except IndexError:
+            self.get_logger().info(f"Fim da jornada!")
+            exit()
+
     def pose_callback(self, msg):
         x = msg.pose.pose.position.x
         y = msg.pose.pose.position.y
@@ -86,17 +81,5 @@ class TurtleController(Node):
         self.pose = Pose(x=x, y=y, theta=theta)
 
         if not self.initiated:
-            self.setpoint = self.pose + Pose(x=1, y=1)
+            self.update_setpoint()
             self.initiated = True
-
-        self.get_logger().info(f"x={x}, y={y}, theta={theta}")
-
-def main(args=None):
-    rclpy.init(args=args)
-    tc = TurtleController()
-    rclpy.spin(tc)
-    tc.destroy_node()
-    rclpy.shutdown()
-
-if __name__ == "__main__":
-    main()

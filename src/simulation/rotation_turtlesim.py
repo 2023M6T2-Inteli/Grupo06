@@ -96,7 +96,6 @@ class TurtleController(Node):
         if self.pose == self.setpoint:
             msg.linear.x, msg.linear.y = 0.0, 0.0
             self.get_logger().info(f"Mbappé chegou em {self.setpoint}")
-            exit()
         if abs(y_diff) > MAX_DIFF:
             msg.linear.y = 0.5 if y_diff > 0 else -0.5
         else:
@@ -121,7 +120,7 @@ class TurtleController(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    tc = TurtleController(Pose(x=1.0, y=0.0))
+    tc = TurtleController(Pose(x=10.0, y=0.0))
     rclpy.spin(tc)
     tc.destroy_node()
     rclpy.shutdown()

@@ -41,7 +41,7 @@ class Pose(TPose):
         A comparação considera x, y ao mesmo tempo.
         """
         return abs(self.x - other.x) < MAX_DIFF \
-        and abs(self.y - other.y) < MAX_DIFF \
+        and abs(self.y - other.y) < MAX_DIFF
 
 
 class TurtleController(Node):
@@ -49,7 +49,7 @@ class TurtleController(Node):
     Classe do controlador. É um nó de ROS
     """
     
-    def __init__(self, setpoint_rel, control_period=0.02):
+    def __init__(self, control_period=0.02):
         """
         Construtor da classe controladora.
         Aqui cria-se o publisher, a subscription e o timer.
@@ -61,7 +61,6 @@ class TurtleController(Node):
         self.pose = Pose(x=-40.0)
         self.setpoint = Pose(x=-40.0)
         # O setpoint relativo é quanto a tartaruga vai andar a partir da sua origem
-        self.setpoint_rel = setpoint_rel
         self.publisher = self.create_publisher(
             msg_type=Twist,
             topic="/turtle1/cmd_vel",
@@ -92,19 +91,17 @@ class TurtleController(Node):
             return
         msg = Twist()
         x_diff = self.setpoint.x - self.pose.x
-        y_diff = self.setpoint.y - self.pose.y
+        # y_diff = self.setpoint.y - self.pose.y
         if self.pose == self.setpoint:
             msg.linear.x, msg.linear.y = 0.0, 0.0
             self.get_logger().info(f"Mbappé chegou em {self.setpoint}")
             exit()
-        if abs(y_diff) > MAX_DIFF:
-            msg.linear.y = 0.5 if y_diff > 0 else -0.5
-        else:
-            msg.linear.y = 0.0
+        # if abs(y_diff) > MAX_DIFF:
+        #     msg.linear.y = 0.5 if y_diff > 0 else -0.5
+        # else:
+        #     msg.linear.y = 0.0
         if abs(x_diff) > MAX_DIFF:
             msg.linear.x = 0.5 if x_diff > 0 else -0.5
-        else:
-            msg.linear.x = 0.0
         self.publisher.publish(msg)
         
     def pose_callback(self, msg):
@@ -117,13 +114,13 @@ class TurtleController(Node):
         # Se for a primeira vez passando por aqui, cria o setpoint.
         if self.setpoint.x == -40.0:
             self.get_logger().info(f"Primeira pose recebida: {self.pose}")
-            self.setpoint = self.pose + self.setpoint_rel
+            self.setpoint = self.pose + Pose(x=1.0)
             self.get_logger().info(f"Setpoint: {self.setpoint}")
 
 
 def main(args=None):
     rclpy.init(args=args)
-    tc = TurtleController(Pose(x=1.0, theta=0.0))
+    tc = TurtleController()
     rclpy.spin(tc)
     tc.destroy_node()
     rclpy.shutdown()

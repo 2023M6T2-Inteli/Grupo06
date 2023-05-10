@@ -1,18 +1,16 @@
+import rclpy
+from Pose import Pose
 from rclpy.node import Node
 
 from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry
 from tf_transformations import euler_from_quaternion
-from Pose import Pose
 MAX_DIFF = 0.5
 
+
 class BotController(Node):
-    def __init__(self, mission_control, control_period=0.02):
-        super().__init__("bot_controller")
-
-        self.initiated = False
-
-        self.mission_control = mission_control
+    def __init__(self, control_period=0.02):
+        super().__init__("bot")
 
         self.pose = Pose(x=0, y=0, theta=0)
 
@@ -29,6 +27,7 @@ class BotController(Node):
             callback=self.pose_callback,
             qos_profile=10
         )
+
         self.publisher = self.create_publisher(
             msg_type=Twist, 
             topic="cmd_vel", 
@@ -36,9 +35,6 @@ class BotController(Node):
         )
 
     def control_callback(self): 
-        if not self.initiated:
-            self.get_logger().info("Aguardando pose...")
-            return
         
         msg = Twist()
 
@@ -46,7 +42,6 @@ class BotController(Node):
             self.get_logger().info("Chegou no destino!")
             msg.linear.x = 0.0
             msg.linear.y = 0.0
-            self.update_setpoint()
         
         x_diff = self.setpoint.x - self.pose.x
         y_diff = self.setpoint.y - self.pose.y
@@ -59,16 +54,6 @@ class BotController(Node):
         
         self.publisher.publish(msg)
 
-    def update_setpoint(self):
-        """ Método responsável por buscar um novo setpoint na fila"""
-        try:
-            self.setpoint = self.pose + self.mission_control.dequeue()
-            self.get_logger().info(f"Mbpappé chegou em {self.pose}, \
-                                   andando para {self.setpoint}")
-        except IndexError:
-            self.get_logger().info(f"Fim da jornada!")
-            exit()
-
     def pose_callback(self, msg):
         x = msg.pose.pose.position.x
         y = msg.pose.pose.position.y
@@ -77,7 +62,14 @@ class BotController(Node):
         _, _, theta = euler_from_quaternion([ang.x, ang.y, ang.z, ang.w])
 
         self.pose = Pose(x=x, y=y, theta=theta)
+        self.setpoint = self.pose
 
-        if not self.initiated:
-            self.update_setpoint()
-            self.initiated = True
+        self.get_logger().info(f"Pose atual: {self.pose}")
+
+def main(args=None):
+    rclpy.init(args=args)
+    tc = BotController()
+    print('oi')
+    rclpy.spin(tc)
+    tc.destroy_node()
+    rclpy.shutdown()

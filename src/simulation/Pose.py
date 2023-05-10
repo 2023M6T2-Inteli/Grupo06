@@ -22,3 +22,4 @@ class Pose(Odometry):
     def __eq__(self, other):
         return abs(self.x - other.x) < MAX_DIFF \
             and abs(self.y - other.y) < MAX_DIFF
+

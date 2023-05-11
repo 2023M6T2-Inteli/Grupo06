@@ -98,18 +98,14 @@ class BotController(Node):
         z = msg.pose.pose.position.z
         ang = msg.pose.pose.orientation
         _, _, theta = euler_from_quaternion([ang.x, ang.y, ang.z, ang.w])
+        self.pose = Pose(x=x, y=y, theta=theta)
 
         if not self.initiated:
             self.initiated = True
-            self.pose = Pose(x=x, y=y, theta=theta)
-            print(f"pose: {self.pose}")
-            self.setpoint = Pose(self.pose.x + -1.0, + self.pose.y + 1.0)
-            print(f"pose: {self.pose}")
+            self.setpoint = Pose(self.pose.x + 10.0, + self.pose.y + -5.0)
+            print(f"pose inicial: {self.pose}")
             self.get_logger().info(f"Setpoint: {self.setpoint}")
-            return 
 
-        self.pose = Pose(x=x, y=y, theta=theta)
-        print(self.pose)
         self.current_rotation = Rotation(theta=theta)
 
         if self.setpoint == Pose(0.0,0.0):

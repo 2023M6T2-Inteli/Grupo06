@@ -13,9 +13,7 @@ MAX_DIFF = 0.1
 class Pose(TPose):
 
     def __init__(self, x=0.0, y=0.0, theta=0.0):
-        print(f"valores recebidos: x={x}, y={y}, theta={theta}")
         super().__init__(x=x, y=y, theta=theta)
-        print(f"self.x={self.x}, self.y={self.y}, self.theta={self.theta}")
         
     def __repr__(self):
 
@@ -77,7 +75,7 @@ class BotController(Node):
 
     def control_callback(self): 
         if not self.initiated:
-            self.get_logger().info("Aguardando pose...").
+            self.get_logger().info("Aguardando pose...")
             return
         
         msg = Twist()
@@ -104,14 +102,15 @@ class BotController(Node):
         if not self.initiated:
             self.initiated = True
             self.pose = Pose(x=x, y=y, theta=theta)
-            self.setpoint = self.pose + Pose(1.0, 1.0)
+            print(f"pose: {self.pose}")
+            self.setpoint = Pose(self.pose.x + -1.0, + self.pose.y + 1.0)
+            print(f"pose: {self.pose}")
             self.get_logger().info(f"Setpoint: {self.setpoint}")
             return 
 
         self.pose = Pose(x=x, y=y, theta=theta)
         print(self.pose)
         self.current_rotation = Rotation(theta=theta)
-
 
         if self.setpoint == Pose(0.0,0.0):
             self.theta = Rotation(theta=0.0) 
@@ -120,9 +119,7 @@ class BotController(Node):
 
         self.relative_translation = Pose(x=self.setpoint.x - self.pose.x, y=self.setpoint.y - self.pose.y)
 
-        if self.relative_translation.x == 0 and self.relative_translation.y == 0:
-            self.setpoint_rotation = Rotation(theta=0.0)
-        elif self.relative_translation.x >= 0 and self.relative_translation.y >=0:
+        if self.relative_translation.x >= 0 and self.relative_translation.y >=0:
             self.setpoint_rotation = Rotation(theta=-(math.pi/2 - abs(self.theta.theta)))
 
         elif self.relative_translation.x >=0 and self.relative_translation.y <= 0:

@@ -110,12 +110,11 @@ class BotController(Node):
                 print(f"relative_tranlation: {self.relative_translation}")
                 if self.relative_translation > MAX_DIFF:
                     msg.linear.x = 0.5 if self.relative_translation > 0 else -0.5
-
         
         self.publisher.publish(msg)
 
     def update_setpoint(self):
-        self.setpoint = Pose(self.pose.x + -1.0, + self.pose.y + 1.0)
+        self.setpoint = Pose(-1.0, 1.0)
 
         if self.setpoint == Pose(0.0,0.0):
             self.theta = Rotation(theta=0.0) 

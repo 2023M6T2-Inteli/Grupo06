@@ -54,6 +54,7 @@ class BotController(Node):
         self.pose = Pose()
         self.theta= Rotation()
         self.setpoint_rotation = Rotation()
+        self.setpoint_translation = 0.0
         self.current_rotation = Rotation()
         
         self.control_timer = self.create_timer(
@@ -82,9 +83,8 @@ class BotController(Node):
 
         if self.current_rotation == self.setpoint_rotation:
             msg.angular.z = 0.0
-            self.get_logger().info(f"Donatello chegou em {self.setpoint}")
-            self.publisher.publish(msg)
-            exit()
+            self.get_logger().info(f"Donatello rodou o suficiente")
+            msg.linear.x = self.relative_translation
         else:
             offset = self.setpoint_rotation.theta - self.current_rotation.theta
             if abs(offset) > MAX_DIFF:
@@ -102,7 +102,7 @@ class BotController(Node):
 
         if not self.initiated:
             self.initiated = True
-            self.setpoint = Pose(self.pose.x + 10.0, + self.pose.y + -5.0)
+            self.setpoint = Pose(self.pose.x + 1.0, + self.pose.y + 1.0)
             print(f"pose inicial: {self.pose}")
             self.get_logger().info(f"Setpoint: {self.setpoint}")
 
@@ -113,15 +113,16 @@ class BotController(Node):
         else:
             self.theta= Rotation(theta=math.atan2(self.setpoint.y - self.pose.y, self.setpoint.x - self.pose.x))
 
-        self.relative_translation = Pose(x=self.setpoint.x - self.pose.x, y=self.setpoint.y - self.pose.y)
+        self.relative_vector = Pose(x=self.setpoint.x - self.pose.x, y=self.setpoint.y - self.pose.y)
+        self.relative_translation = math.sqrt(self.relative_vector.x**2 + self.relative_vector.y**2)
 
-        if self.relative_translation.x >= 0 and self.relative_translation.y >=0:
+        if self.relative_vector.x >= 0 and self.relative_vector.y >=0:
             self.setpoint_rotation = Rotation(theta=-(math.pi/2 - abs(self.theta.theta)))
 
-        elif self.relative_translation.x >=0 and self.relative_translation.y <= 0:
+        elif self.relative_vector.x >=0 and self.relative_vector.y <= 0:
             self.setpoint_rotation = Rotation(theta=-(math.pi/2 + abs(self.theta.theta)))
 
-        elif self.relative_translation.x <=0 and self.relative_translation.y <= 0:
+        elif self.relative_vector.x <=0 and self.relative_vector.y <= 0:
             self.setpoint_rotation = Rotation(theta=-self.theta.theta)
         else:
             self.setpoint_rotation = Rotation(theta= -(math.pi/2 - abs(self.theta.theta)))

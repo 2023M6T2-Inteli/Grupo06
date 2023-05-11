@@ -46,6 +46,14 @@ class Rotation(TPose):
         return abs(self.theta - other.theta) <= MAX_DIFF
     
 
+class Translation():
+    def __init__(self):
+        self.origin = origin
+        self.destination = destination
+        self.translation = math.sqrt((self.destination.x - self.origin.x)**2 + (self.destination.y - self.origin.y)**2)
+
+    
+
 class BotController(Node):
     def __init__(self, control_period=0.02):
         super().__init__("bot_controller")
@@ -83,17 +91,34 @@ class BotController(Node):
         msg = Twist()
 
         if not self.setpoint_rotation.rotated:
-            print('rotating')
             if self.current_rotation == self.setpoint_rotation:
                 msg.angular.z = 0.0
                 self.get_logger().info(f"Donatello rodou o suficiente")
                 self.setpoint_rotation.rotated = True
+                print(f"current_rotation: {self.current_rotation}")
             else:
                 offset = self.setpoint_rotation.theta - self.current_rotation.theta
                 if abs(offset) > MAX_DIFF:
                     msg.angular.z = 0.5 if offset > 0 else -0.5
         else:
-            msg.linear.x = self.relative_translation
+            if self.pose == self.setpoint:
+                msg.linear.x = 0.0
+                self.get_logger().info(f"Donatello chegou ao destino")
+                self.publisher.publish(msg)
+                exit()
+            else:
+                offset = self.setpoint_rotation.theta - self.current_rotation.theta
+                if abs(offset) > MAX_DIFF:
+                    msg.angular.z = 0.5 if offset > 0 else -0.5
+                else:
+                    msg.angular.z = 0.0
+                self.relative_vector = Pose(x=self.setpoint.x - self.pose.x, y=self.setpoint.y - self.pose.y)
+                print(f"setpoint: {self.setpoint}, pose: {self.pose}, relative_vector: {self.relative_vector}")
+                self.relative_translation = math.sqrt(self.relative_vector.x**2 + self.relative_vector.y**2)
+                print(self.relative_translation)
+                if self.relative_translation > MAX_DIFF:
+                    msg.linear.x = 0.5 if self.relative_translation > 0 else -0.5
+
         
         self.publisher.publish(msg)
 
@@ -109,7 +134,7 @@ class BotController(Node):
         self.relative_translation = math.sqrt(self.relative_vector.x**2 + self.relative_vector.y**2)
 
         if self.relative_vector.x >= 0 and self.relative_vector.y >=0:
-            self.setpoint_rotation = Rotation(theta=-(math.pi/2 - abs(self.theta.theta)))
+            self.setpoint_rotation = Rotation(theta=self.theta.theta)
 
         elif self.relative_vector.x >=0 and self.relative_vector.y <= 0:
             self.setpoint_rotation = Rotation(theta=-(math.pi/2 + abs(self.theta.theta)))
@@ -133,7 +158,6 @@ class BotController(Node):
             print(f"pose inicial: {self.pose}")
             self.update_setpoint()
             self.get_logger().info(f"Setpoint: {self.setpoint}")
-
 
 
 def main(args=None):

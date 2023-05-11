@@ -37,6 +37,7 @@ class Rotation(TPose):
 
     def __init__(self, theta=0.0):
         super().__init__(x=0.0, y=0.0, theta=theta)
+        self.rotated = False
         
     def __repr__(self):
         return f"(theta={self.theta:.2f})"
@@ -81,32 +82,23 @@ class BotController(Node):
         
         msg = Twist()
 
-        if self.current_rotation == self.setpoint_rotation:
-            msg.angular.z = 0.0
-            self.get_logger().info(f"Donatello rodou o suficiente")
-            msg.linear.x = self.relative_translation
+        if not self.setpoint_rotation.rotated:
+            print('rotating')
+            if self.current_rotation == self.setpoint_rotation:
+                msg.angular.z = 0.0
+                self.get_logger().info(f"Donatello rodou o suficiente")
+                self.setpoint_rotation.rotated = True
+            else:
+                offset = self.setpoint_rotation.theta - self.current_rotation.theta
+                if abs(offset) > MAX_DIFF:
+                    msg.angular.z = 0.5 if offset > 0 else -0.5
         else:
-            offset = self.setpoint_rotation.theta - self.current_rotation.theta
-            if abs(offset) > MAX_DIFF:
-                msg.angular.z = 0.5 if offset > 0 else -0.5
+            msg.linear.x = self.relative_translation
         
         self.publisher.publish(msg)
 
-    def pose_callback(self, msg):
-        x = msg.pose.pose.position.x
-        y = msg.pose.pose.position.y
-        z = msg.pose.pose.position.z
-        ang = msg.pose.pose.orientation
-        _, _, theta = euler_from_quaternion([ang.x, ang.y, ang.z, ang.w])
-        self.pose = Pose(x=x, y=y, theta=theta)
-
-        if not self.initiated:
-            self.initiated = True
-            self.setpoint = Pose(self.pose.x + 1.0, + self.pose.y + 1.0)
-            print(f"pose inicial: {self.pose}")
-            self.get_logger().info(f"Setpoint: {self.setpoint}")
-
-        self.current_rotation = Rotation(theta=theta)
+    def update_setpoint(self):
+        self.setpoint = Pose(self.pose.x + 1.0, + self.pose.y + 1.0)
 
         if self.setpoint == Pose(0.0,0.0):
             self.theta = Rotation(theta=0.0) 
@@ -126,6 +118,22 @@ class BotController(Node):
             self.setpoint_rotation = Rotation(theta=-self.theta.theta)
         else:
             self.setpoint_rotation = Rotation(theta= -(math.pi/2 - abs(self.theta.theta)))
+
+    def pose_callback(self, msg):
+        x = msg.pose.pose.position.x
+        y = msg.pose.pose.position.y
+        z = msg.pose.pose.position.z
+        ang = msg.pose.pose.orientation
+        _, _, theta = euler_from_quaternion([ang.x, ang.y, ang.z, ang.w])
+        self.pose = Pose(x=x, y=y, theta=theta)
+        self.current_rotation = Rotation(theta=self.pose.theta)
+
+        if not self.initiated:
+            self.initiated = True
+            print(f"pose inicial: {self.pose}")
+            self.update_setpoint()
+            self.get_logger().info(f"Setpoint: {self.setpoint}")
+
 
 
 def main(args=None):

@@ -33,17 +33,17 @@ const NavBar = () => {
   };
 
   return (
-        <Row align='middle' justify="center">
+        <Row align='middle' justify="center" style={{ boxShadow: "0 3px 3px gray;"}}>
           <Col span={10}>
           <Image width={100}src={Logo}></Image>
           </Col>
           <Col span={12} align='center'>
             <Row justify="end" align="middle">
-            <Button type='link'>Imagem em Tempo Real</Button>
-            <Button type='link'>Projeto</Button>
-            <Button type='link'>Gases no Ambiente</Button>
-            <Button type='link'>Simulação</Button>
-            <Button type="link" ><ExitToAppOutlinedIcon/></Button>
+            <Button type='link' style={{color:"#2E202C"}}>ACOMPANHAMENTO</Button>
+            <Button type='link' style={{color:"#2E202C"}}>PROJETO</Button>
+            <Button type='link' style={{color:"#2E202C"}}>GASES</Button>
+            <Button type='link' style={{color:"#2E202C"}}>SIMULAÇÃO</Button>
+            <Button type="link" style={{color:"#2E202C"}}><ExitToAppOutlinedIcon/></Button>
             </Row>
           </Col>
         </Row>

@@ -8,7 +8,7 @@ import { SignUpPage } from '../src/views/SignUpPage';
 export default function Home() {
   return (
      <div>
-      <SignUpPage></SignUpPage>
+      <NavBar></NavBar>
     </div>
   )
 }

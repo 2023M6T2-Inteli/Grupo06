@@ -77,7 +77,7 @@ class BotController(Node):
 
     def control_callback(self): 
         if not self.initiated:
-            self.get_logger().info("Aguardando pose...")
+            self.get_logger().info("Aguardando pose...").
             return
         
         msg = Twist()

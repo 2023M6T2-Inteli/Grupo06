@@ -115,7 +115,7 @@ class BotController(Node):
         self.publisher.publish(msg)
 
     def update_setpoint(self):
-        self.setpoint = Pose(self.pose.x + 1.0, + self.pose.y + 5.0)
+        self.setpoint = Pose(self.pose.x + -1.0, + self.pose.y + 1.0)
 
         if self.setpoint == Pose(0.0,0.0):
             self.theta = Rotation(theta=0.0) 
@@ -127,15 +127,16 @@ class BotController(Node):
         self.relative_translation = math.sqrt(self.relative_vector.x**2 + self.relative_vector.y**2)
 
         if self.relative_vector.x >= 0 and self.relative_vector.y >=0:
-            self.setpoint_rotation = Rotation(theta=self.theta.theta)
+            self.setpoint_rotation = Rotation(theta=abs(self.theta.theta))
 
         elif self.relative_vector.x >=0 and self.relative_vector.y <= 0:
-            self.setpoint_rotation = Rotation(theta=-(math.pi/2 + abs(self.theta.theta)))
+            self.setpoint_rotation = Rotation(theta=-abs(self.theta.theta))
 
         elif self.relative_vector.x <=0 and self.relative_vector.y <= 0:
-            self.setpoint_rotation = Rotation(theta=-self.theta.theta)
+            self.setpoint_rotation = Rotation(theta=-abs(self.theta.theta))
+            print(f"setpoint_rotation: {self.setpoint_rotation}")
         else:
-            self.setpoint_rotation = Rotation(theta= -(math.pi/2 - abs(self.theta.theta)))
+            self.setpoint_rotation = Rotation(theta=abs(self.theta.theta))
 
     def pose_callback(self, msg):
         x = msg.pose.pose.position.x

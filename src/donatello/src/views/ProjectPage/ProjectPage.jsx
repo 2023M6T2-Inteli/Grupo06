@@ -30,6 +30,20 @@ import Simulation from "../../../public/images/simulation.png";
 const { Option } = Select;
 
 export default function ProjectPage() {
+
+  const onFinish = (values) => {
+    // Aqui você pode enviar os dados para uma nova rota
+    console.log('Coordenada X:', values.coordinateX);
+    console.log('Coordenada Y:', values.coordinateY);
+  };
+
+  const ButtonSquare = () => {
+
+  }
+  const ButtonG = () => {
+    
+  }
+  
   return (
     <Fragment style={{ backgroundColor: "#1D0833" }}>
       <NavBar></NavBar>
@@ -43,9 +57,44 @@ export default function ProjectPage() {
               <p style={{ fontSize: "24pt" }}>Rota Tubo 3c Ouro Branco</p>
             </Row>
             <Space>
-              <Button type="primary" href="http://127.0.0.1:8000/shape" >G</Button>
-            <Button type="primary" href="http://127.0.0.1:8000/shape" >□</Button>
-            <Button type="primary" href="http://127.0.0.1:8000/position">Ponto</Button>
+              <Button type="primary" onClick={ButtonG}>
+                G
+              </Button>
+              <Button type="primary" onClick={ButtonSquare}>
+                □
+              </Button>
+              <Form.Item
+                label="Coordenada X"
+                name="coordinateX"
+                rules={[
+                  {
+                    required: true,
+                    message: "Por favor insira a coordenada X!",
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item
+                label="Coordenada Y"
+                name="coordinateY"
+                rules={[
+                  {
+                    required: true,
+                    message: "Por favor insira a coordenada Y!",
+                  },
+                ]}
+              >
+                <Input />
+              </Form.Item>
+              <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                <Button type="primary" htmlType="submit">
+                  Enviar
+                </Button>
+              </Form.Item>
+              <Button type="primary" href="http://127.0.0.1:8000/position">
+                Ponto
+              </Button>
             </Space>
             <Row justify="start">
               <h1>
@@ -108,11 +157,11 @@ export default function ProjectPage() {
                   "radial-gradient(circle, rgba(103,2,2,1) 0%, rgba(56,1,1,1) 100%)",
               }}
             >
-               <Row justify='center'>
-                <h1 style={{color:"#fff"}}>O2</h1>
+              <Row justify="center">
+                <h1 style={{ color: "#fff" }}>O2</h1>
               </Row>
-              <Row justify='center'>
-                <h1 style={{fontSize:"54pt", color:"#fff"}}>30%</h1>
+              <Row justify="center">
+                <h1 style={{ fontSize: "54pt", color: "#fff" }}>30%</h1>
               </Row>
             </Card>
           </Col>
@@ -127,11 +176,11 @@ export default function ProjectPage() {
                   "radial-gradient(circle, rgba(226,149,5,1) 0%, rgba(98,63,5,1) 100%)",
               }}
             >
-               <Row justify='center'>
-                <h1 style={{color:"#fff"}}>O2</h1>
+              <Row justify="center">
+                <h1 style={{ color: "#fff" }}>O2</h1>
               </Row>
-              <Row justify='center'>
-                <h1 style={{fontSize:"54pt", color:"#fff"}}>30%</h1>
+              <Row justify="center">
+                <h1 style={{ fontSize: "54pt", color: "#fff" }}>30%</h1>
               </Row>
             </Card>
           </Col>

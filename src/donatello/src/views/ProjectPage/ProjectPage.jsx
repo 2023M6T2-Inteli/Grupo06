@@ -31,19 +31,74 @@ const { Option } = Select;
 
 export default function ProjectPage() {
 
-  const onFinish = (values) => {
+  function onFinish(values){
     // Aqui você pode enviar os dados para uma nova rota
     console.log('Coordenada X:', values.coordinateX);
     console.log('Coordenada Y:', values.coordinateY);
-  };
 
-  const ButtonSquare = () => {
-
-  }
-  const ButtonG = () => {
+    const data = {
+      "x": 2.0,
+      "y": -3.5
+    };
     
+    fetch('http://127.0.0.1:8000/shape', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
   }
   
+
+  async function ButtonSquare(){
+    const data = {
+      shape: 'square'
+    };
+    
+    fetch('http://127.0.0.1:8000/shape', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
+  async function ButtonG(){
+    const data = {
+      shape: 'g'
+    };
+    
+    fetch('http://127.0.0.1:8000/shape', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+      .then(response => response.json())
+      .then(data => {
+        console.log('Success:', data);
+      })
+      .catch((error) => {
+        console.error('Error:', error);
+      });
+  }
+
   return (
     <Fragment style={{ backgroundColor: "#1D0833" }}>
       <NavBar></NavBar>
@@ -63,6 +118,7 @@ export default function ProjectPage() {
               <Button type="primary" onClick={ButtonSquare}>
                 □
               </Button>
+              <Form onFinish={onFinish}>
               <Form.Item
                 label="Coordenada X"
                 name="coordinateX"
@@ -92,9 +148,7 @@ export default function ProjectPage() {
                   Enviar
                 </Button>
               </Form.Item>
-              <Button type="primary" href="http://127.0.0.1:8000/position">
-                Ponto
-              </Button>
+              </Form>
             </Space>
             <Row justify="start">
               <h1>

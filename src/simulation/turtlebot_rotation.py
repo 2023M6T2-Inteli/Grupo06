@@ -57,10 +57,10 @@ class MissionControl(deque):
         "g": [
             Pose(-1.0, 1.0), Pose(-2.0, 0.0), Pose(-1.0, -1.0), Pose(0.0, -0.3), Pose(-0.5, -0.45)
         ],
-        None: [Pose(0.0, 0.0)]
+        '': [Pose(0.0, 0.0)]
     }
     
-    def __init__(self, shape=None):
+    def __init__(self, shape=''):
         """
         No construtor do controle de missão é preciso definir o arquivo
         csv de pontos a serem lidos. A partir daí, o construtor inicia o deque
@@ -209,12 +209,11 @@ class BotController(Node):
                 self.update_setpoint()
                 self.get_logger().info(f"Setpoint: {self.setpoint}")
         else:
-            response = requests.get('http://127.0.0.1:8000')
+            response = requests.get('http://127.0.0.1:8000/shape')
             print(response.json()['shape'])
             self.shape_selected = True
             self.queue.load_shape(response.json()['shape'])
-            
-
+        
 
 def main(args=None):
     rclpy.init(args=args)

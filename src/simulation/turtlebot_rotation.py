@@ -62,6 +62,9 @@ class MissionControl(deque):
         # self.enqueue(Pose(1.0, 1.0))
         self.enqueue(Pose(-1.0, 1.0))
         self.enqueue(Pose(-2.0, 0.0))
+        self.enqueue(Pose(-1.0, -1.0))
+        self.enqueue(Pose(0.0, -0.3))
+        self.enqueue(Pose(-0.5, -0.4))
 
         
     def enqueue(self, x):
@@ -131,18 +134,13 @@ class BotController(Node):
             else:
                 offset = self.setpoint_rotation.theta - self.current_rotation.theta
                 if abs(offset) > 0.05:
-                    msg.angular.z = 0.5 if offset > 0 else -0.5
+                    msg.angular.z = 0.5 if offset < 0 else -0.5
                 else:
                     msg.angular.z = 0.0
                 self.relative_vector = Pose(x=self.setpoint.x - self.pose.x, y=self.setpoint.y - self.pose.y)
                 self.relative_translation = math.sqrt(self.relative_vector.x**2 + self.relative_vector.y**2)
                 print(f"pose: {self.pose}, setpoint: {self.setpoint}, desired{self.desired}, current{self.current}")
-                # if abs(self.relative_translation) > MAX_DIFF:
-                #     if (self.relative_vector.x * self.relative_translation < 0) or (self.relative_vector.y * self.relative_translation < 0):
-                #         msg.linear.x = 0.5
-                #     else:
-                #         msg.linear.x = -0.5
-
+    
                 if abs(self.desired - self.current) > 0.1:
                     msg.linear.x = 0.5 if self.desired - self.current else -0.5
                 else:

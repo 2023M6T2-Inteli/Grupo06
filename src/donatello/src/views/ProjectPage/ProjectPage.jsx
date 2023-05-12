@@ -42,6 +42,20 @@ export default function ProjectPage() {
             <Row>
               <p style={{ fontSize: "24pt" }}>Rota Tubo 3c Ouro Branco</p>
             </Row>
+            <Form>
+              <Form.Item
+                label="Insira a Coordenada X:"
+                name="coord_x"
+                rules={[{ required: true, message: 'Insira uma coordenada X!' }]}>
+              <Input />
+              </Form.Item>
+              <Form.Item
+                label="Insira a Coordenada Y:"
+                name="coord_y"
+                rules={[{ required: true, message: 'Insira uma coordenada Y!' }]}>
+              <Input />
+              </Form.Item>
+            </Form>
             <Row justify="start">
               <h1>
                 <VideocamIcon style={{ fontSize: "42pt" }} />

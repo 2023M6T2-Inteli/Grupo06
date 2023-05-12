@@ -64,7 +64,7 @@ class MissionControl(deque):
         self.enqueue(Pose(-2.0, 0.0))
         self.enqueue(Pose(-1.0, -1.0))
         self.enqueue(Pose(0.0, -0.3))
-        self.enqueue(Pose(-0.5, -0.4))
+        self.enqueue(Pose(-0.5, -0.45))
 
         
     def enqueue(self, x):

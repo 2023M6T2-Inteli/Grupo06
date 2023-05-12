@@ -9,6 +9,8 @@ from turtlesim.msg import Pose as TPose
 import math
 from collections import deque
 
+import requests
+
 MAX_DIFF = 0.1
 
 class Pose(TPose):
@@ -47,25 +49,24 @@ class Rotation(TPose):
         return abs(self.theta - other.theta) <= 0.05
 
 class MissionControl(deque):
+
+    shapes = {
+        "square": [
+            Pose(1.0, 1.0), Pose(1.0, -1.0), Pose(-1.0, -1.0), Pose(-1.0, 1.0), Pose(1.0, 1.0)
+        ],
+        "g": [
+            Pose(-1.0, 1.0), Pose(-2.0, 0.0), Pose(-1.0, -1.0), Pose(0.0, -0.3), Pose(-0.5, -0.45)
+        ],
+        None: [Pose(0.0, 0.0)]
+    }
     
-    def __init__(self):
+    def __init__(self, shape=None):
         """
         No construtor do controle de missão é preciso definir o arquivo
         csv de pontos a serem lidos. A partir daí, o construtor inicia o deque
         e faz a leitura do arquivo csv, adicionando cada ponto na fila.
         """
         super().__init__()
-        # self.enqueue(Pose(1.0, 1.0))
-        # self.enqueue(Pose(1.0, -1.0))
-        # self.enqueue(Pose(-1.0, -1.0))
-        # self.enqueue(Pose(-1.0, 1.0))
-        # self.enqueue(Pose(1.0, 1.0))
-        self.enqueue(Pose(-1.0, 1.0))
-        self.enqueue(Pose(-2.0, 0.0))
-        self.enqueue(Pose(-1.0, -1.0))
-        self.enqueue(Pose(0.0, -0.3))
-        self.enqueue(Pose(-0.5, -0.45))
-
         
     def enqueue(self, x):
         """Método para adicionar novos pontos ao fim da fila."""
@@ -74,6 +75,11 @@ class MissionControl(deque):
     def dequeue(self):
         """Método para retirar pontos do começo da fila."""
         return super().popleft()
+    
+    def load_shape(self, shape):
+        super().clear()
+        for pose in MissionControl.shapes[shape]:
+            self.enqueue(pose)
 
     
 class BotController(Node):
@@ -90,12 +96,12 @@ class BotController(Node):
         self.queue = mission_control
 
         self.origin = Pose()
+        self.shape_selected = False
         
         self.control_timer = self.create_timer(
             timer_period_sec=control_period, 
             callback=self.control_callback
         )
-
         self.subscription = self.create_subscription(
             msg_type=Odometry,
             topic="odom",
@@ -183,32 +189,39 @@ class BotController(Node):
                 self.setpoint_rotation = Rotation(theta=abs(self.theta.theta))
         except IndexError:
             self.get_logger().info(f"Fim da jornada!")
-            exit()
+            self.shape_selected = False
 
     def pose_callback(self, msg):
-        x = msg.pose.pose.position.x
-        y = msg.pose.pose.position.y
-        z = msg.pose.pose.position.z
-        ang = msg.pose.pose.orientation
-        _, _, theta = euler_from_quaternion([ang.x, ang.y, ang.z, ang.w])
-        self.pose = Pose(x=x, y=y, theta=theta)
-        self.current_rotation = Rotation(theta=self.pose.theta)
+        if self.shape_selected:
+            x = msg.pose.pose.position.x
+            y = msg.pose.pose.position.y
+            z = msg.pose.pose.position.z
+            ang = msg.pose.pose.orientation
+            _, _, theta = euler_from_quaternion([ang.x, ang.y, ang.z, ang.w])
+            self.pose = Pose(x=x, y=y, theta=theta)
+            self.current_rotation = Rotation(theta=self.pose.theta)
 
-        self.current = math.sqrt((self.pose.x - self.origin.x)**2 + (self.pose.y - self.origin.y)**2)
+            self.current = math.sqrt((self.pose.x - self.origin.x)**2 + (self.pose.y - self.origin.y)**2)
 
-        if not self.initiated:
-            self.initiated = True
-            print(f"pose inicial: {self.pose}")
-            self.update_setpoint()
-            self.get_logger().info(f"Setpoint: {self.setpoint}")
+            if not self.initiated:
+                self.initiated = True
+                print(f"pose inicial: {self.pose}")
+                self.update_setpoint()
+                self.get_logger().info(f"Setpoint: {self.setpoint}")
+        else:
+            response = requests.get('http://127.0.0.1:8000')
+            print(response.json()['shape'])
+            self.shape_selected = True
+            self.queue.load_shape(response.json()['shape'])
+            
 
 
 def main(args=None):
     rclpy.init(args=args)
-    tc = BotController()
+    mc = MissionControl()
+    tc = BotController(mission_control=mc)
     rclpy.spin(tc)
     tc.destroy_node()
-    rclpy.shutdown()
 
 if __name__ == "__main__":
     main()

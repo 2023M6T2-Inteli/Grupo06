@@ -55,11 +55,14 @@ class MissionControl(deque):
         e faz a leitura do arquivo csv, adicionando cada ponto na fila.
         """
         super().__init__()
-        #self.enqueue(Pose(1.0, 1.0))
-        self.enqueue(Pose(1.0, -1.0))
-        self.enqueue(Pose(-1.0, -1.0))
+        # self.enqueue(Pose(1.0, 1.0))
+        # self.enqueue(Pose(1.0, -1.0))
+        # self.enqueue(Pose(-1.0, -1.0))
+        # self.enqueue(Pose(-1.0, 1.0))
+        # self.enqueue(Pose(1.0, 1.0))
         self.enqueue(Pose(-1.0, 1.0))
-        self.enqueue(Pose(0.0, 0.0))
+        self.enqueue(Pose(-2.0, 0.0))
+
         
     def enqueue(self, x):
         """Método para adicionar novos pontos ao fim da fila."""
@@ -68,7 +71,6 @@ class MissionControl(deque):
     def dequeue(self):
         """Método para retirar pontos do começo da fila."""
         return super().popleft()
-
 
     
 class BotController(Node):
@@ -83,6 +85,8 @@ class BotController(Node):
         self.setpoint_translation = 0.0
         self.current_rotation = Rotation()
         self.queue = mission_control
+
+        self.origin = Pose()
         
         self.control_timer = self.create_timer(
             timer_period_sec=control_period, 
@@ -132,21 +136,31 @@ class BotController(Node):
                     msg.angular.z = 0.0
                 self.relative_vector = Pose(x=self.setpoint.x - self.pose.x, y=self.setpoint.y - self.pose.y)
                 self.relative_translation = math.sqrt(self.relative_vector.x**2 + self.relative_vector.y**2)
-                print(f"pose: {self.pose}, setpoint: {self.setpoint}, relative_translation: {self.relative_translation}")
-                if abs(self.relative_translation) > MAX_DIFF:
-                    if (self.relative_vector.x * self.relative_translation > 0) or (self.relative_vector.y * self.relative_translation > 0):
-                        msg.linear.x = 0.5
-                    else:
-                        msg.linear.x = -0.5
+                print(f"pose: {self.pose}, setpoint: {self.setpoint}, desired{self.desired}, current{self.current}")
+                # if abs(self.relative_translation) > MAX_DIFF:
+                #     if (self.relative_vector.x * self.relative_translation < 0) or (self.relative_vector.y * self.relative_translation < 0):
+                #         msg.linear.x = 0.5
+                #     else:
+                #         msg.linear.x = -0.5
+
+                if abs(self.desired - self.current) > 0.1:
+                    msg.linear.x = 0.5 if self.desired - self.current else -0.5
+                else:
+                    msg.linear.x = 0.0
+                    self.get_logger().info(f"Donatello chegou ao destino")
+                    self.publisher.publish(msg)
+                    self.update_setpoint()
+
         
         self.publisher.publish(msg)
 
     def update_setpoint(self):
         try:
+            print(self.queue)
             self.setpoint = self.queue.dequeue()
-            self.get_logger().info(f"Novo setpoint: {self.setpoint}")
             self.get_logger().info(f"Donatello chegou em {self.pose}, \
                                    andando para {self.setpoint}")
+            self.origin = self.pose
             if self.setpoint == Pose(0.0,0.0):
                 self.theta = Rotation(theta=0.0) 
             else:
@@ -155,6 +169,8 @@ class BotController(Node):
 
             self.relative_vector = Pose(x=self.setpoint.x - self.pose.x, y=self.setpoint.y - self.pose.y)
             self.relative_translation = math.sqrt(self.relative_vector.x**2 + self.relative_vector.y**2)
+
+            self.desired = math.sqrt(self.relative_vector.x**2 + self.relative_vector.y**2)
 
             if self.relative_vector.x >= 0 and self.relative_vector.y >=0:
                 self.setpoint_rotation = Rotation(theta=abs(self.theta.theta))
@@ -179,6 +195,8 @@ class BotController(Node):
         _, _, theta = euler_from_quaternion([ang.x, ang.y, ang.z, ang.w])
         self.pose = Pose(x=x, y=y, theta=theta)
         self.current_rotation = Rotation(theta=self.pose.theta)
+
+        self.current = math.sqrt((self.pose.x - self.origin.x)**2 + (self.pose.y - self.origin.y)**2)
 
         if not self.initiated:
             self.initiated = True

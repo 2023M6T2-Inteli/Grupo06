@@ -44,9 +44,7 @@ class Rotation(TPose):
         return f"(theta={self.theta:.2f})"
     
     def __eq__(self, other):
-        return abs(self.theta - other.theta) <= MAX_DIFF
-
-
+        return abs(self.theta - other.theta) <= 0.05
 
 class MissionControl(deque):
     
@@ -74,7 +72,7 @@ class MissionControl(deque):
 
     
 class BotController(Node):
-    def __init__(self, control_period=0.02, mission_control=MissionControl()):
+    def __init__(self, control_period=0.05, mission_control=MissionControl()):
         super().__init__("bot_controller")
 
         self.initiated = False
@@ -128,24 +126,26 @@ class BotController(Node):
                 self.update_setpoint()
             else:
                 offset = self.setpoint_rotation.theta - self.current_rotation.theta
-                print(f"offset: {offset}")
                 if abs(offset) > 0.05:
                     msg.angular.z = 0.5 if offset > 0 else -0.5
                 else:
                     msg.angular.z = 0.0
                 self.relative_vector = Pose(x=self.setpoint.x - self.pose.x, y=self.setpoint.y - self.pose.y)
-                print(f"setpoint: {self.setpoint}, pose: {self.pose}, relative_vector: {self.relative_vector}")
                 self.relative_translation = math.sqrt(self.relative_vector.x**2 + self.relative_vector.y**2)
-                print(f"relative_tranlation: {self.relative_translation}")
-                if self.relative_translation > MAX_DIFF:
-                    msg.linear.x = 0.5 if self.relative_translation > 0 else -0.5
+                print(f"pose: {self.pose}, setpoint: {self.setpoint}, relative_translation: {self.relative_translation}")
+                if abs(self.relative_translation) > MAX_DIFF:
+                    if (self.relative_vector.x * self.relative_translation > 0) or (self.relative_vector.y * self.relative_translation > 0):
+                        msg.linear.x = 0.5
+                    else:
+                        msg.linear.x = -0.5
         
         self.publisher.publish(msg)
 
     def update_setpoint(self):
         try:
             self.setpoint = self.queue.dequeue()
-            self.get_logger().info(f"Mbpappé chegou em {self.pose}, \
+            self.get_logger().info(f"Novo setpoint: {self.setpoint}")
+            self.get_logger().info(f"Donatello chegou em {self.pose}, \
                                    andando para {self.setpoint}")
             if self.setpoint == Pose(0.0,0.0):
                 self.theta = Rotation(theta=0.0) 

@@ -80,6 +80,10 @@ class MissionControl(deque):
         super().clear()
         for pose in MissionControl.shapes[shape]:
             self.enqueue(pose)
+    
+    def load_point(self, x, y):
+        super().clear()
+        self.enqueue(Pose(x, y))
 
     
 class BotController(Node):
@@ -97,6 +101,7 @@ class BotController(Node):
 
         self.origin = Pose()
         self.shape_selected = False
+        self.point_selected = False
         
         self.control_timer = self.create_timer(
             timer_period_sec=control_period, 
@@ -190,9 +195,10 @@ class BotController(Node):
         except IndexError:
             self.get_logger().info(f"Fim da jornada!")
             self.shape_selected = False
+            self.point_selected = False
 
     def pose_callback(self, msg):
-        if self.shape_selected:
+        if self.shape_selected or self.point_selected:
             x = msg.pose.pose.position.x
             y = msg.pose.pose.position.y
             z = msg.pose.pose.position.z
@@ -209,10 +215,16 @@ class BotController(Node):
                 self.update_setpoint()
                 self.get_logger().info(f"Setpoint: {self.setpoint}")
         else:
-            response = requests.get('http://127.0.0.1:8000/shape')
-            print(response.json()['shape'])
-            self.shape_selected = True
-            self.queue.load_shape(response.json()['shape'])
+            response = requests.get('http://127.0.0.1:8000/mission')
+            if 'shape' in response.json():
+                self.shape_selected = True
+                self.point_selected = False
+                self.queue.load_shape(response.json()['shape'])
+            else:
+                self.shape_selected = False
+                self.point_selected = True
+                self.queue.load_point(response.json()['x'], response.json()['y'])
+
         
 
 def main(args=None):

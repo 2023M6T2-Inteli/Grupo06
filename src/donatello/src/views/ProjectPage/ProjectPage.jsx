@@ -41,7 +41,7 @@ export default function ProjectPage() {
       "y": -3.5
     };
     
-    fetch('http://127.0.0.1:8000/shape', {
+    fetch('http://127.0.0.1:8000/position', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

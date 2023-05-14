@@ -33,4 +33,5 @@
 
 # Venv
 src/backend/venv
+src/simulation/venv
 ```

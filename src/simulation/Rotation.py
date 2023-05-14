@@ -1,3 +1,5 @@
+from turtlesim.msg import Pose as TPose
+
 # Define a classe Rotation, que representa o quanto o robô precisa rotacionar
 class Rotation(TPose):
 

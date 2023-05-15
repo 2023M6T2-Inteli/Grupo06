@@ -12,6 +12,41 @@
 
 </center></font>
 
+- [Entendimento de negócios](#entendimento-de-negócios)
+  - [Matriz de oceano azul](#matriz-de-oceano-azul)
+  - [Matriz de risco](#matriz-de-risco)
+    - [Riscos](#riscos)
+    - [Oportunidades](#oportunidades)
+    - [Mitigação de riscos](#mitigação-de-riscos)
+  - [Personas](#personas)
+  - [Canvas de proposta de valor](#canvas-de-proposta-de-valor)
+  - [User stories](#user-stories)
+    - [Técnico](#técnico)
+    - [Supervisora](#supervisora)
+  - [Análise financeira](#análise-financeira)
+- [Entendimento de metadesign](#entendimento-de-metadesign)
+  - [Fatores mercadológicos](#fatores-mercadológicos)
+    - [Orientação ao mercado e precificação](#orientação-ao-mercado-e-precificação)
+    - [Cenário do mercado](#cenário-do-mercado)
+    - [Visão do projeto proposto](#visão-do-projeto-proposto)
+  - [Sistema produto-design](#sistema-produto-design)
+    - [Missão do projeto](#missão-do-projeto)
+    - [Unidade formal entre o design do produto, as formas de divulgação e venda](#unidade-formal-entre-o-design-do-produto-as-formas-de-divulgação-e-venda)
+    - [Sustentabilidade ambiental](#sustentabilidade-ambiental)
+    - [Proposta inovadora](#proposta-inovadora)
+- [Arquitetura do sistema](#arquitetura-do-sistema)
+  - [Requisitos funcionais e não funcionais](#requisitos-funcionais-e-não-funcionais)
+    - [Funcionais](#funcionais)
+    - [Não funcionais](#não-funcionais)
+  - [Viabilidade técnica](#viabilidade-técnica)
+  - [Proposta geral](#proposta-geral)
+  - [Diagrama de blocos](#diagrama-de-blocos)
+    - [Tabela de componentes](#tabela-de-componentes)
+  - [Simulação e otimização de rota](#simulacao)
+  - [Desenvolvimento de Software](#software)
+- [Referências](#referências)
+
+
 # Entendimento de negócios
 
 ## Matriz de oceano azul
@@ -74,6 +109,18 @@ O uso de uma matriz de risco é essencial para documentar as estratégias de ger
 10. Alinhamento geral da base dos autoestudos.
 11. Planejamento e organização eficiente das tarefas antes do início das Sprints.
 
+## Personas
+
+As personas são representações fictícias de pessoas reais que são criadas com base em dados e informações obtidos por meio de entrevistas com o parceiro e pesquisas sobre a área de atuação. Elas são usadas para ajudar a equipe do projeto a entender melhor as necessidades, objetivos, desafios e comportamentos dos usuários finais do produto ou serviço. Com isso, é possível desenvolver soluções mais adequadas e personalizadas para atender às necessidades dos usuários.
+
+No caso do projeto Donatello, as personas de João Cabral e Anna Colombo foram criadas a partir de informações obtidas em entrevistas com técnicos de manutenção e supervisores da Gerdau, bem como pesquisas sobre a indústria de aço longo e normas de segurança. Essas informações foram usadas para criar um perfil detalhado de cada persona, incluindo suas características demográficas, habilidades, experiências, desafios e objetivos.
+
+<img src="./../media/negócios/tecnico.png">
+<img src="./../media/negócios/supervisora.png">
+
+Ao criar essas personas, a equipe do projeto pode visualizar como o robô Donatello pode ser útil para João Cabral, por exemplo, permitindo que ele faça inspeções de tubulações com mais rapidez e segurança, além de facilitar a realização de manutenções preventivas e corretivas. Já para Anna Colombo, o robô pode ajudá-la a gerenciar melhor a segurança no trabalho, permitindo que ela faça planos de manutenção preventiva e corretiva para os equipamentos da usina de forma mais eficiente.
+
+Com as personas definidas, a equipe do projeto pode entender melhor as necessidades e objetivos dos usuários finais e criar soluções personalizadas que atendam a essas necessidades de forma eficiente e eficaz.
 
 ## Canvas de proposta de valor
 <img src="./../media/negócios/canvas.png">
@@ -114,6 +161,7 @@ No que se refere à implementação técnica, foram estimados os custos com base
 Quanto ao custo do hardware do AGV, foi utilizado como modelo um robô de inspeção de tubulação sanitária, que possui funções e equipamentos semelhantes ao robô que será utilizado no projeto. Com base no custo do equipamento de referência mencionado, é possível estimar o custo do hardware do AGV.
 
 Com essas informações, é possível fazer uma estimativa mais detalhada dos custos envolvidos na implementação do AGV no projeto, considerando tanto o custo da implementação técnica como o custo do hardware do robô.
+
 <br>
 <p align = "center">
 <img src="./../media/negócios/analise_financeira.png" width = 650px>
@@ -265,6 +313,78 @@ O objeto da proposta geral do sistema é o desenvolvimento de um AGV (Automated 
 | BRR-SF (Browser e rede local - sem fio)                                | A interface gráfica é acessada através do browser, na rede local conectada ao Wi-Fi                                                                                                                                                                                                                             | Conexão                        |
 | RS-SF (Rede local e servidor - sem fio)                                | A rede local se conecta com o Wi-Fi e, através dele, com o servidor para fazer requisições                                                                                                                                                                                                                      | Conexão                        |
 
+# Simulação e otimização de rota
+## Algoritmo de otimização de rota
+No cenário geral do projeto, as tubulações são representadas por grafos, em que os nós representam pontos de inspeção e as arestas representam a conexão entre esses pontos. Além disso, precisamos levar em conta a distância entre os pontos, que é representada pelo peso da aresta, e as coordenadas x e y dos pontos de inspeção. Essas coordenadas são importantes para que o robô possa se movimentar para o próximo ponto sabendo sua posição absoluta no mundo e o ângulo correto para a rotação, respeitando assim as paredes e limitações físicas da tubulação.
+
+Esse panorama é um exemplo do problema do caixeiro viajante. Nesse problema, o objetivo é encontrar a rota mais curta que passa por todos os nós uma única vez e retorna ao ponto inicial. Ele é considerado NP-difícil, o que significa que não existe um algoritmo que possa resolvê-lo em tempo polinomial para todos os casos. Portanto, quando o número de nós é grande, é impraticável utilizar algoritmos exatos para resolver o problema. Nesse caso, as heurísticas são usadas para encontrar soluções aproximadas que são aceitáveis em termos de eficiência computacional e precisão.
+
+As principais heurísticas para o problema do caixeiro viajante são as de construção, de aprimoramento e as híbridas. As heurísticas de construção são utilizadas para encontrar uma solução inicial, enquanto as de aprimoramento buscam melhorar essa solução. As heurísticas híbridas combinam os dois tipos para encontrar uma solução melhor em menos tempo. 
+
+Escolhemos os algoritmos de construção em vez dos algoritmos de aprimoramento ou híbridos porque nossa prioridade era encontrar uma solução inicial eficiente para o problema do caixeiro viajante em grafos esparsos, tais quais os de tubulação. Os algoritmos de aprimoramento são mais adequados para melhorar uma solução já existente e, portanto, exigem uma solução inicial próxima da ótima. Já os algoritmos híbridos combinam diferentes abordagens para obter a melhor solução possível, o que pode ser uma opção interessante para problemas mais complexos. No entanto, como nosso problema era relativamente simples e nosso objetivo era otimizar a rota do robô em grafos simples, os algoritmos de construção foram a escolha mais adequada para o nosso caso.
+
+Os algoritmos de construção são usados para construir soluções para problemas de otimização combinatória. Eles geralmente trabalham construindo soluções passo a passo, adicionando elementos um de cada vez, enquanto procuram uma solução ótima ou próxima da ótima. Esse tipo de algoritmo é frequentemente utilizado para resolver o problema do caixeiro viajante, em que o objetivo é encontrar a rota mais curta que passa por todos os nós uma única vez e retorna ao ponto inicial.
+
+Entre os algoritmos de construção, existem duas categorias principais: KNN e MST. KNN (K-Nearest Neighbors) é uma técnica que procura o caminho mais curto entre dois pontos, passando por seus vizinhos mais próximos. Em outras palavras, o algoritmo começa selecionando um ponto inicial e, em seguida, escolhe o ponto mais próximo para visitar em seguida. Esse processo é repetido até que todos os pontos sejam visitados.
+
+Já o MST (Minimum Spanning Tree) é um grafo que conecta todos os nós com o menor custo possível. Para construir o MST, o algoritmo seleciona uma aresta com o menor peso possível e adiciona ao grafo, em seguida, seleciona a próxima aresta com o menor peso que não forma um ciclo no grafo e adiciona, até que todas as arestas sejam adicionadas e não haja ciclos no grafo.
+
+Na categoria de MST, nós consideramos dois algoritmos específicos: Lin-Kernighan e Christofides. Lin-Kernighan é um algoritmo de busca local que é usado para refinar soluções aproximadas do problema do caixeiro viajante, gerando uma rota otimizada a partir de uma solução inicial. Já o algoritmo de Christofides é usado para encontrar soluções aproximadas com um limite inferior garantido, que é pelo menos 1,5 vezes a solução ideal.
+
+No nosso projeto, considerando que o KNN tende a ser menos preciso para grafos maiores, optamos por focar nos algoritmos de MST e escolhemos o algoritmo de Christofides por ser mais simples e ter menor requerimento de recursos computacionais, além de oferecer a garantia de 1,5 da solução ideal.
+
+## Simulação no Gazebo
+Utilizamos o ROS2 e o Gazebo para simular o funcionamento de um robô Turtlebot3 em um ambiente de inspeção de espaços confinados na empresa Gerdau. Para que o robô possa percorrer as rotas definidas em grafos com pesos para as distâncias entre os pontos, é necessário guardar as coordenadas x e y de cada ponto para que o robô saiba qual a posição absoluta no mundo e possa rotacionar para o ângulo correto.
+
+O controle de movimento do robô no ROS2 é feito por meio de mensagens de Twist que passam velocidades lineares e angulares. Porém, como o robô não é omnidirecional e só pode se movimentar para frente e para trás, além de rotacionar ao redor de seu eixo z, é necessário descobrir o vetor relativo entre a posição atual do robô e a posição desejada para que ele possa se movimentar para um ponto específico.
+
+Para isso, é necessário realizar a transformação de bases de coordenadas. Essa é uma técnica muito utilizada em robótica e computação gráfica para converter pontos e vetores entre diferentes sistemas de coordenadas. Esses sistemas podem ser definidos por diferentes origens, orientações e escalas, e a transformação de bases de coordenadas permite que os pontos e vetores sejam comparados e combinados de forma adequada.
+
+No contexto do projeto de inspeção de espaços confinados, a transformação de bases de coordenadas é utilizada para converter as coordenadas relativas do robô em relação ao seu próprio sistema de coordenadas para as coordenadas absolutas do mundo. Isso permite que o robô possa navegar em um ambiente complexo utilizando rotas definidas em grafos com pesos para as distâncias entre os pontos.
+
+Para realizar essa transformação, é necessário conhecer a posição e rotação do robô em relação ao mundo, o que pode ser obtido por meio de um subscriber do nó no ROS2. A partir disso, é possível calcular a rotação total necessária para que o robô se vire no sentido do vetor relativo entre a posição atual e a posição desejada e, em seguida, a translação necessária para que o robô possa se mover em direção ao ponto de inspeção desejado. Essas informações são enviadas à simulação através do publicador do nó em questão.
+
+Com a utilização da transformação de bases de coordenadas, é possível programar o robô para ir a um ponto específico em um ambiente complexo, como uma tubulação em uma indústria. Além disso, com a adição de uma lógica de filas no programa, podemos programar rotas completas para que o robô possa inspecionar diferentes pontos de interesse de forma eficiente e automatizada.
+
+# Desenvolvimento de Software 
+A interface a ser desenvolvida consiste em uma aplicação web responsiva que permitirá que os usuários monitorem o AGV de forma remota. A interface apresentará uma visualização em tempo real da câmera do AGV. 
+
+A interface também incluirá uma analise de gases para avaliar a qualidade do ar no ambiente em que o AGV está operando. Sensores de gás instalados no AGV serão responsáveis por detectar gases tóxicos ou inflamáveis e enviariam essas informações para a interface. 
+
+Em resumo, a interface permitiria que os usuários monitorem o AGV de forma remota e avaliem a qualidade do ar no ambiente, garantindo a segurança dos trabalhadores e do ambiente. Além de uma simulação em tempo real que apresenta um gemeo digital do dispositivo fisico. 
+
+## Tecnologias Utilizadas 
+A interface para o sistema de acompanhamento de câmera para um AGV com simulação e avaliação de gases no ambiente foi desenvolvida utilizando o framework Next.js e a biblioteca de componentes Ant Design.
+
+Next.js é um framework de desenvolvimento web React que permite a criação de aplicativos web modernos e escaláveis. A escolha desse framework permitiu a criação de uma interface responsiva e fácil de usar, além de permitir a integração com outras tecnologias.
+
+#### Documentação Next.js
+https://nextjs.org/docs
+
+Além disso, a interface utilizou a biblioteca de componentes Ant Design, que é uma coleção de componentes UI React prontos para uso e estilizados com um design moderno e limpo. A utilização dessa biblioteca permitiu a criação de uma interface visualmente atraente e consistente.
+
+#### Documentação Ant Design 
+https://ant.design/components/overview/
+
+## Mockup 
+O Figma é uma ferramenta de design de interface do usuário baseada na web que permite a criação de wireframes, protótipos e designs de alta qualidade. Com ele, é possível criar uma interface interativa e visualmente atraente para o sistema de acompanhamento de câmera para um AGV com simulação e avaliação de gases no ambiente.
+
+Na seção a seguir, apresentaremos o design dessa interface criada no Figma. Com base nas necessidades do sistema, o design foi criado para fornecer uma visualização clara da câmera do AGV, permitir uma avaliação da qualidade do ar no ambiente e a visualização de uma simulação do comportamento do dispositivo. 
+
+
+## Acionamento de Interface - Servidor com Next.js 
+1. Abra o terminal do seu sistema operacional.
+2. Navegue até a pasta raiz do seu projeto, onde se encontra a pasta 'src' que contém a pasta 'frontend'
+`cd src/frontend`
+
+3. Execute o comando 'npm install' para instalar todas as dependências do projeto.
+`npm install`
+
+4. Após a instalação das dependências, execute o comando 'npm run dev' para iniciar o servidor de desenvolvimento do Next.js.
+`npm run dev`
+
+5. Aguarde alguns instantes até que o servidor esteja pronto e acesse o endereço http://localhost:3000 no seu navegador.
+6. A interface deverá ser exibida no seu navegador, permitindo que você visualize e interaja com a aplicação.
 
 # Referências
 How much does an AGV cost? Disponível em: <https://www.flexqube.com/news/how-much-does-an-agv-cost/#:~:text=Based%20on%20the%20main%20product>.

@@ -371,6 +371,10 @@ O Figma é uma ferramenta de design de interface do usuário baseada na web que 
 
 Na seção a seguir, apresentaremos o design dessa interface criada no Figma. Com base nas necessidades do sistema, o design foi criado para fornecer uma visualização clara da câmera do AGV, permitir uma avaliação da qualidade do ar no ambiente e a visualização de uma simulação do comportamento do dispositivo. 
 
+- Link Figma: https://www.figma.com/file/FyAfyBx5iqYazfXmY6bth6/Untitled?type=design&node-id=0-1&t=K3TWAbWp9QWKRNlJ-0
+
+<img src="../media/design/mockup.png">
+
 
 ## Acionamento de Interface - Servidor com Next.js 
 1. Abra o terminal do seu sistema operacional.

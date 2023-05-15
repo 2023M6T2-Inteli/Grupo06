@@ -42,6 +42,11 @@
   - [Proposta geral](#proposta-geral)
   - [Diagrama de blocos](#diagrama-de-blocos)
     - [Tabela de componentes](#tabela-de-componentes)
+  - [Simulação e otimização de rota](#simulacao)
+  - [Desenvolvimento de Software](#software)
+   - [Tecnologias Utilizadas](#tecnologias-front)
+   - [Mockup](#figma)
+   - [Acionamento de Interface - Servidor com Next.js](#server-front)
 - [Referências](#referências)
 
 
@@ -330,6 +335,46 @@ No contexto do projeto de inspeção de espaços confinados, a transformação d
 Para realizar essa transformação, é necessário conhecer a posição e rotação do robô em relação ao mundo, o que pode ser obtido por meio de um subscriber do nó no ROS2. A partir disso, é possível calcular a rotação total necessária para que o robô se vire no sentido do vetor relativo entre a posição atual e a posição desejada e, em seguida, a translação necessária para que o robô possa se mover em direção ao ponto de inspeção desejado. Essas informações são enviadas à simulação através do publicador do nó em questão.
 
 Com a utilização da transformação de bases de coordenadas, é possível programar o robô para ir a um ponto específico em um ambiente complexo, como uma tubulação em uma indústria. Além disso, com a adição de uma lógica de filas no programa, podemos programar rotas completas para que o robô possa inspecionar diferentes pontos de interesse de forma eficiente e automatizada.
+
+# Desenvolvimento de Software 
+A interface a ser desenvolvida consiste em uma aplicação web responsiva que permitirá que os usuários monitorem o AGV de forma remota. A interface apresentará uma visualização em tempo real da câmera do AGV. 
+
+A interface também incluirá uma analise de gases para avaliar a qualidade do ar no ambiente em que o AGV está operando. Sensores de gás instalados no AGV serão responsáveis por detectar gases tóxicos ou inflamáveis e enviariam essas informações para a interface. 
+
+Em resumo, a interface permitiria que os usuários monitorem o AGV de forma remota e avaliem a qualidade do ar no ambiente, garantindo a segurança dos trabalhadores e do ambiente. Além de uma simulação em tempo real que apresenta um gemeo digital do dispositivo fisico. 
+
+## Tecnologias Utilizadas 
+A interface para o sistema de acompanhamento de câmera para um AGV com simulação e avaliação de gases no ambiente foi desenvolvida utilizando o framework Next.js e a biblioteca de componentes Ant Design.
+
+Next.js é um framework de desenvolvimento web React que permite a criação de aplicativos web modernos e escaláveis. A escolha desse framework permitiu a criação de uma interface responsiva e fácil de usar, além de permitir a integração com outras tecnologias.
+
+#### Documentação Next.js
+https://nextjs.org/docs
+
+Além disso, a interface utilizou a biblioteca de componentes Ant Design, que é uma coleção de componentes UI React prontos para uso e estilizados com um design moderno e limpo. A utilização dessa biblioteca permitiu a criação de uma interface visualmente atraente e consistente.
+
+#### Documentação Ant Design 
+https://ant.design/components/overview/
+
+## Mockup 
+O Figma é uma ferramenta de design de interface do usuário baseada na web que permite a criação de wireframes, protótipos e designs de alta qualidade. Com ele, é possível criar uma interface interativa e visualmente atraente para o sistema de acompanhamento de câmera para um AGV com simulação e avaliação de gases no ambiente.
+
+Na seção a seguir, apresentaremos o design dessa interface criada no Figma. Com base nas necessidades do sistema, o design foi criado para fornecer uma visualização clara da câmera do AGV, permitir uma avaliação da qualidade do ar no ambiente e a visualização de uma simulação do comportamento do dispositivo. 
+
+
+## Acionamento de Interface - Servidor com Next.js 
+1. Abra o terminal do seu sistema operacional.
+2. Navegue até a pasta raiz do seu projeto, onde se encontra a pasta 'src' que contém a pasta 'frontend'
+`cd src/frontend`
+
+3. Execute o comando 'npm install' para instalar todas as dependências do projeto.
+`npm install`
+
+4. Após a instalação das dependências, execute o comando 'npm run dev' para iniciar o servidor de desenvolvimento do Next.js.
+`npm run dev`
+
+5. Aguarde alguns instantes até que o servidor esteja pronto e acesse o endereço http://localhost:3000 no seu navegador.
+6. A interface deverá ser exibida no seu navegador, permitindo que você visualize e interaja com a aplicação.
 
 # Referências
 How much does an AGV cost? Disponível em: <https://www.flexqube.com/news/how-much-does-an-agv-cost/#:~:text=Based%20on%20the%20main%20product>.

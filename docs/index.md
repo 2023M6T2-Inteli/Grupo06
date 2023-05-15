@@ -44,9 +44,6 @@
     - [Tabela de componentes](#tabela-de-componentes)
   - [Simulação e otimização de rota](#simulacao)
   - [Desenvolvimento de Software](#software)
-   - [Tecnologias Utilizadas](#tecnologias-front)
-   - [Mockup](#figma)
-   - [Acionamento de Interface - Servidor com Next.js](#server-front)
 - [Referências](#referências)
 
 

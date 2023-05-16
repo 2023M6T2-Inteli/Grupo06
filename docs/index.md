@@ -20,9 +20,7 @@
     - [Mitigação de riscos](#mitigação-de-riscos)
   - [Personas](#personas)
   - [Canvas de proposta de valor](#canvas-de-proposta-de-valor)
-  - [User stories](#user-stories)
-    - [Técnico](#técnico)
-    - [Supervisora](#supervisora)
+  - [User Stories](#user-stories)
   - [Análise financeira](#análise-financeira)
 - [Entendimento de metadesign](#entendimento-de-metadesign)
   - [Fatores mercadológicos](#fatores-mercadológicos)
@@ -34,6 +32,7 @@
     - [Unidade formal entre o design do produto, as formas de divulgação e venda](#unidade-formal-entre-o-design-do-produto-as-formas-de-divulgação-e-venda)
     - [Sustentabilidade ambiental](#sustentabilidade-ambiental)
     - [Proposta inovadora](#proposta-inovadora)
+    - [Possibilidades de reuso](#possibilidades-de-reuso)
 - [Arquitetura do sistema](#arquitetura-do-sistema)
   - [Requisitos funcionais e não funcionais](#requisitos-funcionais-e-não-funcionais)
     - [Funcionais](#funcionais)
@@ -42,8 +41,16 @@
   - [Proposta geral](#proposta-geral)
   - [Diagrama de blocos](#diagrama-de-blocos)
     - [Tabela de componentes](#tabela-de-componentes)
-  - [Simulação e otimização de rota](#simulacao)
-  - [Desenvolvimento de Software](#software)
+- [Simulação e otimização de rota](#simulação-e-otimização-de-rota)
+  - [Algoritmo de otimização de rota](#algoritmo-de-otimização-de-rota)
+  - [Simulação no Gazebo](#simulação-no-gazebo)
+- [Desenvolvimento de Software](#desenvolvimento-de-software)
+  - [Tecnologias Utilizadas](#tecnologias-utilizadas)
+      - [Documentação Next.js](#documentação-nextjs)
+      - [Documentação Ant Design](#documentação-ant-design)
+  - [Mockup](#mockup)
+    - [Implementação do mock-up](#implementação-do-mock-up)
+    - [Acionamento de Interface - Servidor com Next.js](#acionamento-de-interface---servidor-com-nextjs)
 - [Referências](#referências)
 
 
@@ -136,22 +143,24 @@ Por fim, foram propostos os analgésicos, como sensores acurados de qualidade do
 Com a utilização do canvas de proposta de valor, é possível ter uma visão geral da solução proposta, além de identificar de forma clara as principais necessidades do cliente e como o produto ou serviço pode atendê-las de forma eficiente e eficaz.
 
 ## User Stories
-User Stories são uma etapa importante do desenvolvimento ágil, ele coloca os usuários no centro das ações da solução, auxiliando a equipe de desenvolvimento no excencial e ajudando a estimar o esforço destinado cada tópico do projeto e seu valor para o usuário final.
+As User Stories desempenham um papel crucial no desenvolvimento ágil, colocando os usuários no centro das ações da solução. Elas auxiliam a equipe de desenvolvimento, tanto no aspecto essencial do projeto, como na estimativa do esforço dedicado a cada tópico, bem como no valor que trazem para o usuário final.
 
-A seguir, as user stories desenvolvidas para o projeto Donatello, junto aos épicos respectivos e a prioridade de cada um:
+A seguir estão as User Stories desenvolvidas para o projeto Donatello, juntamente com seus respectivos épicos e prioridades:
 
-Épico 1: Como técnico, quero um robô que adentre locais possivelmente tóxicos para manter a segurança dos funcionários
-- Como técnico, quero garantias que perdas de sinal não inutilizem o robô, para não precisar mandar ninguém resgatá-lo. (Prioridade média)
-- Como técnico, quero obter o máximo de informações possíveis (com prioridade para a medição de gases) para análise de dados. (Prioridade baixa)
-- Como técnico, quero que o robô tenha mecânismos de segurança para evitar possíveis danos a ele mesmo e a aos outros. (Prioridade alta)
-- Como técnico, quero que o robô tenha uma opção tanto atonôma, quanto maual de controle para poder me adaptar a situações específicas. (Prioridade média)
+Épico 1: Como técnico, quero que o robô adentre locais potencialmente tóxicos para garantir a segurança dos funcionários.
 
-Épico 2: Como técnico, quero uma interface gráfica para vizualizar os dados obtidos pelo robô.
-- Como técnico, quero vizualizar os dados obtidos pelo robô em tempo real para a tomada de decisões ser agilizada. (Prioridade média)
-- Como técnico, quero armazenar rotas definidas para o robô se deslocar por elas. (Prioridade média)
-- Como técnico, quero o histórico das missões para analisar ações do robô. (Prioridade baixa)
-- Como técnico, quero ter o campo de visão do robô para conferir seus status. (Prioridade alta)
-- Como técnico, quero um campo simulado do trajeto do robô para conferir sua localização. (Prioridade média)
+- Como técnico, desejo que o robô possua medidas de contingência para perda de sinal, evitando a necessidade de resgate manual. (Prioridade média)
+- Como técnico, desejo obter o máximo de informações possíveis, com foco na medição de gases, para entender as condições de segurança instantâneas do espaço confinado. (Prioridade alta)
+- Como técnico, desejo que o robô possua mecanismos de segurança para evitar danos a si mesmo e a terceiros. (Prioridade média)
+- Como técnico, desejo que o robô possua opções tanto de controle autônomo quanto manual, para se adaptar a situações específicas. (Prioridade média)
+
+Épico 2: Como supervisor, desejo uma interface gráfica para visualizar os dados obtidos pelo robô e auxiliar na minha tomada de decisão estratégica.
+
+= Como técnico, desejo visualizar os dados obtidos pelo robô em tempo real, para agilizar a tomada de decisões. (Prioridade média)
+- Como técnico, desejo armazenar rotas definidas para o deslocamento do robô para automatizar as inspeções. (Prioridade alta)
+- Como técnico, desejo ter acesso ao histórico das missões para analisar os resultados das inspeções em um período maior de tempo. (Prioridade baixa)
+- Como técnico, desejo ter acesso ao campo de visão do robô para verificar possíveis obstáculos. (Prioridade média)
+- Como técnico, desejo um campo simulado do trajeto do robô para verificar sua localização. (Prioridade alta)
 
 ## Análise financeira
 Para a análise financeira do projeto que envolve a implementação de um AGV, foram considerados os principais fatores que afetam os custos: a compra do robô e a implementação técnica do mesmo, que será realizada por uma equipe de engenheiros.
@@ -233,6 +242,19 @@ Uma excelente forma de ampliar a inovação nesse projeto seria implementar a tr
 O uso de óculos VR possibilitaria que outras pessoas, como engenheiros e gestores, visualizassem a inspeção em tempo real de forma mais detalhada e abrangente, facilitando a tomada de decisões mais informadas. Essa inovação pode trazer uma grande vantagem competitiva para a empresa, acrescentando valor ao produto final e potencializando a eficiência do processo de manutenção.
 
 Além disso, é importante salientar que o uso de tecnologia de ponta como essa pode melhorar a segurança dos funcionários, reduzindo o risco de acidentes de trabalho em áreas confinadas e diminuindo a necessidade de interrupção do trabalho para correção de problemas. A implementação dessa tecnologia pode, portanto, não apenas ser benéfica para a empresa, mas também para a segurança e bem-estar de seus funcionários.
+
+### Possibilidades de reuso
+A solução apresentada para o projeto Donatello possui diversas possibilidades de reuso em diferentes contextos e setores. O robô de inspeção para espaços confinados, com sua capacidade de coletar dados precisos, monitorar gases e garantir a segurança dos trabalhadores, pode ser aplicado em uma variedade de ambientes industriais, como refinarias, plantas químicas, instalações de petróleo e gás, entre outros. Além disso, a interface gráfica e as funcionalidades de visualização em tempo real dos dados coletados podem ser adaptadas para atender às necessidades específicas de diferentes setores. 
+
+Nesse sentido, alguns exemplos de reuso incluem:
+
+1. Inspeção de Infraestrutura: O robô Donatello pode ser adaptado para realizar inspeções em pontes, viadutos, estruturas de edifícios e outras infraestruturas. Ele poderia detectar danos, fissuras, desgaste e anomalias estruturais, permitindo uma avaliação mais precisa da integridade dessas estruturas e facilitando o planejamento de manutenção preventiva.
+
+2. Setor Petrolífero e de Gás: Além dos espaços confinados em refinarias e instalações de petróleo e gás, o Donatello pode ser utilizado para inspecionar oleodutos, gasodutos e plataformas offshore. Ele seria capaz de identificar vazamentos, corrosão, falhas de isolamento e outros problemas, garantindo a segurança operacional e reduzindo o risco de danos ambientais.
+
+3. Inspeção Industrial: A solução pode ser aplicada na inspeção de equipamentos industriais, como caldeiras, tanques de armazenamento, tubulações e máquinas de grande porte. O robô Donatello seria capaz de acessar áreas de difícil alcance e coletar dados para monitorar o desempenho, detectar falhas e auxiliar na manutenção preditiva, garantindo a eficiência e prolongando a vida útil dos equipamentos.
+
+4. Setor de Energia Renovável: Em parques eólicos e usinas solares, o Donatello poderia ser utilizado para inspecionar turbinas eólicas, painéis solares e outros componentes. Ele seria capaz de identificar falhas, sujeira excessiva, danos físicos e outras questões que afetam a eficiência e a produção de energia renovável.
 
 # Arquitetura do sistema
 A arquitetura da solução para o projeto de AGV de inspeção de espaços confinados será composta por três principais elementos: hardware, software e comunicação. O hardware incluirá o próprio AGV, equipado com sensores de colisão, sensores de gás, câmeras de vídeo, sensores de temperatura e um sistema de monitoramento das condições atmosféricas do ambiente. O software será responsável por controlar o movimento do AGV, detectar obstáculos e alterar a rota do AGV quando necessário. Também será responsável pela interface com o usuário, permitindo o controle remoto do AGV e a visualização dos dados e relatórios gerados durante a inspeção. Por fim, a comunicação será realizada via rede sem fio, permitindo a transmissão dos dados e relatórios gerados em tempo real para o gestor responsável pelo monitoramento do sistema. Com essa arquitetura, o sistema será capaz de realizar a inspeção de forma autônoma, segura e eficiente, proporcionando ao usuário final a tranquilidade e agilidade necessárias para a realização de uma manutenção confiável.
@@ -375,8 +397,14 @@ Na seção a seguir, apresentaremos o design dessa interface criada no Figma. Co
 
 <img src="../media/design/mockup.png">
 
+### Implementação do mock-up
 
-## Acionamento de Interface - Servidor com Next.js 
+Começamos implementando a tela principal, de monitoramento, para desktop. Pretendemos, nas próximas sprints, melhorar o design e incrementar a responsividade para telas menores.
+
+
+
+
+### Acionamento de Interface - Servidor com Next.js 
 1. Abra o terminal do seu sistema operacional.
 2. Navegue até a pasta raiz do seu projeto, onde se encontra a pasta 'src' que contém a pasta 'frontend'
 `cd src/frontend`

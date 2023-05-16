@@ -49,7 +49,6 @@
       - [Documentação Next.js](#documentação-nextjs)
       - [Documentação Ant Design](#documentação-ant-design)
   - [Mockup](#mockup)
-    - [Implementação do mock-up](#implementação-do-mock-up)
     - [Acionamento de Interface - Servidor com Next.js](#acionamento-de-interface---servidor-com-nextjs)
 - [Referências](#referências)
 
@@ -391,17 +390,13 @@ https://ant.design/components/overview/
 ## Mockup 
 O Figma é uma ferramenta de design de interface do usuário baseada na web que permite a criação de wireframes, protótipos e designs de alta qualidade. Com ele, é possível criar uma interface interativa e visualmente atraente para o sistema de acompanhamento de câmera para um AGV com simulação e avaliação de gases no ambiente.
 
-Na seção a seguir, apresentaremos o design dessa interface criada no Figma. Com base nas necessidades do sistema, o design foi criado para fornecer uma visualização clara da câmera do AGV, permitir uma avaliação da qualidade do ar no ambiente e a visualização de uma simulação do comportamento do dispositivo. 
+Nesta seção, apresentamos o design dessa interface criada no Figma. Com base nas necessidades do sistema, o design foi criado para fornecer uma visualização clara da câmera do AGV, permitir uma avaliação da qualidade do ar no ambiente e a visualização de uma simulação do comportamento do dispositivo. 
+
+Nesta sprint, começamos implementando a tela principal, de monitoramento, para desktop. Pretendemos, nas próximas sprints, melhorar o design e incrementar a responsividade para telas menores.
 
 - Link Figma: https://www.figma.com/file/FyAfyBx5iqYazfXmY6bth6/Untitled?type=design&node-id=0-1&t=K3TWAbWp9QWKRNlJ-0
 
 <img src="../media/design/mockup.png">
-
-### Implementação do mock-up
-
-Começamos implementando a tela principal, de monitoramento, para desktop. Pretendemos, nas próximas sprints, melhorar o design e incrementar a responsividade para telas menores.
-
-
 
 
 ### Acionamento de Interface - Servidor com Next.js 

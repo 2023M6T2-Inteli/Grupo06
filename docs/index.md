@@ -20,9 +20,7 @@
     - [Mitigação de riscos](#mitigação-de-riscos)
   - [Personas](#personas)
   - [Canvas de proposta de valor](#canvas-de-proposta-de-valor)
-  - [User stories](#user-stories)
-    - [Técnico](#técnico)
-    - [Supervisora](#supervisora)
+  - [User Stories](#user-stories)
   - [Análise financeira](#análise-financeira)
 - [Entendimento de metadesign](#entendimento-de-metadesign)
   - [Fatores mercadológicos](#fatores-mercadológicos)
@@ -42,8 +40,16 @@
   - [Proposta geral](#proposta-geral)
   - [Diagrama de blocos](#diagrama-de-blocos)
     - [Tabela de componentes](#tabela-de-componentes)
-  - [Simulação e otimização de rota](#simulacao)
-  - [Desenvolvimento de Software](#software)
+- [Navegação e segurança](#navegação-e-segurança)
+    - [Controle de navegação no Nav2](#controle-de-navegação-no-nav2)
+    - [Segurança e sistema anticolisão](#segurança-e-sistema-anticolisão)
+      - [Outras rotinas](#outras-rotinas)
+- [Desenvolvimento de interface gráfica](#desenvolvimento-de-interface-gráfica)
+  - [Tecnologias Utilizadas](#tecnologias-utilizadas)
+      - [Documentação Next.js](#documentação-nextjs)
+      - [Documentação Ant Design](#documentação-ant-design)
+  - [Mockup](#mockup)
+  - [Acionamento de Interface - Servidor com Next.js](#acionamento-de-interface---servidor-com-nextjs)
 - [Referências](#referências)
 
 
@@ -313,40 +319,58 @@ O objeto da proposta geral do sistema é o desenvolvimento de um AGV (Automated 
 | BRR-SF (Browser e rede local - sem fio)                                | A interface gráfica é acessada através do browser, na rede local conectada ao Wi-Fi                                                                                                                                                                                                                             | Conexão                        |
 | RS-SF (Rede local e servidor - sem fio)                                | A rede local se conecta com o Wi-Fi e, através dele, com o servidor para fazer requisições                                                                                                                                                                                                                      | Conexão                        |
 
-# Simulação e otimização de rota
-## Algoritmo de otimização de rota
-No cenário geral do projeto, as tubulações são representadas por grafos, em que os nós representam pontos de inspeção e as arestas representam a conexão entre esses pontos. Além disso, precisamos levar em conta a distância entre os pontos, que é representada pelo peso da aresta, e as coordenadas x e y dos pontos de inspeção. Essas coordenadas são importantes para que o robô possa se movimentar para o próximo ponto sabendo sua posição absoluta no mundo e o ângulo correto para a rotação, respeitando assim as paredes e limitações físicas da tubulação.
+# Navegação e segurança
 
-Esse panorama é um exemplo do problema do caixeiro viajante. Nesse problema, o objetivo é encontrar a rota mais curta que passa por todos os nós uma única vez e retorna ao ponto inicial. Ele é considerado NP-difícil, o que significa que não existe um algoritmo que possa resolvê-lo em tempo polinomial para todos os casos. Portanto, quando o número de nós é grande, é impraticável utilizar algoritmos exatos para resolver o problema. Nesse caso, as heurísticas são usadas para encontrar soluções aproximadas que são aceitáveis em termos de eficiência computacional e precisão.
+Utilizamos o ROS2 e o Gazebo para simular o funcionamento de um robô Turtlebot3 em um ambiente de inspeção de espaços confinados na Gerdau. Para viabilizar sua navegação seguindo uma rota pré-definida, empregamos também o Nav2.
 
-As principais heurísticas para o problema do caixeiro viajante são as de construção, de aprimoramento e as híbridas. As heurísticas de construção são utilizadas para encontrar uma solução inicial, enquanto as de aprimoramento buscam melhorar essa solução. As heurísticas híbridas combinam os dois tipos para encontrar uma solução melhor em menos tempo. 
+O Nav2, abreviação de "Navigation2", é uma plataforma de navegação de código aberto desenvolvida para robôs autônomos. Ele é construído sobre o framework ROS (Robot Operating System) e objetiva facilitar a criação de sistemas de navegação robustos e eficientes, permitindo que os robôs se movam de forma autônoma em ambientes desconhecidos ou complexos. O Nav2 oferece uma variedade de recursos e algoritmos avançados, incluindo mapeamento, localização, planejamento de trajetória e controle de movimento. 
 
-Escolhemos os algoritmos de construção em vez dos algoritmos de aprimoramento ou híbridos porque nossa prioridade era encontrar uma solução inicial eficiente para o problema do caixeiro viajante em grafos esparsos, tais quais os de tubulação. Os algoritmos de aprimoramento são mais adequados para melhorar uma solução já existente e, portanto, exigem uma solução inicial próxima da ótima. Já os algoritmos híbridos combinam diferentes abordagens para obter a melhor solução possível, o que pode ser uma opção interessante para problemas mais complexos. No entanto, como nosso problema era relativamente simples e nosso objetivo era otimizar a rota do robô em grafos simples, os algoritmos de construção foram a escolha mais adequada para o nosso caso.
+A escolha do Nav2 em vez de realizar o controle de movimentação e transformação de bases manualmente se baseia em vários aspectos que garantem um sistema mais testado, confiável e eficiente. Durante a Sprint 2, optamos por desenvolver um código próprio para controlar o robô, porém, constatamos que ele não atingiu as expectativas esperadas. Verificamos que, em muitas situações, o código desenvolvido manualmente não funcionava conforme antecipado, apresentando falhas e imprecisões. Essa experiência levou-nos a buscar uma solução mais robusta e confiável, o que nos levou a adotar o Nav2.
 
-Os algoritmos de construção são usados para construir soluções para problemas de otimização combinatória. Eles geralmente trabalham construindo soluções passo a passo, adicionando elementos um de cada vez, enquanto procuram uma solução ótima ou próxima da ótima. Esse tipo de algoritmo é frequentemente utilizado para resolver o problema do caixeiro viajante, em que o objetivo é encontrar a rota mais curta que passa por todos os nós uma única vez e retorna ao ponto inicial.
+Ao utilizar o Nav2, temos a garantia de utilizar um código bem estabelecido e comprovado, que já foi testado em uma variedade de cenários e ambientes. Isso proporciona uma maior confiabilidade em relação ao controle de movimentação e transformação de bases, pois ele foi refinado e aprimorado ao longo do tempo, com base em feedbacks e contribuições da comunidade de desenvolvedores. Além disso, o Nav2 é de código aberto, o que significa que podemos aproveitar as contribuições de outros desenvolvedores e acessar suporte da comunidade em caso de problemas ou dúvidas.
 
-Entre os algoritmos de construção, existem duas categorias principais: KNN e MST. KNN (K-Nearest Neighbors) é uma técnica que procura o caminho mais curto entre dois pontos, passando por seus vizinhos mais próximos. Em outras palavras, o algoritmo começa selecionando um ponto inicial e, em seguida, escolhe o ponto mais próximo para visitar em seguida. Esse processo é repetido até que todos os pontos sejam visitados.
+### Controle de navegação no Nav2
+Interagimos com o Nav2 por meio de uma API em Python, que nos permite programar e controlar o comportamento do robô de forma intuitiva e flexível. Através dessa API, podemos acessar e utilizar os recursos oferecidos pelo Nav2, como mapeamento, localização, planejamento de trajetória e controle de movimento. Podemos enviar comandos para iniciar ou parar a navegação, definir metas de destino para o robô e receber informações sobre o estado atual da navegação. 
 
-Já o MST (Minimum Spanning Tree) é um grafo que conecta todos os nós com o menor custo possível. Para construir o MST, o algoritmo seleciona uma aresta com o menor peso possível e adiciona ao grafo, em seguida, seleciona a próxima aresta com o menor peso que não forma um ciclo no grafo e adiciona, até que todas as arestas sejam adicionadas e não haja ciclos no grafo.
+A navegação no Nav2 envolve a interação de vários componentes-chave, como Action Servers, Planners, Controllers e Smoothers, para proporcionar uma experiência de navegação autônoma eficiente e suave.
 
-Na categoria de MST, nós consideramos dois algoritmos específicos: Lin-Kernighan e Christofides. Lin-Kernighan é um algoritmo de busca local que é usado para refinar soluções aproximadas do problema do caixeiro viajante, gerando uma rota otimizada a partir de uma solução inicial. Já o algoritmo de Christofides é usado para encontrar soluções aproximadas com um limite inferior garantido, que é pelo menos 1,5 vezes a solução ideal.
+O Nav2 utiliza Action Servers como uma abstração de alto nível para gerenciar as tarefas de navegação. Esses Action Servers atuam como intermediários entre os módulos do sistema de navegação, facilitando a coordenação e o controle de ações relacionadas à navegação, como o planejamento de trajetórias, o controle de movimento e a monitoração do progresso.
 
-No nosso projeto, considerando que o KNN tende a ser menos preciso para grafos maiores, optamos por focar nos algoritmos de MST e escolhemos o algoritmo de Christofides por ser mais simples e ter menor requerimento de recursos computacionais, além de oferecer a garantia de 1,5 da solução ideal.
+Os Planners desempenham um papel fundamental na navegação do Nav2, pois são responsáveis por calcular trajetórias e planejar os movimentos do robô. Eles utilizam informações do ambiente, como mapas e dados de localização, para gerar planos de navegação. Os Planners podem usar algoritmos avançados, como RRT (Rapidly-exploring Random Tree) ou A* (A-estrela), para determinar a melhor rota possível, levando em consideração obstáculos, limitações de velocidade e preferências do usuário.
 
-## Simulação no Gazebo
-Utilizamos o ROS2 e o Gazebo para simular o funcionamento de um robô Turtlebot3 em um ambiente de inspeção de espaços confinados na empresa Gerdau. Para que o robô possa percorrer as rotas definidas em grafos com pesos para as distâncias entre os pontos, é necessário guardar as coordenadas x e y de cada ponto para que o robô saiba qual a posição absoluta no mundo e possa rotacionar para o ângulo correto.
+Os Controllers assumem a responsabilidade de executar os movimentos do robô com base nas trajetórias planejadas pelos Planners. Eles são responsáveis pelo controle de velocidade, aceleração e orientação do robô, garantindo que ele siga corretamente a trajetória definida. Os Controllers podem empregar técnicas de controle como controle PID (Proporcional, Integral e Derivativo) ou controle baseado em malha de realimentação para alcançar um movimento suave e preciso.
 
-O controle de movimento do robô no ROS2 é feito por meio de mensagens de Twist que passam velocidades lineares e angulares. Porém, como o robô não é omnidirecional e só pode se movimentar para frente e para trás, além de rotacionar ao redor de seu eixo z, é necessário descobrir o vetor relativo entre a posição atual do robô e a posição desejada para que ele possa se movimentar para um ponto específico.
+Além disso, o Nav2 também incorpora Smoothers, que têm a função de suavizar as trajetórias planejadas para melhorar a qualidade do movimento. Os Smoothers refinam as trajetórias geradas pelos Planners, ajustando os movimentos do robô para reduzir oscilações e tornar as transições entre as poses mais fluidas. Isso resulta em uma navegação mais suave e natural, evitando movimentos bruscos e melhorando a experiência geral do usuário.
 
-Para isso, é necessário realizar a transformação de bases de coordenadas. Essa é uma técnica muito utilizada em robótica e computação gráfica para converter pontos e vetores entre diferentes sistemas de coordenadas. Esses sistemas podem ser definidos por diferentes origens, orientações e escalas, e a transformação de bases de coordenadas permite que os pontos e vetores sejam comparados e combinados de forma adequada.
+### Segurança e sistema anticolisão
 
-No contexto do projeto de inspeção de espaços confinados, a transformação de bases de coordenadas é utilizada para converter as coordenadas relativas do robô em relação ao seu próprio sistema de coordenadas para as coordenadas absolutas do mundo. Isso permite que o robô possa navegar em um ambiente complexo utilizando rotas definidas em grafos com pesos para as distâncias entre os pontos.
+O Nav2, juntamente com os Recovery Servers, desempenha um papel fundamental como um sistema de segurança ao lidar com detecção e desvio de obstáculos durante a navegação autônoma. Para isso, nosso robô utiliza o sensor LiDAR, que permite a percepção do ambiente por meio da detecção de pontos no espaço.
 
-Para realizar essa transformação, é necessário conhecer a posição e rotação do robô em relação ao mundo, o que pode ser obtido por meio de um subscriber do nó no ROS2. A partir disso, é possível calcular a rotação total necessária para que o robô se vire no sentido do vetor relativo entre a posição atual e a posição desejada e, em seguida, a translação necessária para que o robô possa se mover em direção ao ponto de inspeção desejado. Essas informações são enviadas à simulação através do publicador do nó em questão.
+Com base na quantidade de pontos percebidos pelo LiDAR, o Nav2 é capaz de avaliar a densidade e a proximidade de objetos em seu entorno. Essas informações são utilizadas para tomar decisões em tempo real, como diminuir a velocidade, parar completamente ou desviar do obstáculo detectado.
 
-Com a utilização da transformação de bases de coordenadas, é possível programar o robô para ir a um ponto específico em um ambiente complexo, como uma tubulação em uma indústria. Além disso, com a adição de uma lógica de filas no programa, podemos programar rotas completas para que o robô possa inspecionar diferentes pontos de interesse de forma eficiente e automatizada.
+Quando uma grande quantidade de pontos é detectada pelo LiDAR, indicando uma alta densidade de objetos próximos, o Nav2 pode reduzir a velocidade do robô como medida preventiva. Essa redução da velocidade proporciona mais tempo para tomar decisões e ajustar o caminho, aumentando a segurança durante a navegação.
 
-# Desenvolvimento de Software 
+Se a densidade de pontos detectada pelo LiDAR aumentar significativamente, indicando um obstáculo iminente, o Nav2 pode acionar rotinas de recuperação para evitar a colisão. Essas rotinas podem incluir a parada completa do robô até que o obstáculo seja removido ou contornado, ou desviar da rota originalmente planejada, buscando uma trajetória alternativa que contorne o obstáculo de forma segura.
+
+Além das rotinas de recuperação mencionadas anteriormente, o Nav2 possui uma variedade de outras estratégias para lidar com situações adversas durante a navegação autônoma.
+
+Uma rotina comum é a verificação de bloqueios ou obstáculos persistentes no caminho do robô. Se o Nav2 detectar que o robô está preso ou incapaz de avançar devido a um bloqueio prolongado, ele pode executar uma ação de "clear path" (limpar o caminho). Essa rotina pode envolver tentativas de mover obstáculos menores ou contorná-los de forma segura, a fim de permitir que o robô prossiga em sua rota planejada.
+
+Em casos em que a localização do robô se torna incerta ou imprecisa, o Nav2 pode empregar rotinas de "relocalização" para recuperar a estimativa correta de sua posição. Isso pode envolver a combinação de informações do LiDAR com dados de outros sensores, como odometria ou sistemas de localização simultânea e mapeamento (SLAM), para recalibrar a localização do robô e continuar a navegação com precisão.
+
+Além disso, o Nav2 pode incorporar rotinas de "fail-safe" (segurança em caso de falha) para situações extremas. Se ocorrer um erro crítico ou falha no sistema, o Nav2 pode executar uma sequência de ações para garantir a segurança do robô e do ambiente circundante. Isso pode incluir a parada de emergência, desligamento seguro dos atuadores e a sinalização de um estado de falha para que operadores humanos possam intervir e resolver o problema.
+
+Essas rotinas adicionais de recuperação no Nav2 demonstram sua capacidade de lidar com uma ampla gama de situações desafiadoras durante a navegação autônoma. Através do uso inteligente de algoritmos e sensores, o Nav2 busca garantir a segurança do robô, adaptando-se e respondendo efetivamente a eventos inesperados, e permitindo uma navegação autônoma confiável e robusta.
+
+#### Outras rotinas
+
+Como parte das nossas futuras melhorias e aprimoramentos, planejamos desenvolver uma rotina adicional de recuperação no Nav2 para trazer o robô de volta ao ponto inicial em caso de emergência. Essa rotina será acionada em situações críticas ou eventos inesperados durante a navegação autônoma, garantindo que o robô possa retornar com segurança ao ponto de partida.
+
+Além disso, também estamos considerando a implementação de um recurso de controle remoto para o robô. Isso permitirá que um operador humano assuma o controle do robô de forma remota, se necessário, em situações complexas ou específicas que exijam intervenção manual direta. Essa capacidade de controle remoto fornecerá uma camada adicional de flexibilidade e segurança, garantindo que o robô possa ser controlado de forma eficaz e precisa em diferentes cenários.
+
+Com essas melhorias planejadas, buscamos aprimorar o sistema de navegação, tornando-o mais completo e robusto. Nosso objetivo é garantir a segurança do robô e do ambiente, possibilitando a recuperação rápida em caso de emergências e fornecendo opções de controle versáteis para atender a diversas necessidades durante a operação autônoma.
+
+# Desenvolvimento de interface gráfica 
 A interface a ser desenvolvida consiste em uma aplicação web responsiva que permitirá que os usuários monitorem o AGV de forma remota. A interface apresentará uma visualização em tempo real da câmera do AGV. 
 
 A interface também incluirá uma analise de gases para avaliar a qualidade do ar no ambiente em que o AGV está operando. Sensores de gás instalados no AGV serão responsáveis por detectar gases tóxicos ou inflamáveis e enviariam essas informações para a interface. 

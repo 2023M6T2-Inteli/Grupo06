@@ -81,6 +81,13 @@ def set_position(_position: Position):
     global point
     point = _position
 
+@app.post("/upload-image")
+async def upload_image(image: bytes = fastapi.File(...)):
+    with open("uploaded_image.jpg", "wb") as file:
+        file.write(image)
+
+    return {"message": "Image uploaded successfully"}
+
 # Executa o servidor
 if __name__ == "__main__":
     uvicorn.run(app)

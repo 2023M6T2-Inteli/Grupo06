@@ -17,6 +17,8 @@ from fastapi.middleware.cors import CORSMiddleware
 # Cria o servidor
 app = fastapi.FastAPI()
 
+import yolo
+
 # Define as origens permitidas para o servidor
 origins = [
     "http://localhost",
@@ -32,54 +34,38 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Define as classes para o formato e a posição
-class Shape(pydantic.BaseModel):
-    shape: str
+stored_positions = []
 
-class Position(pydantic.BaseModel):
-    x: float
-    y: float
+class Positions:
+    def __init__(self, positions: List[Tuple[int, int]]):
+        self.positions = positions
 
-# Define as variáveis globais para o formato e a posição
-shape = Shape(shape='')
-point = Position(x=0.0, y=0.0)
+    def get_positions(self) -> List[Tuple[int, int]]:
+        return self.positions
 
-# Define a variável global para indicar se o comando enviado foi de formato ou posição
-is_shape = False
+@app.get("/positions")
+def get_positions():
+    return stored_positions
 
-# Rota para retornar o comando ou a posição
-@app.get("/mission")
-def get_mission():
-    global is_shape
-    # Se o comando enviado foi de formato, retorna o formato
-    if(is_shape):
-        global shape
-        past_shape = shape
-        shape = Shape(shape='') # Reseta o formato
-        return past_shape
-    # Se o comando enviado foi de posição, retorna a posição
-    else:
-        is_shape = True # Muda para formato para o próximo comando, evitando que o robô tenta ir para a mesma posição
-        global point
-        return point
+@app.post("/positions")
+def add_positions(positions: Positions):
+    if len(stored_positions) == 4:
+        raise HTTPException(status_code=400, detail="Positions array is full")
+    stored_positions.append(positions.positions)
+    return {"message": "Positions added successfully"}
 
-# Rotas para receber o comando de formato 
-@app.post("/shape")
-def set_shape(_shape: Shape):
-    global is_shape
-    is_shape = True
+@app.delete("/positions")
+def clear_positions():
+    stored_positions.clear()
+    return {"message": "Positions cleared successfully"}
+    
+@app.post("/upload-image")
+async def upload_image(image: bytes = fastapi.File(...)):
+    with open("uploaded_image.jpg", "wb") as file:
+        file.write(image)
+    print(yolo.get_yolo_results("uploaded_image.jpg"))
 
-    global shape
-    shape = _shape
-
-# Rota para receber o comando de posição
-@app.post("/position")
-def set_position(_position: Position):
-    global is_shape
-    is_shape = False
-
-    global point
-    point = _position
+    return {"message": "Image uploaded successfully"}
 
 # Executa o servidor
 if __name__ == "__main__":

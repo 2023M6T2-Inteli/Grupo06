@@ -45,7 +45,8 @@
     - [Segurança e sistema anticolisão](#segurança-e-sistema-anticolisão)
       - [Outras rotinas](#outras-rotinas)
 - [Visão computacional](#visão-computacional)
-  - [Riscos e fluxo de erros](#riscos-e-fluxo-de-erros)
+  - [Pipeline de pré-processamento](#pipeline-de-pré-processamento)
+- [Riscos e fluxo de erros](#riscos-e-fluxo-de-erros)
 - [Desenvolvimento de interface gráfica](#desenvolvimento-de-interface-gráfica)
   - [Tecnologias Utilizadas](#tecnologias-utilizadas)
       - [Documentação Next.js](#documentação-nextjs)
@@ -381,7 +382,9 @@ Como próximos passos, planejamos explorar a viabilidade do streaming de vídeos
 
 Essa abordagem combina técnicas avançadas de visão computacional, aprendizado de máquina e integração com o Turtlebot, fornecendo uma solução eficiente e confiável para a detecção de rachaduras em espaços confinados. A utilização do OpenCV e do modelo YOLOv8 visa aprimorar a eficiência e a precisão da detecção, resultando em informações valiosas para a manutenção e a segurança das estruturas inspecionadas.
 
-## Riscos e fluxo de erros
+## Pipeline de pré-processamento
+
+# Riscos e fluxo de erros
 
 # Desenvolvimento de interface gráfica 
 A interface a ser desenvolvida consiste em uma aplicação web responsiva que permitirá que os usuários monitorem o AGV de forma remota. A interface apresentará uma visualização em tempo real da câmera do AGV. 

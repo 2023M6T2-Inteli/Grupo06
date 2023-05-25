@@ -44,6 +44,8 @@
     - [Controle de navegação no Nav2](#controle-de-navegação-no-nav2)
     - [Segurança e sistema anticolisão](#segurança-e-sistema-anticolisão)
       - [Outras rotinas](#outras-rotinas)
+- [Visão computacional](#visão-computacional)
+  - [Riscos e fluxo de erros](#riscos-e-fluxo-de-erros)
 - [Desenvolvimento de interface gráfica](#desenvolvimento-de-interface-gráfica)
   - [Tecnologias Utilizadas](#tecnologias-utilizadas)
       - [Documentação Next.js](#documentação-nextjs)
@@ -370,6 +372,17 @@ Além disso, também estamos considerando a implementação de um recurso de con
 
 Com essas melhorias planejadas, buscamos aprimorar o sistema de navegação, tornando-o mais completo e robusto. Nosso objetivo é garantir a segurança do robô e do ambiente, possibilitando a recuperação rápida em caso de emergências e fornecendo opções de controle versáteis para atender a diversas necessidades durante a operação autônoma.
 
+# Visão computacional
+A nossa estratégia para identificar situações de alerta visual em espaços confinados, durante a inspeção realizada pelo nosso robô, envolve a utilização de técnicas de visão computacional com OpenCV em Python, aliadas ao modelo YOLOv8. Para a validação inicial, procedemos com o treinamento do modelo YOLOv8 para detecção de rachaduras em concreto.
+
+Integramos esse modelo ao nosso backend por meio de uma API RESTful, garantindo a comunicação eficiente e segura entre a câmera acoplada ao Turtlebot e o nosso sistema. A ideia é que a câmera capture imagens periodicamente e as envie para o backend por meio dessa API, permitindo que sejam analisadas pelo algoritmo de detecção de rachaduras. O feedback resultante da detecção será apresentado tanto na interface gráfica, para uma visualização em tempo real, quanto registrado no log da inspeção.
+
+Como próximos passos, planejamos explorar a viabilidade do streaming de vídeos em tempo real, possibilitando uma análise contínua das imagens capturadas pelo Turtlebot. Além disso, consideramos a implementação de um sistema de armazenamento para preservar os vídeos completos, possibilitando análises retrospectivas por meio do dashboard.
+
+Essa abordagem combina técnicas avançadas de visão computacional, aprendizado de máquina e integração com o Turtlebot, fornecendo uma solução eficiente e confiável para a detecção de rachaduras em espaços confinados. A utilização do OpenCV e do modelo YOLOv8 visa aprimorar a eficiência e a precisão da detecção, resultando em informações valiosas para a manutenção e a segurança das estruturas inspecionadas.
+
+## Riscos e fluxo de erros
+
 # Desenvolvimento de interface gráfica 
 A interface a ser desenvolvida consiste em uma aplicação web responsiva que permitirá que os usuários monitorem o AGV de forma remota. A interface apresentará uma visualização em tempo real da câmera do AGV. 
 
@@ -394,7 +407,6 @@ https://ant.design/components/overview/
 O Figma é uma ferramenta de design de interface do usuário baseada na web que permite a criação de wireframes, protótipos e designs de alta qualidade. Com ele, é possível criar uma interface interativa e visualmente atraente para o sistema de acompanhamento de câmera para um AGV com simulação e avaliação de gases no ambiente.
 
 Na seção a seguir, apresentaremos o design dessa interface criada no Figma. Com base nas necessidades do sistema, o design foi criado para fornecer uma visualização clara da câmera do AGV, permitir uma avaliação da qualidade do ar no ambiente e a visualização de uma simulação do comportamento do dispositivo. 
-
 
 ## Acionamento de Interface - Servidor com Next.js 
 1. Abra o terminal do seu sistema operacional.

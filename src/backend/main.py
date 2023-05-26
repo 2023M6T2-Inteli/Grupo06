@@ -14,6 +14,8 @@ import uvicorn
 import pydantic
 from fastapi.middleware.cors import CORSMiddleware
 
+from yolo import get_yolo_results
+
 # Cria o servidor
 app = fastapi.FastAPI()
 
@@ -82,9 +84,11 @@ def set_position(_position: Position):
     point = _position
 
 @app.post("/upload-image")
-async def upload_image(image: bytes = fastapi.File(...)):
+async def upload_image(image: bytes = fastapi.File(...)): 
+    print('bati')
     with open("uploaded_image.jpg", "wb") as file:
         file.write(image)
+    print(get_yolo_results("uploaded_image.jpg"))
 
     return {"message": "Image uploaded successfully"}
 

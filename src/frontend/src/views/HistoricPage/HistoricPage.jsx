@@ -5,17 +5,58 @@ import DownloadIcon from "@mui/icons-material/Download";
 
 export default function HistoricPage() {
   const dataSource = [
-    { name: "Inspeção rotina 3c Ouro Preto", data: "25/05/2023", hora: "10:00", concO2: "16%", concN: "78%", download: <Button type="primary"> <DownloadIcon></DownloadIcon> </Button>},
-    { name: "Gosigua tubulação geral", data: "02/04/2023", hora: "15:00", concO2: "13%", concN: "75%", download: <Button type="primary"> <DownloadIcon></DownloadIcon> </Button>},
-    { name: "Urgencia Açonorte", data: "23/01/2023", hora: "13:00", concO2: "2%", concN: "93%", download: <Button type="primary"> <DownloadIcon></DownloadIcon> </Button>},
+    {
+      name: "Inspeção rotina 3c Ouro Preto",
+      data: "25/05/2023",
+      hora: "10:00 - 10:25",
+      concO2: "OK",
+      concN: "OK",
+      concNO2: "OK",
+      concAR: "OK",
+      download: <Button type="primary"> <DownloadIcon></DownloadIcon> </Button>
+    },
+    {
+      name: "Gosigua tubulação geral",
+      data: "02/04/2023",
+      hora: "15:00 - 15:30",
+      concO2: "OK",
+      concN: "OK",
+      concNO2: "OK",
+      concAR: "OK",
+      download: <Button type="primary"> <DownloadIcon></DownloadIcon> </Button>
+   },
+    {
+      name: "Urgencia Açonorte",
+      data: "23/01/2023",
+      hora: "13:00 - 13:50",
+      concO2: "OK",
+      concN: "OK",
+      concNO2: "ALTA",
+      concAR: "OK",
+      download: <Button type="primary"> <DownloadIcon></DownloadIcon> </Button>
+    },
   ];
 
   const columns = [
     { title: "Nome da Inspeção", dataIndex: "name", key: "name"},
-    { title: "Data", dataIndex: "data", key: "data" },
-    { title: "Hora", dataIndex: "hora", key: "hora" },
+    { title: "Data - Início / Fim",
+    title: () => (
+      <div>
+        <p style={{ margin: "0", display: "inline", float: "left"}}>Data</p>
+        <p style={{margin: "0", display:"inline", float:"right", whiteSpace: "nowrap", marginRight:"10px"}}>Início / Fim</p>
+      </div>
+    ),
+    render: (_, record) => (
+      <div>
+        <p style={{ margin: "0", display: "inline", float: "left" }}>{record.data}</p>
+        <p style={{ margin: "0", display: "inline", float: "right", justifyItems: "stretch", whiteSpace: "nowrap" }}>{record.hora}</p>
+      </div>
+    ),
+    dataIndex: "data", key: "data" },
     { title: "O2%", dataIndex: "concO2", key: "concO2" },
     { title: "N%", dataIndex: "concN", key: "concN"},
+    { title: "NO2%", dataIndex: "concNO2", key: "concNO2"},
+    { title: "AR%", dataIndex: "concAR", key: "concAR"},
     { title: "Baixar PDF", dataIndex: "download", key: "download", align: "center"}
   ];
 

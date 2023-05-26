@@ -17,7 +17,7 @@ from fastapi.middleware.cors import CORSMiddleware
 # Cria o servidor
 app = fastapi.FastAPI()
 
-import yolo
+from yolo import get_yolo_results
 
 # Define as origens permitidas para o servidor
 origins = [
@@ -58,12 +58,13 @@ def add_positions(positions: Positions):
 def clear_positions():
     stored_positions.clear()
     return {"message": "Positions cleared successfully"}
-    
+
 @app.post("/upload-image")
-async def upload_image(image: bytes = fastapi.File(...)):
+async def upload_image(image: bytes = fastapi.File(...)): 
+    print('bati')
     with open("uploaded_image.jpg", "wb") as file:
         file.write(image)
-    print(yolo.get_yolo_results("uploaded_image.jpg"))
+    print(get_yolo_results("uploaded_image.jpg"))
 
     return {"message": "Image uploaded successfully"}
 

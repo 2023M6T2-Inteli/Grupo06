@@ -92,6 +92,10 @@ async def upload_image(image: bytes = fastapi.File(...)):
 
     return {"message": "Image uploaded successfully"}
 
+@app.get("/hi")
+def hi():
+    return "hi"
+
 # Executa o servidor
 if __name__ == "__main__":
     uvicorn.run(app)

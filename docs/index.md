@@ -376,6 +376,8 @@ Com essas melhorias planejadas, buscamos aprimorar o sistema de navegação, tor
 # Visão computacional
 A nossa estratégia para identificar situações de alerta visual em espaços confinados, durante a inspeção realizada pelo nosso robô, envolve a utilização de técnicas de visão computacional com OpenCV em Python, aliadas ao modelo YOLOv8. Para a validação inicial, procedemos com o treinamento do modelo YOLOv8 para detecção de rachaduras em concreto.
 
+[Colab - Treinamento de Modelo](https://colab.research.google.com/drive/1OOXB0qYBhixTvYTEjiQcAgIObV7JnHei?usp=sharing#scrollTo=DRyyJsTSnLHB)
+
 Integramos esse modelo ao nosso backend por meio de uma API RESTful, garantindo a comunicação eficiente e segura entre a câmera acoplada ao Turtlebot e o nosso sistema. A ideia é que a câmera capture imagens periodicamente e as envie para o backend por meio dessa API, permitindo que sejam analisadas pelo algoritmo de detecção de rachaduras. O feedback resultante da detecção será apresentado tanto na interface gráfica, para uma visualização em tempo real, quanto registrado no log da inspeção.
 
 Como próximos passos, planejamos explorar a viabilidade do streaming de vídeos em tempo real, possibilitando uma análise contínua das imagens capturadas pelo Turtlebot. Além disso, consideramos a implementação de um sistema de armazenamento para preservar os vídeos completos, possibilitando análises retrospectivas por meio do dashboard.

@@ -402,6 +402,19 @@ Essa abordagem combina técnicas avançadas de visão computacional, aprendizado
 
 ## Pipeline de pré-processamento
 
+O pré-processamento das imagens que serão analisadas através da Visão Computacional é um procedimento essencial para otimizar o tempo de execução e aumentar a acurácia da detecção de objetos. Ao final do procedimento teremos objetos mais nitidos, imagens com menos ruidos e normalizadas, a depender do contexto e necessidade de seu projeto.
+
+Utilizando filtros de tratamento da biblioteca _OpenCV_, o primeiro passo é aplicar o filtro de **Equalização de Histograma**. Esse filtro tem a função de normalizar a intensidade de luminosidade de todos os pixels da imagem. Se a imagem possuir baixa intensidade de luz, o filtro aumenta essa intensidade para um nível normal; caso contrário, o filtro reduz a intensidade para o nível adequado.
+
+Após esse primeiro processamento, é aplicado o filtro de **Escala de Cinza**. Esse filtro reduz os canais de cores da imagem, que originalmente são compostos por Vermelho, Verde e Azul (RGB), para apenas um único canal. Essa conversão para escala de cinza torna a imagem mais leve e acelera o processo de processamento.
+
+Ao realizar o **pré-processamento** com esses filtros, é possível obter imagens mais adequadas para análise e detecção de objetos. Isso contribui para um tempo de execução mais eficiente e uma detecção de objetos mais precisa, além de que, através dessas etapas de pré-processamento, será possível preparar as imagens para os próximos passos da Visão Computacional, como a segmentação de objetos, extração de características e classificação, caso seja necessário em nosso projeto. 
+
+![pipeline de pre processamento de imagem](/media\pipeline_preprocess\pipeline_preprocess.jpg)
+
+
+
+
 # Riscos e fluxo de erros
 
 # Desenvolvimento de interface gráfica 

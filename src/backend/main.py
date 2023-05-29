@@ -13,6 +13,7 @@ import fastapi
 import uvicorn 
 import pydantic
 from fastapi.middleware.cors import CORSMiddleware
+from typing import List, Tuple
 
 # Cria o servidor
 app = fastapi.FastAPI()
@@ -50,7 +51,7 @@ def get_positions():
 @app.post("/positions")
 def add_positions(positions: Positions):
     if len(stored_positions) == 4:
-        raise HTTPException(status_code=400, detail="Positions array is full")
+        raise fastapi.HTTPException(status_code=400, detail="Positions array is full")
     stored_positions.append(positions.positions)
     return {"message": "Positions added successfully"}
 

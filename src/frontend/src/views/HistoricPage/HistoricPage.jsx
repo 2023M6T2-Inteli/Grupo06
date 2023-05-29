@@ -64,7 +64,7 @@ export default function HistoricPage() {
     <Fragment>
         <NavBar></NavBar>
 
-        <Card>
+        <Card style={{padding: 150}}>
         <Row>
             <Col>
                 <h1 style={{color:"black", paddingLeft:"10px"}}>Histórico de inspeções</h1>

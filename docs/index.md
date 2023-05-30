@@ -432,7 +432,7 @@ Após esse primeiro processamento, é aplicado o filtro de **Escala de Cinza**. 
 
 Ao realizar o **pré-processamento** com esses filtros, é possível obter imagens mais adequadas para análise e detecção de objetos. Isso contribui para um tempo de execução mais eficiente e uma detecção de objetos mais precisa, além de que, através dessas etapas de pré-processamento, será possível preparar as imagens para os próximos passos da Visão Computacional, como a segmentação de objetos, extração de características e classificação, caso seja necessário em nosso projeto.
 
-![pipeline de pre processamento de imagem](/media\pipeline_preprocess\pipeline_preprocess.jpg)
+![pipeline de pre processamento de imagem](../media/pipeline_preprocess/pipeline_preprocess.jpg)
 
 # Riscos e fluxo de erros
 

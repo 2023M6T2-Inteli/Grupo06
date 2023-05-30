@@ -13,6 +13,9 @@ import fastapi
 import uvicorn 
 import pydantic
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI, Request
+from fastapi.responses import StreamingResponse
+import cv2
 
 from yolo import get_yolo_results
 
@@ -83,14 +86,18 @@ def set_position(_position: Position):
     global point
     point = _position
 
-@app.post("/upload-image")
-async def upload_image(image: bytes = fastapi.File(...)): 
-    print('bati')
-    with open("uploaded_image.jpg", "wb") as file:
-        file.write(image)
-    print(get_yolo_results("uploaded_image.jpg"))
+# @app.post("/upload-image")
+# async def upload_image(image: bytes = fastapi.File(...)): 
+#     print('bati')
+#     with open("uploaded_image.jpg", "wb") as file:
+#         file.write(image)
+#     print(get_yolo_results("uploaded_image.jpg"))
 
-    return {"message": "Image uploaded successfully"}
+#     return {"message": "Image uploaded successfully"}
+
+@app.get('/video')
+def video_feed(request:Request):
+    return StreamingResponse(get_yolo_results(), media_type='multipart/x-mixed-replace; boundary=frame')
 
 @app.get("/hi")
 def hi():

@@ -7,25 +7,28 @@ export default function MapPage() {
   const Canvas = () => {
     
     const canvasRef = useRef(null);
+    const canvas_width = 800;
+    const canvas_height = 600;
     
     useEffect(() => {
-      const canvas = canvasRef.current;
-      const context = canvas.getContext('2d');
-      
-      // Draw on the canvas
-      context.fillStyle = 'red';
-      context.fillRect(10, 10, 100, 100);
-    }, []);
-    return<div style={{display:"flex", justifyContent:"center", alignItems:"center"} }>
-    <canvas ref={canvasRef} width={800} height={400} />;
-    </div>;
+      const canvas = canvasRef.current.getContext('2d');
+      canvas.fillStyle = 'darkblue';
+      canvas.fillRect(0, 0, canvas_width, canvas_height);
+    });
+
+    return(
+          <div style={{display:"flex", justifyContent:"center", alignItems:"center"} }>
+          <canvas ref={canvasRef} width={canvas_width} height={canvas_height} />;
+          </div>
+    );
   };
+
 
   return (
     <Fragment>
         <NavBar></NavBar>
 
-        <Card style={{padding: 150}}>
+        <Card style={{padding: 50}}>
         <Canvas></Canvas>
         </Card>
 

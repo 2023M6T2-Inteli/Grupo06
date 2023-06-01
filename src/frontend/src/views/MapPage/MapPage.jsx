@@ -9,11 +9,25 @@ export default function MapPage() {
     const canvasRef = useRef(null);
     const canvas_width = 800;
     const canvas_height = 600;
+
+    let position = 0
     
     useEffect(() => {
-      const canvas = canvasRef.current.getContext('2d');
-      canvas.fillStyle = 'darkblue';
-      canvas.fillRect(0, 0, canvas_width, canvas_height);
+      const canvas = canvasRef.current
+      const ctx = canvas.getContext('2d')
+
+      var img = new Image();
+      img.src = "down-arrow.png";
+      
+      const animation = () => {
+        ctx.clearRect(0, 0, canvas_width, canvas_height);
+        position += 1;
+        ctx.fillStyle = 'green';
+        ctx.fillRect(position, 0, 50, 50);
+        requestAnimationFrame(animation);
+      }
+
+      animation();
     });
 
     return(

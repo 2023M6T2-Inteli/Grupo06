@@ -11,7 +11,7 @@ import uvicorn
 import pydantic
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Tuple
-from yolo import get_yolo_results
+# from yolo import get_yolo_results
 
 # Cria o servidor
 app = fastapi.FastAPI()
@@ -48,15 +48,15 @@ def get_positions():
     return stored_positions
 
 # Adiciona array de posições
-@app.post("/positions")
-def add_positions(positions: Positions):
+# @app.post("/positions")
+# def add_positions(positions: Positions):
 
-    # Verifica se o array de posições já está cheio
-    if len(stored_positions) == 4:
-        raise fastapi.HTTPException(status_code=400, detail="Positions array is full")
+#     # Verifica se o array de posições já está cheio
+#     if len(stored_positions) == 4:
+#         raise fastapi.HTTPException(status_code=400, detail="Positions array is full")
     
-    stored_positions.append(positions.positions)
-    return {"message": "Positions added successfully"}
+#     stored_positions.append(positions.positions)
+#     return {"message": "Positions added successfully"}
 
 # Deleta posições
 @app.delete("/positions")
@@ -72,9 +72,55 @@ async def upload_image(image: bytes = fastapi.File(...)):
         file.write(image)
 
     # Printa resultados
-    print(get_yolo_results("uploaded_image.jpg"))
+    # print(get_yolo_results("uploaded_image.jpg"))
 
     return {"message": "Image uploaded successfully"}
+
+
+#---------------------- 
+from fastapi import FastAPI, APIRouter, status
+
+# app = FastAPI()
+router = APIRouter()
+
+
+@router.get('/')
+def get_reports():
+    return "return a list of scout routes"
+
+
+@router.post('/', status_code=status.HTTP_201_CREATED)
+def create_report():
+    return "create report"
+
+
+@router.patch('/{reportId}')
+def update_report(reportId: str):
+    return f"update scout with id {reportId}"
+
+
+@router.get('/{reportId}')
+def get_report(reportId: str):
+    return f"get scout route with id {reportId}"
+
+
+@router.delete('/{reportId}')
+def delete_report(reportId: str):
+    return f"delete scout route with id {reportId}"
+
+
+app.include_router(router, tags=['Reports'], prefix='/api/report')
+
+
+@app.get("/api/healthchecker")
+def root():
+    return {"message": "Welcome to FastAPI with SQLAlchemy"}
+
+
+
+#----------------------
+
+
 
 # Executa o servidor
 if __name__ == "__main__":

@@ -11,7 +11,8 @@ from sensor_msgs.msg import Image # Image is the message type
 from cv_bridge import CvBridge # Package to convert between ROS and OpenCV Images
 import cv2 # OpenCV library
 import httpx
- 
+import requests 
+
 class ImageSubscriber(Node):
   """
   Create an ImageSubscriber class, which is a subclass of the Node class.
@@ -45,11 +46,16 @@ class ImageSubscriber(Node):
     # Convert ROS Image message to OpenCV image
     current_frame = self.br.imgmsg_to_cv2(data)
 
-    # Convert the frame to a byte array
-    _, img_encoded = cv2.imencode('.jpg', current_frame)
+  # Convert the frame to a byte array
+    _, img_encoded = cv2.imencode('.png', current_frame)
     frame_data = img_encoded.tobytes()
-    headers = {'Content-Type': 'application/octet-stream'}
-    response = httpx.post("http://localhost:8000/upload", data=frame_data, headers=headers)
+    # Teste porco
+    url = "http://127.0.0.1:3000/upload"
+    files=[
+      ('content',('lala.png',frame_data,'image/png'))
+    ]
+    response = requests.request("POST", url, files=files)
+    
     # Check the response status code
     if response.status_code == 200:
         print('Frame sent successfully!')

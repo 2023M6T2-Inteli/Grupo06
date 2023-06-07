@@ -1,25 +1,38 @@
 # CÓDIGO DO SERVIDOR
-
 # Este script cria o servidor e define rotas para o controle da trajetória do
 # robô na simulação e para a detecção de rachaduras em imagens. O envio de pontos
 # ainda não foi integrado com a nova navegação por Nav2.
 # Para executar o servidor, basta executar o comando "python main.py" no terminal
 
-# Importa bibliotecas
+# Importa bibliotecas - Em ordem alfabética 
+import asyncio
+import aiofiles
+import cv2
 import fastapi
-import uvicorn 
-import pydantic
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, File, UploadFile, Request, Body
 from fastapi.responses import FileResponse, StreamingResponse
-import cv2
 import os
+import pydantic
 from supabase import create_client, Client
-import asyncio
-import aiofiles
 import time
 from typing import List, Tuple
+import uvicorn 
 from yolo import get_yolo_results
+
+from database import Base
+from sqlalchemy import TIMESTAMP, Column, String, Boolean, create_engine, Integer, Date, Float
+from sqlalchemy.sql import func
+from fastapi_utils.guid_type import GUID, GUID_DEFAULT_SQLITE
+from sqlalchemy.ext.declarative import declarative_base
+from sqlalchemy.orm import sessionmaker
+
+# DATABASE_URL = "sqlite://admin:Gerdaudb#1@db-gerdau.cfssllf0qlz6.us-east-1.rds.amazonaws.com/db-gerdau.db"
+# engine = create_engine(DATABASE_URL)
+# SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+# Base = declarative_base()
+
+# Base.metadata.create_all(bind=engine)
 
 # Cria o servidor
 app = fastapi.FastAPI()
@@ -28,6 +41,7 @@ app = fastapi.FastAPI()
 origins = [
     "http://localhost",
     "http://localhost:3000",
+    "http://localhost:8000",
 ]
 
 # Define as configurações do CORS
@@ -42,6 +56,14 @@ app.add_middleware(
 # Array de list de posições
 stored_positions = []
 
+# URL e Chave de acesso 
+url: str = "https://uucjxrxuwtulwesskirt.supabase.co"
+key: str = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1Y2p4cnh1d3R1bHdlc3NraXJ0Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY4NTY0NTk1MiwiZXhwIjoyMDAxMjIxOTUyfQ.d-_N-_88PmNh1vKtNEc_zZixnOoWKQpHw8ccD-t-cOw"
+supabase: Client = create_client(url, key)
+
+#Nome do bucket utilizado
+bucket_name: str = "Images"
+
 # Classe para representar posições nas rotas
 class Positions:
     def __init__(self, positions: List[Tuple[int, int]]):
@@ -54,15 +76,6 @@ class Positions:
 @app.get("/positions")
 def get_positions():
     return stored_positions
-
-# URL e Chave de acesso 
-url: str = "https://uucjxrxuwtulwesskirt.supabase.co"
-key: str = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InV1Y2p4cnh1d3R1bHdlc3NraXJ0Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY4NTY0NTk1MiwiZXhwIjoyMDAxMjIxOTUyfQ.d-_N-_88PmNh1vKtNEc_zZixnOoWKQpHw8ccD-t-cOw"
-supabase: Client = create_client(url, key)
-
-#Nome do bucket utilizado
-bucket_name: str = "Images"
-
 
 # Rota para retornar o comando ou a posição
 @app.get("/mission")
@@ -105,22 +118,9 @@ async def upload_image(image: bytes = fastapi.File(...)):
 
     return {"message": "Image uploaded successfully"}
 
-# @app.post("/upload-image")
-# async def upload_image(image: bytes = fastapi.File(...)): 
-#     print('bati')
-#     with open("uploaded_image.jpg", "wb") as file:
-#         file.write(image)
-#     print(get_yolo_results("uploaded_image.jpg"))
-
-#     return {"message": "Image uploaded successfully"}
-
 @app.get('/video')
 def video_feed(request:Request):
     return StreamingResponse(get_yolo_results(), media_type='multipart/x-mixed-replace; boundary=frame')
-
-@app.get("/hi")
-def hi():
-    return "hi"
 
 @app.get("/list")
 async def list():

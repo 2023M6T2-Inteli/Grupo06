@@ -20,19 +20,6 @@ from typing import List, Tuple
 import uvicorn 
 from yolo import get_yolo_results
 
-from database import Base
-from sqlalchemy import TIMESTAMP, Column, String, Boolean, create_engine, Integer, Date, Float
-from sqlalchemy.sql import func
-from fastapi_utils.guid_type import GUID, GUID_DEFAULT_SQLITE
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
-
-# DATABASE_URL = "sqlite://admin:Gerdaudb#1@db-gerdau.cfssllf0qlz6.us-east-1.rds.amazonaws.com/db-gerdau.db"
-# engine = create_engine(DATABASE_URL)
-# SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-# Base = declarative_base()
-
-# Base.metadata.create_all(bind=engine)
 
 # Cria o servidor
 app = fastapi.FastAPI()
@@ -41,7 +28,6 @@ app = fastapi.FastAPI()
 origins = [
     "http://localhost",
     "http://localhost:3000",
-    "http://localhost:8000",
 ]
 
 # Define as configurações do CORS
@@ -133,7 +119,6 @@ def upload(content: UploadFile = fastapi.File(...)):
     with open(f"./recebidos/imagem{time.time()}.png", 'wb') as f:
         dados = content.file.read()
         f.write(dados)
-        #pass
     return {"status": "ok"}
 
 @app.post("/images")

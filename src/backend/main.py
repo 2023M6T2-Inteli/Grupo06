@@ -1,11 +1,8 @@
 # CÓDIGO DO SERVIDOR
 
-# Este script cria o servidor e define três rotas para o controle da rota do
-# robô na simulação. É possível enviar o comando de formato (letra G ou quadrado) 
-# ou de ponto específico para onde o robô deve ir. Nesse sentido, duas rotas POST
-# são definidas para receber o formato ou a posição, e uma rota GET é definida para
-# retornar o comando ou a posição, dependendo do que foi enviado por último.
-
+# Este script cria o servidor e define rotas para o controle da trajetória do
+# robô na simulação e para a detecção de rachaduras em imagens. O envio de pontos
+# ainda não foi integrado com a nova navegação por Nav2.
 # Para executar o servidor, basta executar o comando "python main.py" no terminal
 
 # Importa bibliotecas
@@ -21,6 +18,7 @@ from supabase import create_client, Client
 import asyncio
 import aiofiles
 import time
+from typing import List, Tuple
 from yolo import get_yolo_results
 
 # Cria o servidor
@@ -41,20 +39,21 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Define as classes para o formato e a posição
-class Shape(pydantic.BaseModel):
-    shape: str
+# Array de list de posições
+stored_positions = []
 
-class Position(pydantic.BaseModel):
-    x: float
-    y: float
+# Classe para representar posições nas rotas
+class Positions:
+    def __init__(self, positions: List[Tuple[int, int]]):
+        self.positions = positions
 
-# Define as variáveis globais para o formato e a posição
-shape = Shape(shape='')
-point = Position(x=0.0, y=0.0)
+    def get_positions(self) -> List[Tuple[int, int]]:
+        return self.positions
 
-# Define a variável global para indicar se o comando enviado foi de formato ou posição
-is_shape = False
+# Retorna array de posições
+@app.get("/positions")
+def get_positions():
+    return stored_positions
 
 # URL e Chave de acesso 
 url: str = "https://uucjxrxuwtulwesskirt.supabase.co"
@@ -81,23 +80,30 @@ def get_mission():
         global point
         return point
 
-# Rotas para receber o comando de formato 
-@app.post("/shape")
-def set_shape(_shape: Shape):
-    global is_shape
-    is_shape = True
+    # Verifica se o array de posições já está cheio
+    if len(stored_positions) == 4:
+        raise fastapi.HTTPException(status_code=400, detail="Positions array is full")
+    
+    stored_positions.append(positions.positions)
+    return {"message": "Positions added successfully"}
 
-    global shape
-    shape = _shape
+# Deleta posições
+@app.delete("/positions")
+def clear_positions():
+    stored_positions.clear()
+    return {"message": "Positions cleared successfully"}
 
-# Rota para receber o comando de posição
-@app.post("/position")
-def set_position(_position: Position):
-    global is_shape
-    is_shape = False
+# Rota para enviar imagem para detecção de rachaduras
+@app.post("/upload-image")
+async def upload_image(image: bytes = fastapi.File(...)): 
+    # Salva imagem
+    with open("uploaded_image.jpg", "wb") as file:
+        file.write(image)
 
-    global point
-    point = _position
+    # Printa resultados
+    print(get_yolo_results("uploaded_image.jpg"))
+
+    return {"message": "Image uploaded successfully"}
 
 # @app.post("/upload-image")
 # async def upload_image(image: bytes = fastapi.File(...)): 

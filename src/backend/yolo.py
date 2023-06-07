@@ -30,3 +30,18 @@ def get_yolo_results():
             b'--frame\r\n'
             b'Content-Type: image/jpeg\r\n\r\n' + frame_bytes + b'\r\n\r\n'
         )
+
+
+# Função que mostra resultados graficamente e também retorna os resultados em string
+def get_yolo_results2(img):
+
+    imagem = cv2.imread(img)
+    results = model(imagem)
+    annotated_frame = results[0].plot()
+
+    cv2.imshow("YOLOv8 Inference", annotated_frame)
+
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
+    
+    return results

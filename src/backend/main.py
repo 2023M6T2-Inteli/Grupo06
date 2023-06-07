@@ -79,34 +79,94 @@ async def upload_image(image: bytes = fastapi.File(...)):
 
 #---------------------- 
 from fastapi import FastAPI, APIRouter, status
+import models, report
+from database import engine, get_db
+import schemas
+from sqlalchemy.orm import Session
+from fastapi import Depends, HTTPException, status, APIRouter, Response
 
 # app = FastAPI()
 router = APIRouter()
+# create base
+models.Base.metadata.create_all(bind=engine)
 
 
+# @router.get('/')
+# def get_reports():
+#     return "return a list of all reports"
+
+# retorna todos os reports
 @router.get('/')
-def get_reports():
-    return "return a list of scout routes"
+def get_reports(db: Session = Depends(get_db)):#, limit: int = 10, search: str = '1'):
+    reports = db.query(models.Report).filter(
+        models.Report.id).all()
+    return {'status': 'success', 'results': len(reports), 'reports': reports}
 
 
+# @router.post('/', status_code=status.HTTP_201_CREATED)
+# def create_report():
+#     return "create report"
+
+# Cria um novo report
 @router.post('/', status_code=status.HTTP_201_CREATED)
-def create_report():
-    return "create report"
+def create_report(payload: schemas.ReportBaseSchema, db: Session = Depends(get_db)):
+    new_report = models.Report(**payload.dict())
+    db.add(new_report)
+    db.commit()
+    db.refresh(new_report)
+    return {"status": "success", "report": new_report}
 
 
+# @router.patch('/{reportId}')
+# def update_report(reportId: str):
+#     return f"update scout with id {reportId}"
+
+# Edita um report já existente
 @router.patch('/{reportId}')
-def update_report(reportId: str):
-    return f"update scout with id {reportId}"
+def update_report(reportId: str, payload: schemas.ReportBaseSchema, db: Session = Depends(get_db)):
+    report_query = db.query(models.Report).filter(models.Report.id == reportId)
+    db_report = report_query.first()
+
+    if not db_report:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f'No note with this id: {reportId} found')
+    update_data = payload.dict(exclude_unset=True)
+    report_query.filter(models.Report.id == reportId).update(update_data,
+                                                       synchronize_session=False)
+    db.commit()
+    db.refresh(db_report)
+    return {"status": "success", "report": db_report}
 
 
+# @router.get('/{reportId}')
+# def get_report(reportId: str):
+#     return f"get scout route with id {reportId}"
+
+# Retorna o reporte pela id
 @router.get('/{reportId}')
-def get_report(reportId: str):
-    return f"get scout route with id {reportId}"
+def get_post(reportId: str, db: Session = Depends(get_db)):
+    report = db.query(models.Report).filter(models.Report.id == reportId).first()
+    if not report:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f"No note with this id: {id} found")
+    return {"status": "success", "report": report}
 
 
+# @router.delete('/{reportId}')
+# def delete_report(reportId: str):
+#     return f"delete scout route with id {reportId}"
+
+# Deleta um report por id
 @router.delete('/{reportId}')
-def delete_report(reportId: str):
-    return f"delete scout route with id {reportId}"
+def delete_post(reportId: str, db: Session = Depends(get_db)):
+    report_query = db.query(models.Report).filter(models.Report.id == reportId)
+    report = report_query.first()
+    if not report:
+        raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
+                            detail=f'No note with this id: {id} found')
+    report_query.delete(synchronize_session=False)
+    db.commit()
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
 
 
 app.include_router(router, tags=['Reports'], prefix='/api/report')

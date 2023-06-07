@@ -4,11 +4,11 @@ from pydantic import BaseModel
 
 
 class ReportBaseSchema(BaseModel):
-    id: str | None = None
+    id: int | None = None
     projectName: str
     typePlace: int
     operator: str | None = None
-    date: datetime
+    date: datetime | None = None
     gasLevel1: float
     gasLevel2: float
     createdAt: datetime | None = None
@@ -23,5 +23,5 @@ class ReportBaseSchema(BaseModel):
 class ListReportResponse(BaseModel):
     status: str
     results: int
-    notes: List[ReportBaseSchema]
+    report: List[ReportBaseSchema]
 

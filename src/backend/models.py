@@ -1,20 +1,21 @@
-from .database import Base
-from sqlalchemy import TIMESTAMP, Column, String, Boolean
+from database import Base
+from sqlalchemy import TIMESTAMP, Column, String, Integer, Float, Boolean
 from sqlalchemy.sql import func
-from fastapi_utils.guid_type import GUID, GUID_DEFAULT_SQLITE
+# from fastapi_utils.guid_type import GUID, GUID_DEFAULT_SQLITE
+from uuid import UUID
 
 
 class Report(Base):
-    __tablename__ = 'Report'
-    id = Column(GUID, primary_key=True, default=GUID_DEFAULT_SQLITE)
+    __tablename__ = 'report'
+    id = Column(Integer, primary_key=True)
     projectName = Column(String, nullable=False)
-    typePlace = Column(int, nullable=False)
-    operator = Column(String, nullable=False)
-    date = Column(String, nullable=False)
-    gasLevel1 = Column(float, nullable=False, default=True)
-    gasLevel2 = Column(float, nullable=False, default=True)
+    typePlace = Column(Integer)
+    operator = Column(String)
+    date = Column(TIMESTAMP)
+    gasLevel1 = Column(Float)
+    gasLevel2 = Column(Float)
     createdAt = Column(TIMESTAMP(timezone=True),
-                       nullable=False, server_default=func.now())
+                       server_default=func.now())
     updatedAt = Column(TIMESTAMP(timezone=True),
                        default=None, onupdate=func.now())
 

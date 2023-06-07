@@ -1,15 +1,16 @@
-from . import schemas, models
+from datetime import datetime
+import schemas, models
 from sqlalchemy.orm import Session
 from fastapi import Depends, HTTPException, status, APIRouter, Response
-from .database import get_db
+from database import get_db
 
 router = APIRouter()
 
 # retorna todos os reports
 @router.get('/')
 def get_reports(db: Session = Depends(get_db), limit: int = 10, search: str = ''):
-    reports = db.query(models.Note).filter(
-        models.Note.title.contains(search)).limit(limit).all()
+    reports = db.query(models.Report).filter(
+        models.Report.title.contains(search)).limit(limit).all()
     return {'status': 'success', 'results': len(reports), 'reports': reports}
 
 # Cria um novo report
@@ -35,7 +36,7 @@ def update_report(reportId: str, payload: schemas.ReportBaseSchema, db: Session 
                                                        synchronize_session=False)
     db.commit()
     db.refresh(db_report)
-    return {"status": "success", "note": db_report}
+    return {"status": "success", "report": db_report}
 
 # Retorna o reporte pela id
 @router.get('/{reportId}')

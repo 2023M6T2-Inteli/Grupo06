@@ -58,15 +58,15 @@ def get_positions():
     return stored_positions
 
 # Adiciona array de posições
-# @app.post("/positions")
-# def add_positions(positions: Positions):
+@app.post("/positions")
+def add_positions(positions: Positions):
 
-#     # Verifica se o array de posições já está cheio
-#     if len(stored_positions) == 4:
-#         raise fastapi.HTTPException(status_code=400, detail="Positions array is full")
+    # Verifica se o array de posições já está cheio
+    if len(stored_positions) == 4:
+        raise fastapi.HTTPException(status_code=400, detail="Positions array is full")
     
-#     stored_positions.append(positions.positions)
-#     return {"message": "Positions added successfully"}
+    stored_positions.append(positions.positions)
+    return {"message": "Positions added successfully"}
 
 # Deleta posições
 @app.delete("/positions")

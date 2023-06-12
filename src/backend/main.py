@@ -82,7 +82,7 @@ async def upload_image(image: bytes = fastapi.File(...)):
         file.write(image)
 
     # Printa resultados
-    # print(get_yolo_results("uploaded_image.jpg"))
+    print(get_yolo_results("uploaded_image.jpg"))
 
     return {"message": "Image uploaded successfully"}
 

@@ -20,6 +20,16 @@ from typing import List, Tuple
 import uvicorn 
 from yolo import get_yolo_results
 
+<<<<<<< HEAD
+=======
+# from database import Base
+# from sqlalchemy import TIMESTAMP, Column, String, Boolean, create_engine, Integer, Date, Float
+# from sqlalchemy.sql import func
+# from fastapi_utils.guid_type import GUID, GUID_DEFAULT_SQLITE
+# from sqlalchemy.ext.declarative import declarative_base
+# from sqlalchemy.orm import sessionmaker
+
+>>>>>>> b7af20a6dd910b75d888ad8fbc424460e0bdbdca
 # Cria o servidor
 app = fastapi.FastAPI()
 

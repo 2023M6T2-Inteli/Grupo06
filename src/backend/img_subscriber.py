@@ -51,8 +51,11 @@ class ImageSubscriber(Node):
     # Convert the frame to a byte array
     _, img_encoded = cv2.imencode('.png', annotated_frame)
     frame_data = img_encoded.tobytes()
+
     import requests
-    url = "http://127.0.0.1:3000/upload"
+
+    # Teste porco
+    url = "http://localhost:3000/upload"
     files=[
       ('content',('lala.png',frame_data,'image/png'))
     ]

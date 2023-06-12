@@ -1,35 +1,28 @@
 # CÓDIGO DO SERVIDOR
-# Este script cria o servidor e define rotas para o controle da trajetória do
-# robô na simulação e para a detecção de rachaduras em imagens. O envio de pontos
-# ainda não foi integrado com a nova navegação por Nav2.
 # Para executar o servidor, basta executar o comando "python main.py" no terminal
 
 # Importa bibliotecas - Em ordem alfabética 
 import asyncio
-import aiofiles
 import cv2
 import fastapi
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi import FastAPI, File, UploadFile, Request, Body
-from fastapi.responses import FileResponse, StreamingResponse
 import os
 import pydantic
+import pymysql
+import uvicorn
+import aiofiles
+from fastapi import FastAPI, File, UploadFile, Request, Body, APIRouter, status, Depends, HTTPException, Response
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse, StreamingResponse
+from sqlalchemy.orm import Session
+from sqlalchemy import create_engine
 from supabase import create_client, Client
-import time
 from typing import List, Tuple
-import uvicorn 
-from yolo import get_yolo_results
+import time
+import models
+import report
+import schemas
+from database import engine, get_db
 
-<<<<<<< HEAD
-=======
-# from database import Base
-# from sqlalchemy import TIMESTAMP, Column, String, Boolean, create_engine, Integer, Date, Float
-# from sqlalchemy.sql import func
-# from fastapi_utils.guid_type import GUID, GUID_DEFAULT_SQLITE
-# from sqlalchemy.ext.declarative import declarative_base
-# from sqlalchemy.orm import sessionmaker
-
->>>>>>> b7af20a6dd910b75d888ad8fbc424460e0bdbdca
 # Cria o servidor
 app = fastapi.FastAPI()
 
@@ -75,6 +68,7 @@ class Positions:
 def get_positions():
     return stored_positions
 
+
 # Rota para retornar o comando ou a posição
 @app.get("/mission")
 def get_mission():
@@ -91,12 +85,16 @@ def get_mission():
         global point
         return point
 
-    # Verifica se o array de posições já está cheio
-    if len(stored_positions) == 4:
-        raise fastapi.HTTPException(status_code=400, detail="Positions array is full")
+# Adiciona array de posições
+# @app.post("/positions")
+# def add_positions(positions: Positions):
+
+#     # Verifica se o array de posições já está cheio
+#     if len(stored_positions) == 4:
+#         raise fastapi.HTTPException(status_code=400, detail="Positions array is full")
     
-    stored_positions.append(positions.positions)
-    return {"message": "Positions added successfully"}
+#     stored_positions.append(positions.positions)
+#     return {"message": "Positions added successfully"}
 
 # Deleta posições
 @app.delete("/positions")
@@ -202,7 +200,6 @@ def delete_post(reportId: str, db: Session = Depends(get_db)):
 
 # inclui um novo router '/api/report'
 app.include_router(router, tags=['Reports'], prefix='/api/report')
-
 
 # Executa o servidor
 if __name__ == "__main__":

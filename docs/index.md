@@ -681,15 +681,12 @@ Faz o upload de todas as imagens presentes em uma pasta no bucket do Supabase.
 - Conteúdo: Mensagem de sucesso
 
 
-### Rota `/`
+### Rota `/api/report/`
 
 Retorna todos os relatórios existentes.
 
 #### Método
 `GET`
-
-#### URL
-`/`
 
 #### Parâmetros da Requisição
 - `db` (opcional): Conexão com o banco de dados (Session)
@@ -702,15 +699,12 @@ Retorna todos os relatórios existentes.
   - `reports`: Array contendo os relatórios encontrados
 
 
-### Rota `/`
+### Rota `/api/report/`
 
 Cria um novo relatório.
 
 #### Método
 `POST`
-
-#### URL
-`/`
 
 #### Parâmetros da Requisição
 - `payload`: Dados do relatório a ser criado (schemas.ReportBaseSchema)
@@ -723,15 +717,12 @@ Cria um novo relatório.
   - `report`: Relatório recém-criado
 
 
-### Rota `/{reportId}`
+### Rota `/api/report/{reportId}`
 
 Edita um relatório existente.
 
 #### Método
 `PATCH`
-
-#### URL
-`/{reportId}`
 
 #### Parâmetros da Requisição
 - `reportId`: ID do relatório a ser editado (str)
@@ -745,15 +736,12 @@ Edita um relatório existente.
   - `report`: Relatório atualizado
 
 
-### Rota `/{reportId}`
+### Rota `/api/report/{reportId}`
 
 Retorna um relatório específico com base no ID.
 
 #### Método
 `GET`
-
-#### URL
-`/{reportId}`
 
 #### Parâmetros da Requisição
 - `reportId`: ID do relatório a ser retornado (str)
@@ -766,15 +754,12 @@ Retorna um relatório específico com base no ID.
   - `report`: Relatório encontrado
 
 
-### Rota `/{reportId}`
+### Rota `/api/report/{reportId}`
 
 Deleta um relatório com base no ID.
 
 #### Método
 `DELETE`
-
-#### URL
-`/{reportId}`
 
 #### Parâmetros da Requisição
 - `reportId`: ID do relatório a ser deletado (str)

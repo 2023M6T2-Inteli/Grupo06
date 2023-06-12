@@ -36,15 +36,55 @@ Compatibilidade com sistemas operacionais: [Inserir sistemas operacionais compat
 
 ### Guia de Montagem e Inicialização do Sistema
 
-**Para o robô**
+#### Para o robô
+1. Abertura do Robô:
+
+Antes de iniciar a instalação, abra o robô Donatello com cuidado, removendo a tampa ou qualquer outra proteção que possa estar no local. Certifique-se de tomar as precauções necessárias para evitar danos ao equipamento durante esse processo.
+
+2. Verificação do Cartão SD:
+
+O robô Donatello já vem com um cartão SD contendo o sistema operacional Ubuntu 22.04 devidamente instalado, juntamente com o ROS2, o LiDAR e o Nav2. Antes de prosseguir com a instalação, verifique se o cartão SD está corretamente inserido no Raspberry Pi do robô.
+
+3. Conectando-se ao Raspberry Pi: 
+Existem duas alternativas para se conectar ao Raspberry Pi do Donatello:
+
+a) Conexão utilizando mouse, teclado e monitor:
+- Conecte um mouse, um teclado e um monitor ao Raspberry Pi do robô Donatello.
+- Ligue o robô e aguarde até que o sistema operacional seja inicializado.
+- Utilize o mouse e o teclado para interagir com o sistema operacional.
+
+b) Conexão utilizando SSH para uma solução headless:
+
+- Abra um terminal em seu computador.
+- Para se conectar ao Raspberry Pi por SSH, utilize o endereço IP local ou o hostname do Raspberry Pi.
+- No terminal, execute o seguinte comando:
+
+```
+ssh <usuário>@<hostname-pi>
+
+```
+
+Substitua <usuário> pelo nome de usuário configurado no Raspberry Pi e <hostname-pi> pelo nome do hostname configurado. Caso esteja executando o comando em um sistema Linux, verifique se o avahi-daemon está instalado e em execução. Para sistemas WSL (Windows Subsystem for Linux), utilize uma versão modificada do comando acima:
+
+```
+ssh <usuário>@<hostname-pi>.local
+
+```
+
+Se tudo ocorrer corretamente, você receberá uma mensagem perguntando se deseja adicionar o hostname à lista de hosts conhecidos.
+Insira a senha correspondente ao usuário configurado no Raspberry Pi e você terá acesso ao terminal do Raspberry Pi.
+Observação: Neste manual, daremos enfoque à solução headless utilizando SSH para a conexão com o Raspberry Pi.
 
 **Para a simulação**
+
 
 **Para o modelo de AI**
 
 ### Instruções operacionais
 
 **Movimentação manual do robô**
+
+
 
 **Mapeamento de ambiente**
 

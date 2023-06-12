@@ -105,14 +105,6 @@ async def upload_image(image: bytes = fastapi.File(...)):
 
     return {"message": "Image uploaded successfully"}
 
-# @app.post("/upload-image")
-# async def upload_image(image: bytes = fastapi.File(...)): 
-#     print('bati')
-#     with open("uploaded_image.jpg", "wb") as file:
-#         file.write(image)
-#     print(get_yolo_results("uploaded_image.jpg"))
-
-#     return {"message": "Image uploaded successfully"}
 
 @app.get('/video')
 def video_feed(request:Request):

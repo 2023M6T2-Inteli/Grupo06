@@ -558,6 +558,122 @@ Nesta sprint, começamos implementando a tela principal, de monitoramento, para 
 5. Aguarde alguns instantes até que o servidor esteja pronto e acesse o endereço http://localhost:3000 no seu navegador.
 6. A interface deverá ser exibida no seu navegador, permitindo que você visualize e interaja com a aplicação.
 
+
+## Backend 
+
+Estruturamos nosso backend por meio do FastAPI, contido em um arquivo principal que inicia nosso servidor `main.py`. Ao acionar o servidor temos acesso a rotas que permitem o registro de imagens e conexões tanto com o banco de dados quanto com os registros de imagens e frames analisados por meio da visão computacional ja descrita anteriormente. 
+Abaixo temos uma descrição de cada uma das APIs desenvolvidas, as informações necessárias e suas rotas de acesso. 
+
+## APIs e Rotas 
+
+### Rota `/positions`
+
+Retorna um array de posições.
+
+#### Método
+`GET`
+
+#### URL
+`/positions`
+
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo: Array de posições armazenadas
+
+### Rota `/mission`
+
+Retorna o comando ou a posição.
+
+#### Método
+`GET`
+
+#### URL
+`/mission`
+
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo: Comando ou posição atual
+
+### Rota `/upload-image`
+
+Envia todas as imagens de detecção de rachaduras para uma pasta de armazenamento local no dispositivo.
+
+#### Método
+`POST`
+
+#### URL
+`/upload-image`
+
+#### Parâmetros da Requisição
+- `image`: Arquivo de imagem (bytes)
+
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo: Mensagem de sucesso
+
+### Rota `/video`
+
+Retorna um fluxo de vídeo com os resultados da detecção de rachaduras.
+
+#### Método
+`GET`
+
+#### URL
+`/video`
+
+#### Parâmetros da Requisição
+- `request`: Objeto de solicitação
+
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo: Fluxo de vídeo com resultados da detecção
+
+### Rota `/list`
+
+Lista todas as imagens do bucket hospedado na plataforma SupaBase.
+
+#### Método
+`GET`
+
+#### URL
+`/list`
+
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo: Lista de imagens do bucket
+
+### Rota `/upload`
+
+Faz o upload de um arquivo.
+
+#### Método
+`POST`
+
+#### URL
+`/upload`
+
+#### Parâmetros da Requisição
+- `content`: Arquivo a ser enviado (UploadFile)
+
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo: Status "ok"
+
+### Rota `/images`
+
+Faz o upload de todas as imagens presentes em uma pasta no bucket do Supabase.
+
+#### Método
+`POST`
+
+#### URL
+`/images`
+
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo: Mensagem de sucesso
+
+
 # Referências
 
 How much does an AGV cost? Disponível em: <https://www.flexqube.com/news/how-much-does-an-agv-cost/#:~:text=Based%20on%20the%20main%20product>.

@@ -681,6 +681,109 @@ Faz o upload de todas as imagens presentes em uma pasta no bucket do Supabase.
 - Conteúdo: Mensagem de sucesso
 
 
+### Rota `/`
+
+Retorna todos os relatórios existentes.
+
+#### Método
+`GET`
+
+#### URL
+`/`
+
+#### Parâmetros da Requisição
+- `db` (opcional): Conexão com o banco de dados (Session)
+
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo: 
+  - `status`: "success"
+  - `results`: Número de relatórios encontrados
+  - `reports`: Array contendo os relatórios encontrados
+
+
+### Rota `/`
+
+Cria um novo relatório.
+
+#### Método
+`POST`
+
+#### URL
+`/`
+
+#### Parâmetros da Requisição
+- `payload`: Dados do relatório a ser criado (schemas.ReportBaseSchema)
+- `db` (opcional): Conexão com o banco de dados (Session)
+
+#### Resposta de Sucesso
+- Código: `201 Created`
+- Conteúdo:
+  - `status`: "success"
+  - `report`: Relatório recém-criado
+
+
+### Rota `/{reportId}`
+
+Edita um relatório existente.
+
+#### Método
+`PATCH`
+
+#### URL
+`/{reportId}`
+
+#### Parâmetros da Requisição
+- `reportId`: ID do relatório a ser editado (str)
+- `payload`: Dados do relatório a serem atualizados (schemas.ReportBaseSchema)
+- `db` (opcional): Conexão com o banco de dados (Session)
+
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo:
+  - `status`: "success"
+  - `report`: Relatório atualizado
+
+
+### Rota `/{reportId}`
+
+Retorna um relatório específico com base no ID.
+
+#### Método
+`GET`
+
+#### URL
+`/{reportId}`
+
+#### Parâmetros da Requisição
+- `reportId`: ID do relatório a ser retornado (str)
+- `db` (opcional): Conexão com o banco de dados (Session)
+
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo:
+  - `status`: "success"
+  - `report`: Relatório encontrado
+
+
+### Rota `/{reportId}`
+
+Deleta um relatório com base no ID.
+
+#### Método
+`DELETE`
+
+#### URL
+`/{reportId}`
+
+#### Parâmetros da Requisição
+- `reportId`: ID do relatório a ser deletado (str)
+- `db` (opcional): Conexão com o banco de dados (Session)
+
+#### Resposta de Sucesso
+- Código: `204 No Content`
+
+
 # Referências
 
 How much does an AGV cost? Disponível em: <https://www.flexqube.com/news/how-much-does-an-agv-cost/#:~:text=Based%20on%20the%20main%20product>.

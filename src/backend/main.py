@@ -12,13 +12,15 @@ import pydantic
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Tuple
 from yolo import get_yolo_results
-
-from fastapi import FastAPI, APIRouter, status
+from fastapi import FastAPI, APIRouter, status, Depends, HTTPException, status, APIRouter, Response
 import models, report
 from database import engine, get_db
 import schemas
 from sqlalchemy.orm import Session
-from fastapi import Depends, HTTPException, status, APIRouter, Response
+from sqlalchemy import create_engine
+import mysql.connector
+import pymysql
+
 
 # Cria o servidor
 app = fastapi.FastAPI()
@@ -58,15 +60,15 @@ def get_positions():
     return stored_positions
 
 # Adiciona array de posições
-@app.post("/positions")
-def add_positions(positions: Positions):
+# @app.post("/positions")
+# def add_positions(positions: Positions):
 
-    # Verifica se o array de posições já está cheio
-    if len(stored_positions) == 4:
-        raise fastapi.HTTPException(status_code=400, detail="Positions array is full")
+#     # Verifica se o array de posições já está cheio
+#     if len(stored_positions) == 4:
+#         raise fastapi.HTTPException(status_code=400, detail="Positions array is full")
     
-    stored_positions.append(positions.positions)
-    return {"message": "Positions added successfully"}
+#     stored_positions.append(positions.positions)
+#     return {"message": "Positions added successfully"}
 
 # Deleta posições
 @app.delete("/positions")
@@ -145,7 +147,6 @@ def delete_post(reportId: str, db: Session = Depends(get_db)):
 
 # inclui um novo router '/api/report'
 app.include_router(router, tags=['Reports'], prefix='/api/report')
-
 
 # Executa o servidor
 if __name__ == "__main__":

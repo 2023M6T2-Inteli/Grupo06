@@ -1,5 +1,4 @@
 # Schemas são usados pelo sqlalchemy para o entendimento dos tipos de dados manuseados pelo python e tradução para os diferentes bancos de dados
-
 from datetime import datetime
 from typing import List
 from pydantic import BaseModel
@@ -13,6 +12,8 @@ class ReportBaseSchema(BaseModel):
     date: datetime | None = None
     gasLevel1: float
     gasLevel2: float
+    gasLevel4: float
+    gasLevel4: float
     createdAt: datetime | None = None
     updatedAt: datetime | None = None
 

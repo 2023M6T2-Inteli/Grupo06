@@ -1,11 +1,12 @@
+# import da classe 'Base' 
 from database import Base
 from sqlalchemy import TIMESTAMP, Column, String, Integer, Float, Boolean
 from sqlalchemy.sql import func
-# from fastapi_utils.guid_type import GUID, GUID_DEFAULT_SQLITE
 from uuid import UUID
 
-
+# Classe report que contem definição de chave-primaria, nome e tipo das colunas da tabela
 class Report(Base):
+    # define 'report' como nome da tabela
     __tablename__ = 'report'
     id = Column(Integer, primary_key=True)
     projectName = Column(String, nullable=False)

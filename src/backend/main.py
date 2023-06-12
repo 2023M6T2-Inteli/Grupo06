@@ -11,10 +11,20 @@ import uvicorn
 import pydantic
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List, Tuple
-# from yolo import get_yolo_results
+from yolo import get_yolo_results
+
+from fastapi import FastAPI, APIRouter, status
+import models, report
+from database import engine, get_db
+import schemas
+from sqlalchemy.orm import Session
+from fastapi import Depends, HTTPException, status, APIRouter, Response
 
 # Cria o servidor
 app = fastapi.FastAPI()
+
+# Define a variavel como a rota da api
+router = APIRouter()
 
 # Define as origens permitidas para o servidor
 origins = [
@@ -77,23 +87,8 @@ async def upload_image(image: bytes = fastapi.File(...)):
     return {"message": "Image uploaded successfully"}
 
 
-#---------------------- 
-from fastapi import FastAPI, APIRouter, status
-import models, report
-from database import engine, get_db
-import schemas
-from sqlalchemy.orm import Session
-from fastapi import Depends, HTTPException, status, APIRouter, Response
-
-# app = FastAPI()
-router = APIRouter()
-# create base
+# Cria a tabela e o banco de dados
 models.Base.metadata.create_all(bind=engine)
-
-
-# @router.get('/')
-# def get_reports():
-#     return "return a list of all reports"
 
 # retorna todos os reports
 @router.get('/')
@@ -101,11 +96,6 @@ def get_reports(db: Session = Depends(get_db)):#, limit: int = 10, search: str =
     reports = db.query(models.Report).filter(
         models.Report.id).all()
     return {'status': 'success', 'results': len(reports), 'reports': reports}
-
-
-# @router.post('/', status_code=status.HTTP_201_CREATED)
-# def create_report():
-#     return "create report"
 
 # Cria um novo report
 @router.post('/', status_code=status.HTTP_201_CREATED)
@@ -115,11 +105,6 @@ def create_report(payload: schemas.ReportBaseSchema, db: Session = Depends(get_d
     db.commit()
     db.refresh(new_report)
     return {"status": "success", "report": new_report}
-
-
-# @router.patch('/{reportId}')
-# def update_report(reportId: str):
-#     return f"update scout with id {reportId}"
 
 # Edita um report já existente
 @router.patch('/{reportId}')
@@ -137,11 +122,6 @@ def update_report(reportId: str, payload: schemas.ReportBaseSchema, db: Session 
     db.refresh(db_report)
     return {"status": "success", "report": db_report}
 
-
-# @router.get('/{reportId}')
-# def get_report(reportId: str):
-#     return f"get scout route with id {reportId}"
-
 # Retorna o reporte pela id
 @router.get('/{reportId}')
 def get_post(reportId: str, db: Session = Depends(get_db)):
@@ -150,11 +130,6 @@ def get_post(reportId: str, db: Session = Depends(get_db)):
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail=f"No note with this id: {id} found")
     return {"status": "success", "report": report}
-
-
-# @router.delete('/{reportId}')
-# def delete_report(reportId: str):
-#     return f"delete scout route with id {reportId}"
 
 # Deleta um report por id
 @router.delete('/{reportId}')
@@ -168,18 +143,8 @@ def delete_post(reportId: str, db: Session = Depends(get_db)):
     db.commit()
     return Response(status_code=status.HTTP_204_NO_CONTENT)
 
-
+# inclui um novo router '/api/report'
 app.include_router(router, tags=['Reports'], prefix='/api/report')
-
-
-@app.get("/api/healthchecker")
-def root():
-    return {"message": "Welcome to FastAPI with SQLAlchemy"}
-
-
-
-#----------------------
-
 
 
 # Executa o servidor

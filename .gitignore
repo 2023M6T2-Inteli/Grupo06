@@ -39,4 +39,5 @@ src/backend/bin
 # Venv
 src/backend/venv
 src/simulation/venv
+venv/
 ```

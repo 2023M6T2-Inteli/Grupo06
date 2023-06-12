@@ -20,7 +20,6 @@ from typing import List, Tuple
 import uvicorn 
 from yolo import get_yolo_results
 
-
 # Cria o servidor
 app = fastapi.FastAPI()
 
@@ -121,9 +120,10 @@ def upload(content: UploadFile = fastapi.File(...)):
         f.write(dados)
     return {"status": "ok"}
 
+list_files = os.listdir("./recebidos")
+
 @app.post("/images")
-def images():
-    list_files = os.listdir("./recebidos")
+def images():  
     # Rota da imagem local para ser feito o upload (no meu caso esta na pasta mock e é a imagem "lala.png")
     for arquivo in list_files:
         with open(os.path.join("./recebidos", arquivo), 'rb+') as f:

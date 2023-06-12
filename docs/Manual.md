@@ -26,11 +26,27 @@ Compatibilidade com sistemas operacionais: [Inserir sistemas operacionais compat
 
 ### Guia de Montagem e Inicialização do Sistema
 
-**Para o robô:**
+**Para o robô**
 
-**Para a simulação:**
+**Para a simulação**
+
+**Para o modelo de AI**
 
 ### Instruções operacionais
 
 **Movimentação manual do robô**
+
+**Mapeamento de ambiente**
+
+**Movimentação em mapa**
+
+**Checagem de outputs do AI**
+
+### Considerações de segurança
+
+**Riscos operacionais**
+
+**Adequação do local**
+
+**Guia de prevenção**
 

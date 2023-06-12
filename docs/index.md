@@ -561,8 +561,15 @@ Nesta sprint, começamos implementando a tela principal, de monitoramento, para 
 
 ## Backend 
 
-Estruturamos nosso backend por meio do FastAPI, contido em um arquivo principal que inicia nosso servidor `main.py`. Ao acionar o servidor temos acesso a rotas que permitem o registro de imagens e conexões tanto com o banco de dados quanto com os registros de imagens e frames analisados por meio da visão computacional ja descrita anteriormente. 
-Abaixo temos uma descrição de cada uma das APIs desenvolvidas, as informações necessárias e suas rotas de acesso. 
+Estruturamos nosso backend utilizando o framework FastAPI, que nos permite criar APIs de forma rápida e eficiente. Todo o código está contido em um arquivo principal chamado main.py, que é responsável por iniciar o servidor.
+
+Ao iniciar o servidor, temos acesso a várias rotas (ou endpoints) que nos permitem realizar diferentes operações. Essas rotas foram desenvolvidas para lidar com o registro de imagens, interação com o banco de dados e acesso aos registros de imagens e frames analisados por meio da visão computacional previamente implementada.
+
+Uma das APIs principais é responsável por enviar as imagens analisadas pelo YoloV8 para o Supabase, um bucket online utilizado para armazenar e gerenciar os arquivos. Essa API permite que as imagens sejam enviadas ao Supabase para fins de armazenamento seguro e posterior recuperação, se necessário.
+
+A seguir, fornecemos uma descrição detalhada de cada uma das APIs desenvolvidas, juntamente com as informações necessárias para utilizá-las e suas rotas de acesso correspondentes.
+
+Essa descrição visa fornecer um entendimento claro das funcionalidades e capacidades do backend, permitindo que os desenvolvedores possam interagir com as APIs de forma adequada e eficaz, inclusive utilizando a API para envio de imagens ao Supabase.
 
 ## APIs e Rotas 
 

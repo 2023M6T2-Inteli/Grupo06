@@ -100,7 +100,7 @@ O uso de uma matriz de risco é essencial para documentar as estratégias de ger
 15. Mapeamento bem-sucedido como adicional ao projeto
 16. Impossibilidade de instalar as referências necessárias nos espaços confinados para corrigir a trajetória do robô
 17. Conscientização, por parte do nosso grupo, da relevância da segurança para a continuidade de processo e ganhos em produtividade
-18. Integração da solução com nova tecnologia 5g
+18. Integração da solução com nova tecnologia 5G
 19. Aumento significativo para o objetivo de risco zero
 20. Melhoria no planejamento de inspeções
 21. Redução do tempo de inspeção

@@ -558,6 +558,129 @@ Nesta sprint, começamos implementando a tela principal, de monitoramento, para 
 5. Aguarde alguns instantes até que o servidor esteja pronto e acesse o endereço http://localhost:3000 no seu navegador.
 6. A interface deverá ser exibida no seu navegador, permitindo que você visualize e interaja com a aplicação.
 
+
+## Backend 
+
+Estruturamos nosso backend utilizando o framework FastAPI, que nos permite criar APIs de forma rápida e eficiente. Todo o código está contido em um arquivo principal chamado main.py, que é responsável por iniciar o servidor.
+
+Ao iniciar o servidor, temos acesso a várias rotas (ou endpoints) que nos permitem realizar diferentes operações. Essas rotas foram desenvolvidas para lidar com o registro de imagens, interação com o banco de dados e acesso aos registros de imagens e frames analisados por meio da visão computacional previamente implementada.
+
+Uma das APIs principais é responsável por enviar as imagens analisadas pelo YoloV8 para o Supabase, um bucket online utilizado para armazenar e gerenciar os arquivos. Essa API permite que as imagens sejam enviadas ao Supabase para fins de armazenamento seguro e posterior recuperação, se necessário.
+
+A seguir, fornecemos uma descrição detalhada de cada uma das APIs desenvolvidas, juntamente com as informações necessárias para utilizá-las e suas rotas de acesso correspondentes.
+
+Essa descrição visa fornecer um entendimento claro das funcionalidades e capacidades do backend, permitindo que os desenvolvedores possam interagir com as APIs de forma adequada e eficaz, inclusive utilizando a API para envio de imagens ao Supabase.
+
+## APIs e Rotas 
+
+### Rota `/positions`
+
+Retorna um array de posições.
+
+#### Método
+`GET`
+
+#### URL
+`/positions`
+
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo: Array de posições armazenadas
+
+### Rota `/mission`
+
+Retorna o comando ou a posição.
+
+#### Método
+`GET`
+
+#### URL
+`/mission`
+
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo: Comando ou posição atual
+
+### Rota `/upload-image`
+
+Envia todas as imagens de detecção de rachaduras para uma pasta de armazenamento local no dispositivo.
+
+#### Método
+`POST`
+
+#### URL
+`/upload-image`
+
+#### Parâmetros da Requisição
+- `image`: Arquivo de imagem (bytes)
+
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo: Mensagem de sucesso
+
+### Rota `/video`
+
+Retorna um fluxo de vídeo com os resultados da detecção de rachaduras.
+
+#### Método
+`GET`
+
+#### URL
+`/video`
+
+#### Parâmetros da Requisição
+- `request`: Objeto de solicitação
+
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo: Fluxo de vídeo com resultados da detecção
+
+### Rota `/list`
+
+Lista todas as imagens do bucket hospedado na plataforma SupaBase.
+
+#### Método
+`GET`
+
+#### URL
+`/list`
+
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo: Lista de imagens do bucket
+
+### Rota `/upload`
+
+Faz o upload de um arquivo.
+
+#### Método
+`POST`
+
+#### URL
+`/upload`
+
+#### Parâmetros da Requisição
+- `content`: Arquivo a ser enviado (UploadFile)
+
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo: Status "ok"
+
+### Rota `/images`
+
+Faz o upload de todas as imagens presentes em uma pasta no bucket do Supabase.
+
+#### Método
+`POST`
+
+#### URL
+`/images`
+
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo: Mensagem de sucesso
+
+
 # Referências
 
 How much does an AGV cost? Disponível em: <https://www.flexqube.com/news/how-much-does-an-agv-cost/#:~:text=Based%20on%20the%20main%20product>.

@@ -7,10 +7,10 @@ O Donatello é um AGV (Autonomous Ground Vehicle) desenvolvido para a inspeção
 
 ### Lista de componentes do sistema
 
-- Robô TurtleBot3
+#### Robô TurtleBot3
 - Raspberry Pi
 - Sensores de qualidade do ar
-- Câmera
+- Câmera Dobot
 - Modelo de detecção de rachaduras treinado com Yolov8 e OpenCV
 - Software ROS2 (Robot Operating System 2) e Nav2 (Navigation2)
 
@@ -23,6 +23,12 @@ Autonomia da bateria: [Inserir autonomia da bateria]
 Compatibilidade com sistemas operacionais: [Inserir sistemas operacionais compatíveis]
 
 ## Manual Operacional
+## Frontend 
+- Para a inicialização do sistema em local host é necessário entrar na pasta \src e depois entrar em \frontend e rodar o seguinte comando: npm install, para intalar todas as dependencias necessárias para rodar o front. Por fim, para testar o frontend basta rodar na mesma pasta o comando: npm run dev. Ele irá geral a url do site que poderá ser aberto no navegador.
+## Backend
+- Para a inicialização do sistema é necessário instalar a pasta requirements para todas as rotas e arquivos em python funcinarem.
+
+
 
 ### Guia de Montagem e Inicialização do Sistema
 

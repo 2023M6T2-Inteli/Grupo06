@@ -2,7 +2,7 @@ import React, { Fragment, useState, useEffect, useRef } from "react";
 import { Row, Col, Table, Card, Button} from "antd";
 import { NavBar } from "../../components/NavBar";
 import DownloadIcon from "@mui/icons-material/Download";
-import BotControllerNav from "../../../../simulation/.vscode";
+//import BotControllerNav from "../../../../simulation/.vscode";
 import {createClient} from "@supabase/supabase-js";
 
 const url = "https://etxrmfvkgcrpyzdpvvrn.supabase.co"
@@ -36,10 +36,13 @@ export default function MapPage() {
 
         console.log(data)
 
+        return data
+
       }
       
       const animation = () => {
         ctx.clearRect(0, 0, canvas_width, canvas_height);
+        get_position
         draw_player(position_X, position_Y);
         requestAnimationFrame(animation);
       }

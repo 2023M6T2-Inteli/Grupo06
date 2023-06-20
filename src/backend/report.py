@@ -19,8 +19,8 @@ def get_reports(db: Session = Depends(get_db), limit: int = 10, search: str = ''
 @router.get('/current')
 def get_current_state():
     return {
-        # 'projectIsRunning': projectIsRunning,
-        # 'currentProjectId': currentProjectId
+        'projectIsRunning': projectIsRunning,
+        'currentProjectId': currentProjectId
     }
 
 # Cria um novo report
@@ -30,16 +30,16 @@ def create_report(payload: schemas.ReportBaseSchema, db: Session = Depends(get_d
     db.add(new_report)
     db.commit()
     db.refresh(new_report)
-    # global projectIsRunning
-    # projectIsRunning = True
-    # print('report:' + str(projectIsRunning))
-    # currentProjectId = new_report.id
+    global projectIsRunning
+    projectIsRunning = True
+    print('report:' + str(projectIsRunning))
+    currentProjectId = new_report.id
     return {"status": "success", "report": new_report}
 
 @router.get('/finish')
 def get_current_state():
-    # projectIsRunning = False
-    # currentProjectId = None
+    projectIsRunning = False
+    currentProjectId = None
     return {
         'status': 'success',
     }

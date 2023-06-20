@@ -13,9 +13,9 @@ class Report(Base):
     typePlace = Column(Integer)
     operator = Column(String(100))
     gasAvg = Column(Float)
-    isFinished = Column(Integer)
     createdAt = Column(TIMESTAMP(timezone=True),
                        server_default=func.now())
     updatedAt = Column(TIMESTAMP(timezone=True),
                        default=None, onupdate=func.now())
+    isFinished = Column(Integer, default = 0)
   

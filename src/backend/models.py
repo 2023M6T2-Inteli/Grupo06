@@ -9,12 +9,13 @@ class Report(Base):
     # define 'report' como nome da tabela
     __tablename__ = 'report'
     id = Column(Integer, primary_key=True)
-    projectName = Column(String(100), nullable=False)
+    reportName = Column(String(100), nullable=False)
     typePlace = Column(Integer)
     operator = Column(String(100))
-    date = Column(TIMESTAMP)
+    gasAvg = Column(Float)
+    isFinished = Column(Integer)
     createdAt = Column(TIMESTAMP(timezone=True),
                        server_default=func.now())
     updatedAt = Column(TIMESTAMP(timezone=True),
                        default=None, onupdate=func.now())
-    avg = Column(Float)
+  

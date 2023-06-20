@@ -6,13 +6,14 @@ from pydantic import BaseModel
 
 class ReportBaseSchema(BaseModel):
     id: int | None = None
-    projectName: str
+    reportName: str
     typePlace: int
     operator: str | None = None
-    date: datetime | None = None
+    # date: datetime | None = None
+    gasAvg: float
+    isFinished: int 
     createdAt: datetime | None = None
     updatedAt: datetime | None = None
-    avg:float
 
     class Config:
         # mapea os models como objetos relacionais

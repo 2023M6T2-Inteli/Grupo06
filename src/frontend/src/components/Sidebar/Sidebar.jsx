@@ -2,7 +2,6 @@ import { Layout, Menu, Button } from "antd";
 import {
   AppstoreOutlined,
   AuditOutlined,
-  FileAddOutlined,
   ProjectOutlined,
 } from "@ant-design/icons";
 import Link from "next/link";
@@ -22,7 +21,7 @@ const items = [
     "grp",
     null,
     [
-      getItem("Histórico", "hist", <AuditOutlined />, null, null, "/historic"),
+      getItem("Histórico", "hist", <AuditOutlined />, null, null, "/"),
       getItem(
         "Simulação",
         "simu",
@@ -31,7 +30,6 @@ const items = [
         null,
         "/project"
       ),
-      getItem("Add projeto", "addp", <FileAddOutlined />, null, null, "/"),
       getItem(
         "Projeto",
         "project",

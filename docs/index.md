@@ -54,11 +54,14 @@
     - [Documentação Ant Design](#documentação-ant-design)
   - [Mockup](#mockup)
   - [Acionamento de Interface - Servidor com Next.js](#acionamento-de-interface---servidor-com-nextjs)
+- [Backend](#backend)
+- [Api e rotas](#apis-e-rotas)
 - [Referências](#referências)
 
 # Entendimento de negócios
 
 ## Matriz de oceano azul
+- A matriz Oceano Azul é um conceito estratégico que se refere à busca por novos mercados e oportunidades de negócio, onde a concorrência é irrelevante ou inexistente. Ao contrário do Oceano Vermelho, onde as empresas competem em um mercado saturado e disputam a mesma fatia de clientes, o Oceano Azul envolve a criação de um novo espaço de mercado, onde as empresas podem crescer e prosperar.
 
 Utilizamos a matriz oceano azul no projeto de AGV para que nossa equipe possa descobrir novas oportunidades de mercado e criar um produto único e de alta qualidade, diferente dos concorrentes. Também podemos entender o que o cliente precisa e adaptar o produto para atender às suas necessidades e expectativas.
 
@@ -72,7 +75,7 @@ O principal objetivo do projeto é a AUTOMAÇÃO, que ainda não está presente 
 
 ## Matriz de risco
 
-A matriz de risco é uma das ferramentas que nos permite identificar, avaliar e priorizar os riscos associados ao projeto. É uma tabela que organiza os possíveis riscos em um ou mais eixos, e os classifica em termos de probabilidade e impacto. A partir dessa classificação, é possível determinar quais riscos precisam de atenção imediata e quais podem ser gerenciados com menos urgência.
+- A matriz de risco é uma das ferramentas que nos permite identificar, avaliar e priorizar os riscos associados ao projeto. É uma tabela que organiza os possíveis riscos em um ou mais eixos, e os classifica em termos de probabilidade e impacto. A partir dessa classificação, é possível determinar quais riscos precisam de atenção imediata e quais podem ser gerenciados com menos urgência.
 
 O uso de uma matriz de risco é essencial para documentar as estratégias de gerenciamento de riscos em uma organização. Ela fornece uma maneira clara e sistemática de identificar as ameaças que podem impactar o sucesso de um projeto ou processo, permitindo que os responsáveis tomem decisões informadas sobre como gerenciá-los. Em resumo, a matriz de risco é uma ferramenta valiosa para garantir que os riscos sejam gerenciados de forma eficiente e eficaz, minimizando potenciais perdas e maximizando o sucesso.
 
@@ -94,6 +97,7 @@ O uso de uma matriz de risco é essencial para documentar as estratégias de ger
 
 ### Oportunidades
 
+
 12. O MVP ser adotado pelo parceiro
 13. Redução significativa de acidentes nas inspeções de rotina
 14. Teste in loco (Gerdau) do MVP
@@ -106,6 +110,7 @@ O uso de uma matriz de risco é essencial para documentar as estratégias de ger
 21. Redução do tempo de inspeção
 22. Aumento da quantidade de dados sobre a infraestrutura fabril.
 23. Melhoria no monitoramento de riscos
+
 
 ### Mitigação de riscos
 
@@ -182,7 +187,7 @@ Com essas informações, é possível fazer uma estimativa mais detalhada dos cu
 
 <br>
 <p align = "center">
-<img src="./../media/negócios/analise_financeira.png" width = 650px>
+<img src="./../media/negócios/Analisfinaceira.jpg" width = 650px>
 </p>
 <br>
 

@@ -1,6 +1,11 @@
 # Prerequisites
 *.d
-
+src/backend/requirements.txt
+src/backend/lib
+lib
+lib64
+bin 
+src/backend/bin
 # Compiled Object files
 *.slo
 *.lo
@@ -34,4 +39,5 @@
 # Venv
 src/backend/venv
 src/simulation/venv
+venv/
 ```

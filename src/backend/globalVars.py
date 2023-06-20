@@ -1,0 +1,2 @@
+projectIsRunning = False 
+currentProjectId = None 

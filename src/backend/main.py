@@ -1,23 +1,31 @@
 # CÓDIGO DO SERVIDOR
-
-# Este script cria o servidor e define três rotas para o controle da rota do
-# robô na simulação. É possível enviar o comando de formato (letra G ou quadrado) 
-# ou de ponto específico para onde o robô deve ir. Nesse sentido, duas rotas POST
-# são definidas para receber o formato ou a posição, e uma rota GET é definida para
-# retornar o comando ou a posição, dependendo do que foi enviado por último.
-
 # Para executar o servidor, basta executar o comando "python main.py" no terminal
 
-# Importa bibliotecas
+# Importa bibliotecas - Em ordem alfabética 
+import asyncio
+import cv2
 import fastapi
-import uvicorn 
+import os
 import pydantic
+import pymysql
+import uvicorn
+import aiofiles
+from fastapi import FastAPI, File, UploadFile, Request, Body, APIRouter, status, Depends, HTTPException, Response
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse, StreamingResponse
+from sqlalchemy.orm import Session
+from sqlalchemy import create_engine
+from typing import List, Tuple
+import time
+import models
+import schemas
+from database import engine, get_db
+from report import router as reportsRouter
+from images import router as imagesRouter 
+from sensor import router as sensorRouter
 
-# Cria o servidor
 app = fastapi.FastAPI()
 
-# Define as origens permitidas para o servidor
 origins = [
     "http://localhost",
     "http://localhost:3000",
@@ -32,54 +40,15 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Define as classes para o formato e a posição
-class Shape(pydantic.BaseModel):
-    shape: str
+# Cria a tabela e o banco de dados
+models.Base.metadata.create_all(bind=engine)
 
-class Position(pydantic.BaseModel):
-    x: float
-    y: float
+# inclui um novo router '/report'
+app.include_router(reportsRouter, tags=['Reports'], prefix='/report')
+app.include_router(imagesRouter, tags=['Images'], prefix='/image')
+app.include_router(sensorRouter, tags=['Sensor'], prefix='/sensor')
 
-# Define as variáveis globais para o formato e a posição
-shape = Shape(shape='')
-point = Position(x=0.0, y=0.0)
 
-# Define a variável global para indicar se o comando enviado foi de formato ou posição
-is_shape = False
-
-# Rota para retornar o comando ou a posição
-@app.get("/mission")
-def get_mission():
-    global is_shape
-    # Se o comando enviado foi de formato, retorna o formato
-    if(is_shape):
-        global shape
-        past_shape = shape
-        shape = Shape(shape='') # Reseta o formato
-        return past_shape
-    # Se o comando enviado foi de posição, retorna a posição
-    else:
-        is_shape = True # Muda para formato para o próximo comando, evitando que o robô tenta ir para a mesma posição
-        global point
-        return point
-
-# Rotas para receber o comando de formato 
-@app.post("/shape")
-def set_shape(_shape: Shape):
-    global is_shape
-    is_shape = True
-
-    global shape
-    shape = _shape
-
-# Rota para receber o comando de posição
-@app.post("/position")
-def set_position(_position: Position):
-    global is_shape
-    is_shape = False
-
-    global point
-    point = _position
 
 # Executa o servidor
 if __name__ == "__main__":

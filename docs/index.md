@@ -97,16 +97,20 @@ O uso de uma matriz de risco é essencial para documentar as estratégias de ger
 
 ### Oportunidades
 
-12. O Desenvolvimento de outros projetos utilizando AGVs tendo em vista a crescente do mercado na América Latina
-13. Desenvolvimento de outras áreas relacionadas a segurança de operação em ambiente confinados
-14.  Incentivo do desenvolvimento de robos para mapeamento de ambientes industriais por fábricas nacionais 
-15. Conscientização, por parte do nosso grupo, da relevância da segurança para a continuidade de processo e ganhos em produtividade
-16. Integração da solução com nova tecnologia 5g
-17. Diminuição nos dados externos de acidentes laborais tornando a Gerdau referência em segurança do trabalho.
-18. Possibilidade de parceria ou soluções propostas em conjunto com empresas da área de segurança laboral
-19. Melhor posicionamento no mercado nacional de AGVS 
-20.  Aumento da quantidade de dados sobre a infraestrutura fabril.
-21. Integração com modelo de negócio industria 4.0
+
+12. O MVP ser adotado pelo parceiro
+13. Redução significativa de acidentes nas inspeções de rotina
+14. Teste in loco (Gerdau) do MVP
+15. Mapeamento bem-sucedido como adicional ao projeto
+16. Impossibilidade de instalar as referências necessárias nos espaços confinados para corrigir a trajetória do robô
+17. Conscientização, por parte do nosso grupo, da relevância da segurança para a continuidade de processo e ganhos em produtividade
+18. Integração da solução com nova tecnologia 5G
+19. Aumento significativo para o objetivo de risco zero
+20. Melhoria no planejamento de inspeções
+21. Redução do tempo de inspeção
+22. Aumento da quantidade de dados sobre a infraestrutura fabril.
+23. Melhoria no monitoramento de riscos
+
 
 ### Mitigação de riscos
 
@@ -680,6 +684,94 @@ Faz o upload de todas as imagens presentes em uma pasta no bucket do Supabase.
 #### Resposta de Sucesso
 - Código: `200 OK`
 - Conteúdo: Mensagem de sucesso
+
+
+### Rota `/api/report/`
+
+Retorna todos os relatórios existentes.
+
+#### Método
+`GET`
+
+#### Parâmetros da Requisição
+- `db` (opcional): Conexão com o banco de dados (Session)
+
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo: 
+  - `status`: "success"
+  - `results`: Número de relatórios encontrados
+  - `reports`: Array contendo os relatórios encontrados
+
+
+### Rota `/api/report/`
+
+Cria um novo relatório.
+
+#### Método
+`POST`
+
+#### Parâmetros da Requisição
+- `payload`: Dados do relatório a ser criado (schemas.ReportBaseSchema)
+- `db` (opcional): Conexão com o banco de dados (Session)
+
+#### Resposta de Sucesso
+- Código: `201 Created`
+- Conteúdo:
+  - `status`: "success"
+  - `report`: Relatório recém-criado
+
+
+### Rota `/api/report/{reportId}`
+
+Edita um relatório existente.
+
+#### Método
+`PATCH`
+
+#### Parâmetros da Requisição
+- `reportId`: ID do relatório a ser editado (str)
+- `payload`: Dados do relatório a serem atualizados (schemas.ReportBaseSchema)
+- `db` (opcional): Conexão com o banco de dados (Session)
+
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo:
+  - `status`: "success"
+  - `report`: Relatório atualizado
+
+
+### Rota `/api/report/{reportId}`
+
+Retorna um relatório específico com base no ID.
+
+#### Método
+`GET`
+
+#### Parâmetros da Requisição
+- `reportId`: ID do relatório a ser retornado (str)
+- `db` (opcional): Conexão com o banco de dados (Session)
+
+#### Resposta de Sucesso
+- Código: `200 OK`
+- Conteúdo:
+  - `status`: "success"
+  - `report`: Relatório encontrado
+
+
+### Rota `/api/report/{reportId}`
+
+Deleta um relatório com base no ID.
+
+#### Método
+`DELETE`
+
+#### Parâmetros da Requisição
+- `reportId`: ID do relatório a ser deletado (str)
+- `db` (opcional): Conexão com o banco de dados (Session)
+
+#### Resposta de Sucesso
+- Código: `204 No Content`
 
 
 # Referências

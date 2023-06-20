@@ -5,6 +5,10 @@ import DownloadIcon from "@mui/icons-material/Download";
 import { Sidebar } from "../../components/Sidebar";
 
 export default function HistoricPage() {
+  const onClick = () => 
+  {
+    window.open("/SignUp")
+  }
   const dataSource = [
     {
       name: "Inspeção rotina 3c Ouro Preto",
@@ -129,6 +133,9 @@ export default function HistoricPage() {
                 columns={columns}
                 style={{ overflowX: "auto" }}
               />
+              <Button type="primary" style={{ backgroundColor: "blue" }} onClick={onClick}>
+                Adicionar projeto
+              </Button>
             </Col>
           </Row>
         </Card>

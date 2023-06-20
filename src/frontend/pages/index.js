@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { SignUpPage } from '../src/views/SignUpPage';
+import {HistoricPage } from '../src/views/HistoricPage';
 
-export default function Home() {
+export default function Historic() {
   return (
      <div>
-      <SignUpPage></SignUpPage>
+      <HistoricPage></HistoricPage>
     </div>
   )
 }

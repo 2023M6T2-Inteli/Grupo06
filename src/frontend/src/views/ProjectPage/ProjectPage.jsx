@@ -107,18 +107,8 @@ export default function ProjectPage() {
                   </Card>
                 </Space>
                 <Row style={{ marginTop: "40px" }}>
-                  <Button
-                    type="primary"
-                    style={{
-                      backgroundColor: "red",
-                      marginLeft: "5px",
-                      marginRight: "10px",
-                    }}
-                  >
-                    Parar
-                  </Button>
-                  <Button type="primary" style={{ backgroundColor: "green" }}>
-                    Continuar
+                  <Button type="primary" style={{ backgroundColor: "blue" }}>
+                    Finalizar projeto
                   </Button>
                 </Row>
               </Card>

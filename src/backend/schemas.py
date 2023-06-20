@@ -10,12 +10,9 @@ class ReportBaseSchema(BaseModel):
     typePlace: int
     operator: str | None = None
     date: datetime | None = None
-    gasLevel1: float
-    gasLevel2: float
-    gasLevel4: float
-    gasLevel4: float
     createdAt: datetime | None = None
     updatedAt: datetime | None = None
+    avg:float
 
     class Config:
         # mapea os models como objetos relacionais

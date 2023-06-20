@@ -13,11 +13,8 @@ class Report(Base):
     typePlace = Column(Integer)
     operator = Column(String(100))
     date = Column(TIMESTAMP)
-    gasLevel1 = Column(Float)
-    gasLevel2 = Column(Float)
-    gasLevel3 = Column(Float)
-    gasLevel4 = Column(Float)
     createdAt = Column(TIMESTAMP(timezone=True),
                        server_default=func.now())
     updatedAt = Column(TIMESTAMP(timezone=True),
                        default=None, onupdate=func.now())
+    avg = Column(Float)

@@ -21,6 +21,16 @@ class ReportBaseSchema(BaseModel):
         allow_population_by_field_name = True
         arbitrary_types_allowed = True
 
+class GasBaseSchema(BaseModel):
+    id: int | None = None
+    reportId: int
+    gasValue: float
+
+class ImageBaseSchema(BaseModel):
+    id: int | None = None
+    reportId: int
+    gasValue: str
+
 class ListReportResponse(BaseModel):
     status: str
     results: int

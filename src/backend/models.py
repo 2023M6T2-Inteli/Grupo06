@@ -1,8 +1,10 @@
 # import da classe 'Base' 
 from database import Base
-from sqlalchemy import TIMESTAMP, Column, String, Integer, Float, Boolean
+from sqlalchemy import TIMESTAMP, Column, String, Integer, Float, Boolean, ForeignKey
 from sqlalchemy.sql import func
 from uuid import UUID
+
+from sqlalchemy.orm import relationship
 
 # Classe report que contem definição de chave-primaria, nome e tipo das colunas da tabela
 class Report(Base):
@@ -18,4 +20,15 @@ class Report(Base):
     updatedAt = Column(TIMESTAMP(timezone=True),
                        default=None, onupdate=func.now())
     isFinished = Column(Integer, default = 0)
-  
+
+class Gas(Base):
+    __tablename__ = 'gas'
+    id = Column(Integer, primary_key=True)
+    reportId = Column(Integer, ForeignKey("report.id"))
+    gasValue = Column(Float)
+
+class Image(Base):
+    __tablename__ = 'image'
+    id = Column(Integer, primary_key=True)
+    reportId = Column(Integer, ForeignKey("report.id"))
+    url = Column(String(150))

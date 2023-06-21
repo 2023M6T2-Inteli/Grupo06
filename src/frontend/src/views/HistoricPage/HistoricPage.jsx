@@ -44,6 +44,7 @@ export default function HistoricPage() {
         type="primary"
         shape = "circle"
         onClick={() => handleView(record)}
+        //função aleatória para chamar quando clickar
         icon = {<PlusOutlined />}
       >
       </Button>

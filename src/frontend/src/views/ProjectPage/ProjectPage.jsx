@@ -107,7 +107,7 @@ export default function ProjectPage() {
                   </Card>
                 </Space>
                 <Row style={{ marginTop: "40px" }}>
-                  <Button type="primary" style={{ backgroundColor: "blue" }}>
+                  <Button type="primary" style={{ backgroundColor: "blue" }} onClick={() => finalizarProjeto(record)}>
                     Finalizar projeto
                   </Button>
                 </Row>

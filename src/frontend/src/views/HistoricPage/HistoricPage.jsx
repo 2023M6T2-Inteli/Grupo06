@@ -3,6 +3,9 @@ import { Row, Col, Table, Card, Button } from "antd";
 import { NavBar } from "../../components/NavBar";
 import DownloadIcon from "@mui/icons-material/Download";
 import { Sidebar } from "../../components/Sidebar";
+import {
+  PlusOutlined
+} from "@ant-design/icons";
 
 export default function HistoricPage() {
   const [data, setData] = useState([]);
@@ -32,7 +35,20 @@ export default function HistoricPage() {
   };
 
   const items = [
-    { title: "Nome da Inspeção", dataIndex: "reportName", key: "reportName" },{ title: "Area", dataIndex: "typePlace", key: "typePlace" },{ title: "Responsável", dataIndex: "operator", key: "operator" }
+    { title: "Nome da Inspeção", dataIndex: "reportName", key: "reportName" },
+    { title: "Opção de area", dataIndex: "typePlace", key: "typePlace" },
+    { title: "Responsável", dataIndex: "operator", key: "operator" },
+    { title: "Visualizar", key: "view",
+    render: (_, record) => (
+      <Button
+        type="primary"
+        shape = "circle"
+        onClick={() => handleView(record)}
+        icon = {<PlusOutlined />}
+      >
+      </Button>
+    ),
+  },
   ];
 
   return (
@@ -43,7 +59,7 @@ export default function HistoricPage() {
           <Sidebar></Sidebar>
         </Col>
         <Col span={20}>
-          <Card style={{ padding: 60 }}>
+          <Card style={{ padding: 60, width: "90%" }}>
             <Row>
               <Col>
                 <h1 style={{ color: "black", paddingLeft: "10px" }}>
@@ -56,11 +72,12 @@ export default function HistoricPage() {
                 <Table
                   dataSource={columns}
                   columns={items}
-                  style={{ overflowX: "auto" }}
+                  style={{maxHeight: "400px"}}
+                  scroll={{ y: 400 }}
                 />
                 <Button
                   type="primary"
-                  style={{ backgroundColor: "blue" }}
+                  style={{ backgroundColor: "blue", marginTop:"80px" }}
                   onClick={onClicks}
                 >
                   Adicionar projeto

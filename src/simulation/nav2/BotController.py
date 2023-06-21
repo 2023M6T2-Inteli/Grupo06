@@ -24,7 +24,7 @@ supabase: Client = create_client(url, key)
 # Define a classe BotController, que representa o nó de controle do robô
 class BotController(Node):
     # Inicializa o nó com período de controle de 0.05s e uma fila vazia
-    def __init__(self, control_period=0.2):
+    def __init__(self, control_period=2.0):
         super().__init__("bot_controller")
 
         # Cria um assinante para receber a pose do robô

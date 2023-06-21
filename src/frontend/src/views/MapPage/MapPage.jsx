@@ -2,8 +2,9 @@ import React, { Fragment, useState, useEffect, useRef } from "react";
 import { Row, Col, Table, Card, Button} from "antd";
 import { NavBar } from "../../components/NavBar";
 import DownloadIcon from "@mui/icons-material/Download";
-import BotControllerNav from "../../../../simulation/.vscode";
+//import BotControllerNav from "../../../../simulation/.vscode";
 import {createClient} from "@supabase/supabase-js";
+import { Inter } from "next/font/google";
 
 const url = "https://etxrmfvkgcrpyzdpvvrn.supabase.co"
 const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV0eHJtZnZrZ2NycHl6ZHB2dnJuIiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTY4NjY4MDk4MCwiZXhwIjoyMDAyMjU2OTgwfQ.BosLYjeNsyNMhs88FlV_PNzH9QRBqeBgAUJJU4SzlQw"
@@ -15,9 +16,6 @@ export default function MapPage() {
     const canvasRef = useRef(null);
     const canvas_width = 800;
     const canvas_height = 600;
-
-    let position_X = 0
-    let position_Y = 0
     
     useEffect(() => {
       const canvas = canvasRef.current
@@ -26,43 +24,54 @@ export default function MapPage() {
       const draw_player = (px, py) => {
         ctx.fillStyle = 'green';
         ctx.fillRect(px, py, 20, 20);
+    }
+
+    let position = {"x": 0, "y": 0}
+
+    var get_position = async () => {
+
+      const { data, res } = await supabase.from('Coordinates').select()
+
+      console.log(data)
+
+      position.x = data[-1].x
+      position.y = data[-1].y
+
+      console.log(position)
+
+      for(var i=0; i < Number(data.length); i++){
+        const { error } = await supabase.from('Coordinates').delete().eq('x', Number(data[i].y))
+        console.log(data[i].y)
       }
 
-      const get_position = async () => {
-        
-        const { data, error } = await supabase
-        .from('Coordinates')
-        .select()
+    }
+    
+    const animation = () => {
+      ctx.clearRect(0, 0, canvas_width, canvas_height);
+      get_position();
+      draw_player(position.x, position.y);
+      requestAnimationFrame(animation);
+    }
 
-        console.log(data)
+    animation();
+  });
 
-      }
-      
-      const animation = () => {
-        ctx.clearRect(0, 0, canvas_width, canvas_height);
-        draw_player(position_X, position_Y);
-        requestAnimationFrame(animation);
-      }
-
-      animation();
-    });
-
-    return(
-          <div style={{display:"flex", justifyContent:"center", alignItems:"center"} }>
-          <canvas ref={canvasRef} width={canvas_width} height={canvas_height} />;
-          </div>
-    );
-  };
-
-
-  return (
-    <Fragment>
-        <NavBar></NavBar>
-
-        <Card style={{padding: 50}}>
-        <Canvas></Canvas>
-        </Card>
-
-    </Fragment>
+  return(
+        <div style={{display:"flex", justifyContent:"center", alignItems:"center"} }>
+        <canvas ref={canvasRef} width={canvas_width} height={canvas_height} />
+        </div>
   );
+};
+
+
+return (
+  <Fragment>
+      <NavBar></NavBar>
+
+      <Card style={{padding: 50}}>
+      <Canvas></Canvas>
+      </Card>
+
+  </Fragment>
+);
 }

@@ -22,7 +22,7 @@ O Donatello é um AGV (Autonomous Ground Vehicle) desenvolvido para a inspeção
 
 ### Guia de Montagem e Inicialização do Sistema
 
-<<<<<<< HEAD
+
 **Para o robô**
 =======
 #### Robô
@@ -72,22 +72,79 @@ ssh <usuário>@<hostname-pi>.local
 Se tudo ocorrer corretamente, você receberá uma mensagem perguntando se deseja adicionar o hostname à lista de hosts conhecidos.
 Insira a senha correspondente ao usuário configurado no Raspberry Pi e você terá acesso ao terminal do Raspberry Pi.
 Observação: Neste manual, daremos enfoque à solução headless utilizando SSH para a conexão com o Raspberry Pi.
->>>>>>> 5acff03a9072bd6d2a0ea522ec3790f7c27f3aab
 
-#### Interface gráfica
+
+## Interface gráfica
 
 Para instalar um frontend utilizando a estrutura do Next.js, siga as seguintes etapas:
 
 1. Certifique-se de ter o Node.js instalado em seu sistema. 
 2. Navegue para a pasta src/frontend. Então, rode:
 
-```
-npm install
-npm run dev
-```
-Então, acesse o site em localhost:3000.com
+    ```
+    npm install
+    npm run dev
+    ```
+3. Então, acesse o site em [localhost:3000.com](localhost:3000.com)
 
-<<<<<<< HEAD
+# Execução do Servidor Backend
+
+## Requisitos de Sistema
+
+Antes de prosseguir com a instalação, certifique-se de ter os seguintes requisitos instalados:
+
+- [uvicorn](https://www.uvicorn.org/)
+
+## Instalação
+
+Siga as etapas abaixo para instalar o servidor backend:
+
+1. Abra o terminal do seu sistema operacional.
+
+2. Certifique-se de que o `uvicorn` esteja instalado executando o seguinte comando:
+
+   ```
+   uvicorn --version
+   ```
+
+   Se o comando não for reconhecido, instale o pacote através do comando abaixo
+
+   ```
+   pip install "fastapi[standard]"
+   ```
+
+## Executando o Servidor Backend
+
+Para executar o servidor backend da aplicação, siga estas etapas:
+
+1. Navegue até a pasta 'src/backend' do projeto.
+
+   ```
+   cd src/backend
+   ```
+
+2. No terminal, execute o seguinte comando:
+
+   ```
+   uvicorn main:app --port 3000
+   ```
+   Certifique-se de que a porta `3000` esteja disponível para uso.
+
+3. Aguarde até que o servidor backend seja inicializado. Você verá mensagens no terminal indicando o status do servidor.
+
+   ```
+   INFO: Uvicorn running on http://127.0.0.1:3000 (Press CTRL+C to quit)
+   ```
+
+4. Uma vez que o servidor esteja em execução, a interface da aplicação já acessa as rotas e endpoints disponiveis.
+
+   Observação: Consulte a documentação completa da aplicação para obter mais detalhes sobre as rotas e endpoints disponíveis.
+
+5. Caso deseje encerrar a execução do servidor, pressione `CTRL+C` no terminal.
+
+Parabéns! Agora você pode executar o servidor backend da aplicação web e interagir com as informações do veículo.
+
+
 **Para o modelo de AI**
 =======
 
@@ -191,13 +248,10 @@ robot_model_type: "nav2_amcl::DifferentialMotionModel"
 
 
 Não se esqueça de dar source no ~/.bashrc antes de continuar!
->>>>>>> 5acff03a9072bd6d2a0ea522ec3790f7c27f3aab
 
 ### Instruções operacionais
 
 **Movimentação manual do robô**
-
-<<<<<<< HEAD
 =======
 
 Antes de comandar o TurtleBot3, é necessário configurar a variável de ambiente que define o modelo do robô. Execute o seguinte comando no terminal:
@@ -233,8 +287,8 @@ ros2 run turtlebot3_teleop teleop_keyboard
 Agora você pode usar as teclas do teclado para controlar o movimento do robô.
 
 
->>>>>>> 5acff03a9072bd6d2a0ea522ec3790f7c27f3aab
-**Mapeamento de ambiente**
+
+# **Mapeamento de ambiente**
 
 
 Em três terminais paralelos:

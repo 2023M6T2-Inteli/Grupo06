@@ -15,11 +15,17 @@ def get_gas_values(db: Session = Depends(get_db)):
 
 @router.post('/', status_code=status.HTTP_201_CREATED)
 def create_gas(payload: schemas.GasBaseSchema, db: Session = Depends(get_db)):
-    new_gas_value = models.Gas(**payload.dict())
-    db.add(new_gas_value)
-    db.commit()
-    db.refresh(new_gas_value)
-    return{"status": "success", "gas value": new_gas_value}
+    last = db.query(models.Report).order_by(models.Report.id.desc()).first()
+    if last.isFinished == 0:
+        new_gas_value = models.Gas(**payload.dict())
+        last = db.query(models.Report).order_by(models.Report.id.desc()).first()
+        new_gas_value.reportId = last.id
+        db.add(new_gas_value)
+        db.commit()
+        db.refresh(new_gas_value)
+        return{"status": "success", "gas value": new_gas_value}
+    else: 
+        return {"error": "no project running at the moment"}
 
 @router.delete('/{gasId}')
 def delete_gas_read(gasId: str, db: Session = Depends(get_db)):

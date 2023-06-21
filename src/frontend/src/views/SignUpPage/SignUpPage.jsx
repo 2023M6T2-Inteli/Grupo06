@@ -14,10 +14,27 @@ export default function SignUpPage() {
 
   const onFinish = (values) => {
     setLoading(true);
-    // Aqui você pode adicionar a lógica para salvar o projeto
-    console.log(values);
-    setLoading(false);
-    window.open("/project");
+    console.log(JSON.stringify(values));
+    fetch('http://127.0.0.1:3001/report', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(values),
+    })
+      .then(response => {
+        console.log(response);
+        return response.json(); // retorna a promessa para tratamento posterior
+      })
+      .then(data => {
+        console.log(data);
+        setLoading(false);
+        window.open("/project");
+      })
+      .catch(error => {
+        console.error('Erro:', error);
+        setLoading(false);
+      });
   };
 
   return (
@@ -36,7 +53,7 @@ export default function SignUpPage() {
               <Form.Item
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}
-                name="titulo"
+                name="reportName"
                 label={
                   <span>
                     Título do Projeto&nbsp;
@@ -57,7 +74,7 @@ export default function SignUpPage() {
               <Form.Item
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}
-                name="tipo"
+                name="typePlace"
                 label={
                   <span>
                     Tipo de Área Analisada&nbsp;
@@ -74,15 +91,15 @@ export default function SignUpPage() {
                 ]}
               >
                 <Select>
-                  <Option value="opcao1">Opção 1</Option>
-                  <Option value="opcao2">Opção 2</Option>
-                  <Option value="opcao3">Opção 3</Option>
+                  <Option value={1}>Opção 1</Option>
+                  <Option value={2}>Opção 2</Option>
+                  <Option value={3}>Opção 3</Option>
                 </Select>
               </Form.Item>
               <Form.Item
                 labelCol={{ span: 24 }}
                 wrapperCol={{ span: 24 }}
-                name="responsavel"
+                name="operator"
                 label={
                   <span>
                     Responsável pela Atividade&nbsp;

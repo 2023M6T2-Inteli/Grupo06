@@ -31,7 +31,8 @@ class Report(Base):
             "operator": self.operator,
             "gasAvg": self.gasAvg,
             "isFinished": self.isFinished,
-            "images": [image.return_json() for image in self.images]
+            "images": [image.return_json() for image in self.images],
+            "gasValues": [gas.return_json() for gas in self.gasReadings]
         }
 
 

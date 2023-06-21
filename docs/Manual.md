@@ -22,6 +22,9 @@ O Donatello é um AGV (Autonomous Ground Vehicle) desenvolvido para a inspeção
 
 ### Guia de Montagem e Inicialização do Sistema
 
+<<<<<<< HEAD
+**Para o robô**
+=======
 #### Robô
 1. Abertura do Robô:
 
@@ -69,6 +72,7 @@ ssh <usuário>@<hostname-pi>.local
 Se tudo ocorrer corretamente, você receberá uma mensagem perguntando se deseja adicionar o hostname à lista de hosts conhecidos.
 Insira a senha correspondente ao usuário configurado no Raspberry Pi e você terá acesso ao terminal do Raspberry Pi.
 Observação: Neste manual, daremos enfoque à solução headless utilizando SSH para a conexão com o Raspberry Pi.
+>>>>>>> 5acff03a9072bd6d2a0ea522ec3790f7c27f3aab
 
 #### Interface gráfica
 
@@ -83,6 +87,9 @@ npm run dev
 ```
 Então, acesse o site em localhost:3000.com
 
+<<<<<<< HEAD
+**Para o modelo de AI**
+=======
 
 1. Certifique-se de ter o Python3.9 e pip instalados em seu sistema. 
 2. Navegue para a pasta raiz do backend e rode:
@@ -184,11 +191,14 @@ robot_model_type: "nav2_amcl::DifferentialMotionModel"
 
 
 Não se esqueça de dar source no ~/.bashrc antes de continuar!
+>>>>>>> 5acff03a9072bd6d2a0ea522ec3790f7c27f3aab
 
 ### Instruções operacionais
 
 **Movimentação manual do robô**
 
+<<<<<<< HEAD
+=======
 
 Antes de comandar o TurtleBot3, é necessário configurar a variável de ambiente que define o modelo do robô. Execute o seguinte comando no terminal:
 
@@ -223,6 +233,7 @@ ros2 run turtlebot3_teleop teleop_keyboard
 Agora você pode usar as teclas do teclado para controlar o movimento do robô.
 
 
+>>>>>>> 5acff03a9072bd6d2a0ea522ec3790f7c27f3aab
 **Mapeamento de ambiente**
 
 

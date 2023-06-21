@@ -26,24 +26,26 @@ export default function MapPage() {
         ctx.fillRect(px, py, 20, 20);
     }
 
-    let position = {"x": 0, "y": 0}
+    let position = {"x": 0.00, "y": 0.00, "theta": 0.00}
 
     var get_position = async () => {
 
       const { data, res } = await supabase.from('Coordinates').select()
 
-      console.log(data)
+      if (data != null) {
+        console.log("Data: "+ data)
+        
+        position.x = data[-1].x
+        position.y = data[-1].y
+        position.theta = data[-1].theta
 
-      position.x = data[-1].x
-      position.y = data[-1].y
+        console.log("Position: ("+ position.x + ", " + position.y + position.theta +")")
 
-      console.log(position)
-
-      for(var i=0; i < Number(data.length); i++){
-        const { error } = await supabase.from('Coordinates').delete().eq('x', Number(data[i].y))
-        console.log(data[i].y)
+        for(var i=0; i < Number(data.length); i++){
+          const { res } = await supabase.from('Coordinates').delete().eq('x', Number(data[i].x))
+          console.log(Number(data[i].y))
+        }
       }
-
     }
     
     const animation = () => {

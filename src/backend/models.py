@@ -14,7 +14,7 @@ class Report(Base):
     reportName = Column(String(100), nullable=False)
     typePlace = Column(Integer)
     operator = Column(String(100))
-    gasAvg = Column(Float)
+    gasAvg = Column(Float, default=0.00)
     createdAt = Column(TIMESTAMP(timezone=True),
                        server_default=func.now())
     updatedAt = Column(TIMESTAMP(timezone=True),

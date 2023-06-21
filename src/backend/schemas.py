@@ -10,7 +10,7 @@ class ReportBaseSchema(BaseModel):
     typePlace: int
     operator: str | None = None
     # date: datetime | None = None
-    gasAvg: float 
+    gasAvg: float | None = None
     createdAt: datetime | None = None
     updatedAt: datetime | None = None
     isFinished: int | None = None

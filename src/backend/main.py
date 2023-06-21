@@ -22,7 +22,7 @@ import schemas
 from database import engine, get_db
 from report import router as reportsRouter
 from images import router as imagesRouter 
-from sensor import router as sensorRouter
+from gas import router as gasRouter
 
 app = fastapi.FastAPI()
 
@@ -46,7 +46,7 @@ models.Base.metadata.create_all(bind=engine)
 # inclui um novo router '/report'
 app.include_router(reportsRouter, tags=['Reports'], prefix='/report')
 app.include_router(imagesRouter, tags=['Images'], prefix='/image')
-app.include_router(sensorRouter, tags=['Sensor'], prefix='/sensor')
+app.include_router(gasRouter, tags=['Gas'], prefix='/gas')
 
 
 

@@ -5,7 +5,6 @@ import models
 from sqlalchemy.orm import Session
 from fastapi import Depends, HTTPException, status, APIRouter, Response
 from database import get_db
-from globalVars import projectIsRunning, currentProjectId
 
 router = APIRouter()
 
@@ -16,11 +15,11 @@ def get_reports(db: Session = Depends(get_db), limit: int = 10, search: str = ''
     return {'status': 'success', 'results': len(reports), 'reports': reports}
 
 
-@router.get('/current')
-def get_current_state():
+@router.get('/last')
+def get_current_state(db: Session = Depends(get_db)):
+    last = db.query(models.Report).order_by(models.Report.id.desc()).first()
     return {
-        'projectIsRunning': projectIsRunning,
-        'currentProjectId': currentProjectId
+        "last": last
     }
 
 # Cria um novo report
@@ -30,16 +29,13 @@ def create_report(payload: schemas.ReportBaseSchema, db: Session = Depends(get_d
     db.add(new_report)
     db.commit()
     db.refresh(new_report)
-    global projectIsRunning
-    projectIsRunning = True
-    print('report:' + str(projectIsRunning))
-    currentProjectId = new_report.id
     return {"status": "success", "report": new_report}
 
 @router.get('/finish')
-def get_current_state():
-    projectIsRunning = False
-    currentProjectId = None
+def get_current_state(db: Session = Depends(get_db)):
+    last = db.query(models.Report).order_by(models.Report.id.desc()).first()
+    last.isFinished = 1
+    db.commit()
     return {
         'status': 'success',
     }

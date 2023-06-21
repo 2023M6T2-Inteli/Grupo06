@@ -35,9 +35,15 @@ def create_report(payload: schemas.ReportBaseSchema, db: Session = Depends(get_d
 def get_current_state(db: Session = Depends(get_db)):
     last = db.query(models.Report).order_by(models.Report.id.desc()).first()
     last.isFinished = 1
+    gasSum = 0
+    for element in last.return_json()['gasValues']:
+        gasSum += float(element['gasValue'])
+    gasAvg = gasSum / len(last.return_json()['gasValues'])
+    last.gasAvg = gasAvg
     db.commit()
     return {
         'status': 'success',
+        'gasAvg': gasAvg
     }
 
 # Edita um report já existente

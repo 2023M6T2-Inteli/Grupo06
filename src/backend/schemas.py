@@ -23,7 +23,7 @@ class ReportBaseSchema(BaseModel):
 
 class GasBaseSchema(BaseModel):
     id: int | None = None
-    reportId: int
+    reportId: int | None = None
     gasValue: float
     createdAt: datetime | None = None
 

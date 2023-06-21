@@ -57,8 +57,6 @@ def update_report(reportId: str, payload: schemas.ReportBaseSchema, db: Session 
     return {"status": "success", "report": db_report}
 
 # Retorna o reporte pela id
-
-
 @router.get('/{reportId}')
 def get_post(reportId: str, db: Session = Depends(get_db)):
     report = db.query(models.Report).filter(
@@ -66,7 +64,7 @@ def get_post(reportId: str, db: Session = Depends(get_db)):
     if not report:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND,
                             detail=f"No note with this id: {id} found")
-    return {"status": "success", "report": report}
+    return {"status": "success", "report": report.return_json()}
 
 # Deleta um report por id
 @router.delete('/{reportId}')

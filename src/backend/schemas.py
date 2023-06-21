@@ -25,11 +25,13 @@ class GasBaseSchema(BaseModel):
     id: int | None = None
     reportId: int
     gasValue: float
+    createdAt: datetime | None = None
 
 class ImageBaseSchema(BaseModel):
     id: int | None = None
-    reportId: int
-    gasValue: str
+    reportId: int | None = None
+    url: str
+    createdAt: datetime | None = None
 
 class ListReportResponse(BaseModel):
     status: str

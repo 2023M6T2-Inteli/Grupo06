@@ -32,17 +32,16 @@ export default function MapPage() {
 
       const { data, res } = await supabase.from('Coordinates').select()
 
-      if (data != null) {
+      if (data && data.length > 0) {
         console.log("Data: "+ data)
         
-        position.x = data[-1].x
-        position.y = data[-1].y
-        position.theta = data[-1].theta
+        const last_data = data[data.length - 1]
+        position = {...last_data}
 
         console.log("Position: ("+ position.x + ", " + position.y + position.theta +")")
 
         for(var i=0; i < Number(data.length); i++){
-          const { res } = await supabase.from('Coordinates').delete().eq('x', Number(data[i].x))
+          //const { res } = await supabase.from('Coordinates').delete().eq('x', Number(data[i].x))
           console.log(Number(data[i].y))
         }
       }

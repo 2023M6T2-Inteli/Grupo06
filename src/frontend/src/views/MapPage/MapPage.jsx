@@ -33,19 +33,20 @@ export default function MapPage() {
       const { data, res } = await supabase.from('Coordinates').select()
 
       if (data && data.length > 0) {
-        console.log("Data: "+ data)
         
         const last_data = data[data.length - 1]
         position = {...last_data}
 
-        console.log("Position: ("+ position.x + ", " + position.y + position.theta +")")
+        console.log("Position: ("+ position.x + ", " + position.y + ", " + position.theta + ")")
 
-        for(var i=0; i < Number(data.length); i++){
-          //const { res } = await supabase.from('Coordinates').delete().eq('x', Number(data[i].x))
-          console.log(Number(data[i].y))
-        }
+        // for(var i=0; i < data.length; i++){
+        //   //const { res } = await supabase.from('Coordinates').delete().eq('x', )
+        //   //console.log()
+        // }
       }
     }
+
+    let first_position = 0;
     
     const animation = () => {
       ctx.clearRect(0, 0, canvas_width, canvas_height);

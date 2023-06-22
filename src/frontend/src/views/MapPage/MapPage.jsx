@@ -14,8 +14,10 @@ export default function MapPage() {
   const Canvas = () => {
 
     const canvasRef = useRef(null);
-    const canvas_width = 800;
-    const canvas_height = 600;
+    const canvas_width = 900;
+    const canvas_height = 450;
+    const canvas_mid_width = canvas_width / 2;
+    const canvas_mid_height = canvas_height / 2;
     
     useEffect(() => {
       const canvas = canvasRef.current
@@ -23,12 +25,13 @@ export default function MapPage() {
 
       const draw_player = (px, py) => {
         ctx.fillStyle = 'green';
+        console.log("Drawing player at: (" + px + ", " + py + ")");
         ctx.fillRect(px, py, 20, 20);
     }
 
-    let position = {}
     let first_time = true;
-    let first_position = {"x": 0.00, "y": 0.00, "theta": 0.00};
+    let position = {"x": 0.00, "y": 0.00, "theta": 0.00};
+    let first_position = {...position};
 
     var get_position = async () => {
 
@@ -37,7 +40,7 @@ export default function MapPage() {
       if (data && data.length > 0) {
         
         const last_data = data[data.length - 1]
-        position = {...last_data}
+        position = {...last_data}*10
 
         console.log("Position: ("+ position.x + ", " + position.y + ", " + position.theta + ")")
 
@@ -47,7 +50,8 @@ export default function MapPage() {
         }
 
         if (first_time) {
-          first_position = {...position};
+          first_position.x = position.x;
+          first_position.y = position.y;
           first_time = false;
         }
       }
@@ -57,11 +61,11 @@ export default function MapPage() {
       ctx.clearRect(0, 0, canvas_width, canvas_height);
       get_position();
 
-      position.x = position.x - first_position.x;
-      position.y = position.y - first_position.y;
-      position.theta = position.theta - first_position.theta;
+      const posX = position.x - first_position.x + canvas_mid_width;
+      const posY = position.y - first_position.y + canvas_mid_height;
+      const posT = position.theta + first_position.theta;
 
-      draw_player(position.x, position.y);
+      draw_player(posX, posY);
       requestAnimationFrame(animation);
     }
 

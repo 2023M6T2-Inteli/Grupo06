@@ -27,8 +27,7 @@ from gas import router as gasRouter
 app = fastapi.FastAPI()
 
 origins = [
-    "http://localhost",
-    "http://localhost:3000",
+    "*"
 ]
 
 # Define as configurações do CORS

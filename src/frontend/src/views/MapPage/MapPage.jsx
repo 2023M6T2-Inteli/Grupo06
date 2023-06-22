@@ -26,7 +26,9 @@ export default function MapPage() {
         ctx.fillRect(px, py, 20, 20);
     }
 
-    let position = {"x": 0.00, "y": 0.00, "theta": 0.00}
+    let position = {}
+    let first_time = true;
+    let first_position = {"x": 0.00, "y": 0.00, "theta": 0.00};
 
     var get_position = async () => {
 
@@ -39,18 +41,26 @@ export default function MapPage() {
 
         console.log("Position: ("+ position.x + ", " + position.y + ", " + position.theta + ")")
 
-        // for(var i=0; i < data.length; i++){
-        //   //const { res } = await supabase.from('Coordinates').delete().eq('x', )
-        //   //console.log()
-        // }
+        for(var i=0; i < data.length; i++){
+          const actual_data = data[i]
+          const { res } = await supabase.from('Coordinates').delete().eq("id", actual_data.id)
+        }
+
+        if (first_time) {
+          first_position = {...position};
+          first_time = false;
+        }
       }
     }
-
-    let first_position = 0;
     
     const animation = () => {
       ctx.clearRect(0, 0, canvas_width, canvas_height);
       get_position();
+
+      position.x = position.x - first_position.x;
+      position.y = position.y - first_position.y;
+      position.theta = position.theta - first_position.theta;
+
       draw_player(position.x, position.y);
       requestAnimationFrame(animation);
     }

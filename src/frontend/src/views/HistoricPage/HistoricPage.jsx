@@ -3,6 +3,7 @@ import { Row, Col, Table, Card, Button } from "antd";
 import { NavBar } from "../../components/NavBar";
 import DownloadIcon from "@mui/icons-material/Download";
 import { Sidebar } from "../../components/Sidebar";
+import Cookies from 'js-cookie';
 import {
   PlusOutlined
 } from "@ant-design/icons";
@@ -35,16 +36,16 @@ export default function HistoricPage() {
   };
 
   const items = [
-    { title: "Nome da Inspeção", dataIndex: "reportName", key: "reportName" },
-    { title: "Opção de area", dataIndex: "typePlace", key: "typePlace" },
-    { title: "Responsável", dataIndex: "operator", key: "operator" },
+    { title: "Nome da Inspeção", dataIndex: "reportName", key: "id" },
+    { title: "Opção de area", dataIndex: "typePlace", key: "id" },
+    { title: "Responsável", dataIndex: "operator", key: "id" },
     { title: "Visualizar", key: "view",
     render: (_, record) => (
       <Button
         type="primary"
         shape = "circle"
-        onClick={() => handleView(record)}
-        //função aleatória para chamar quando clickar
+        onClick={() => handleView(record.id)}
+        
         icon = {<PlusOutlined />}
       >
       </Button>
@@ -52,6 +53,14 @@ export default function HistoricPage() {
   },
   ]; 
   const reversedItems = [...columns].reverse();
+
+  function handleView(id){
+    console.log(id)
+    Cookies.set('projectID', id);
+    window.open("/project");
+  }
+
+
 
   return (
     <Fragment>

@@ -35,7 +35,7 @@ export default function ProjectPage() {
     })
 
   return (
-    <Fragment style={{ backgroundColor: "#1D0833" }}>
+    <Fragment>
       <NavBar></NavBar>
       <Row style={{ backgroundColor: "#fff" }}>
         <Col span={4}>
@@ -60,13 +60,10 @@ export default function ProjectPage() {
                   style={{ display: "flex", marginTop: "20px" }}
                 >
                   <Card bordered>
-                    <h3 style={{ fontSize: "11px" }}>Concentração de O2:</h3>
+                    <h3 style={{ fontSize: "11px" }}>Medição de Gás: {content.gasAvg}</h3>
                   </Card>
                   <Card bordered>
-                    <h3 style={{ fontSize: "11px" }}> Status robô:</h3>
-                  </Card>
-                  <Card bordered>
-                    <h3 style={{ fontSize: "11px" }}> Status operação:</h3>
+                    <h3 style={{ fontSize: "11px" }}> Status Operação: {content.isFinished == 0 ? ("Em Andamento"):("Encerrado")}</h3>
                   </Card>
                 </Space>
                 <Row style={{ marginTop: "40px" }}>
@@ -88,8 +85,8 @@ export default function ProjectPage() {
                   Visualização da camera
                 </h2>
                 <Carousel autoplay>
-                  {content.images && content.images.map((image) => (
-                      <img src={image.url}/>
+                  {content?.images?.map((image) => (
+                      <img src={image.url} alt="Registro de Análise"/>
                   ))}
                 </Carousel>
               </Card>
@@ -98,7 +95,7 @@ export default function ProjectPage() {
           <Row justify="center">
             <Card
               style={{
-                width: "90%",
+                width: "95%",
                 boxShadow: "0 3px 3px rgba(0,0,0,0.2)",
                 margin: "20px",
               }}
@@ -114,16 +111,16 @@ export default function ProjectPage() {
                 style={{ display: "flex" }}
               >
                 <Card bordered>
-                  <h3 style={{ fontSize: "11px" }}>Titulo:</h3>
+                  <h3 style={{ fontSize: "11px" }}>Titulo: {content.reportName}</h3>
                 </Card>
                 <Card bordered>
-                  <h3 style={{ fontSize: "11px" }}> tipo de área:</h3>
+                  <h3 style={{ fontSize: "11px" }}> Tipo de Área: {content.typePlace == 1 ? ("Tubo") : ("Sala")}</h3>
                 </Card>
                 <Card bordered>
-                  <h3 style={{ fontSize: "11px" }}> Responsável:</h3>
+                  <h3 style={{ fontSize: "11px" }}> Responsável: {content.operator}</h3>
                 </Card>
                 <Card bordered>
-                  <h3 style={{ fontSize: "11px" }}> Prazo:</h3>
+                  <h3 style={{ fontSize: "11px" }}> Data: {content.createdAt}</h3>
                 </Card>
               </Space>
             </Card>

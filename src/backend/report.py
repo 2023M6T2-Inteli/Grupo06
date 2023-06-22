@@ -11,7 +11,6 @@ router = APIRouter()
 # retorna todos os reports
 @router.get('/')
 def get_reports(db: Session = Depends(get_db), limit: int = 10, search: str = ''):
-    print('oi')
     reports = db.query(models.Report).all()
     return {'status': 'success', 'results': len(reports), 'reports': reports}
 

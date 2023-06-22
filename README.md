@@ -12,7 +12,7 @@
 
 ## Lincore
 
-## Integrantes: <a href="https://www.linkedin.com/in/victorbarq/">Goku Sayajin</a>, <a href="https://www.linkedin.com/in/victorbarq/">Saitama One</a>, <a href="https://www.linkedin.com/in/victorbarq/">Ikki de Fenix</a>, <a href="https://www.linkedin.com/in/victorbarq/">Yusuke Urameshi</a>, <a href="https://www.linkedin.com/in/victorbarq/">Roronoa Zoro</a>
+## Integrantes: <a href="https://www.linkedin.com/in/elisaflemer/">Goku Sayajin</a>, <a href="https://www.linkedin.com/in/victorbarq/">Saitama One</a>, <a href="https://www.linkedin.com/in/victorbarq/">Ikki de Fenix</a>, <a href="https://www.linkedin.com/in/victorbarq/">Yusuke Urameshi</a>, <a href="https://www.linkedin.com/in/victorbarq/">Roronoa Zoro</a>
 
 ## Descrição
 
@@ -22,16 +22,9 @@ O AGV foi desenvolvido em um período de 10 semanas e utiliza uma combinação d
 
 A arquitetura do projeto consiste em um backend desenvolvido em FastAPI, responsável por receber e processar os dados provenientes do robô e do sensor de gás, bem como disponibilizar APIs para integração com outros sistemas. O frontend foi desenvolvido em Next.js, proporcionando uma interface intuitiva para monitoramento e controle do robô durante as inspeções.
 
-
 ## 🛠 Instalação e uso
 
-Configura o Manual do Usuário.
-
-## 💻 Configuração para Desenvolvimento
-
-Descreva como instalar todas as dependências para desenvolvimento e como rodar um test-suite automatizado de algum tipo. Se necessário, faça isso para múltiplas plataformas.
-
-Para abrir este projeto você necessita das seguintes ferramentas:
+Confira o Manual do Usuário.
 
 ## 📋 Licença/License
 

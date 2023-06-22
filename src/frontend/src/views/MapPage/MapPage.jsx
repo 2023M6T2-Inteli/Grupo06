@@ -38,21 +38,27 @@ export default function MapPage() {
       const { data, res } = await supabase.from('Coordinates').select()
 
       if (data && data.length > 0) {
-        
-        const last_data = data[data.length - 1]
-        position = {...last_data}*10
-
-        console.log("Position: ("+ position.x + ", " + position.y + ", " + position.theta + ")")
 
         for(var i=0; i < data.length; i++){
           const actual_data = data[i]
           const { res } = await supabase.from('Coordinates').delete().eq("id", actual_data.id)
         }
 
+        const last_data = data[data.length - 1]
+        position = {...last_data}
+        
+        console.log("Posicão: ("+ position.x + ", " + position.y + ")")
+
+        const multiplier = 100
+
+        position.x = position.x*multiplier
+        position.y = position.y*multiplier
+
         if (first_time) {
           first_position.x = position.x;
           first_position.y = position.y;
           first_time = false;
+          console.log("FIRST POSITION: ("+ first_position.x + ", " + first_position.y + ")")
         }
       }
     }

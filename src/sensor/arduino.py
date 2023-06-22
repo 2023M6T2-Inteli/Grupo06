@@ -8,7 +8,7 @@ from datetime import datetime
 porta = '/dev/ttyACM0'  # Substitua pela porta correta
 baud_rate = 9600
 
-backend_url = 'http://127.0.0.1:3000/gas'
+backend_url = 'http://10.128.66.82:8000/gas'
 
 # Inicializa a comunicação serial
 conexao = serial.Serial(porta, baud_rate)
@@ -70,20 +70,20 @@ try:
             if len(valores_analogicos) >= 3 :
                 continuar = False
 
-            # Atualiza o gráfico com os valores atuais e as médias móveis
-            ax.clear()
-            #ax.plot(valores_analogicos, label='Valores Analógicos')
-            #ax.plot(medias_moveis, label='Médias Móveis')
-            ax.plot(media_mov_porc, label='Médias Móveis em Porcentagem')
-            ax.legend()
+            # # Atualiza o gráfico com os valores atuais e as médias móveis
+            # ax.clear()
+            # #ax.plot(valores_analogicos, label='Valores Analógicos')
+            # #ax.plot(medias_moveis, label='Médias Móveis')
+            # ax.plot(media_mov_porc, label='Médias Móveis em Porcentagem')
+            # ax.legend()
 
-            # Define os rótulos e título do gráfico
-            ax.set_xlabel('Amostras')
-            ax.set_ylabel('Valor')
-            ax.set_title('Valores Analógicos e Médias Móveis')
+            # # Define os rótulos e título do gráfico
+            # ax.set_xlabel('Amostras')
+            # ax.set_ylabel('Valor')
+            # ax.set_title('Valores Analógicos e Médias Móveis')
 
-            # Exibe o gráfico
-            plt.pause(0.01)
+            # # Exibe o gráfico
+            # plt.pause(0.01)
 
 except KeyboardInterrupt:
     pass
@@ -92,4 +92,4 @@ finally:
     # Fecha a conexão serial
     conexao.close()
 
-plt.show()
+# plt.show()

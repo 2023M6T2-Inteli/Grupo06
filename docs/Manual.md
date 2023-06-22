@@ -203,7 +203,8 @@ source ~/.bashrc
 ### Troubleshooting
 
 **Erro de importação de mapa no Rviz**
-Então, rode o seguinte:
+
+Rode o seguinte:
 
 
 ```
@@ -277,7 +278,7 @@ Agora você pode usar as teclas do teclado para controlar o movimento do robô.
 
 
 
-# **Mapeamento de ambiente**
+### Mapeamento de ambiente
 
 
 Em três terminais paralelos:

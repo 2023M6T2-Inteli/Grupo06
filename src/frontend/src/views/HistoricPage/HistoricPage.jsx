@@ -50,7 +50,8 @@ export default function HistoricPage() {
       </Button>
     ),
   },
-  ];
+  ]; 
+  const reversedItems = [...columns].reverse();
 
   return (
     <Fragment>
@@ -71,7 +72,7 @@ export default function HistoricPage() {
             <Row>
               <Col span={24}>
                 <Table
-                  dataSource={columns}
+                  dataSource={reversedItems}
                   columns={items}
                   style={{maxHeight: "400px"}}
                   scroll={{ y: 400 }}

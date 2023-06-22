@@ -3,7 +3,7 @@ import Image from "next/image";
 import { Row, Col, Card, Form, Input, Select, Button, Tooltip } from "antd";
 import { QuestionCircleOutlined } from "@ant-design/icons";
 import { NavBar } from "../../components/NavBar";
-
+import Cookies from 'js-cookie';
 const { Option } = Select;
 
 import Logo from "../../../public/images/logo_lincore.png";
@@ -11,6 +11,7 @@ import Logo from "../../../public/images/logo_lincore.png";
 export default function SignUpPage() {
   const [form] = Form.useForm();
   const [loading, setLoading] = useState(false);
+  const [content, setContent] = useState([])
 
   const onFinish = (values) => {
     setLoading(true);
@@ -29,12 +30,18 @@ export default function SignUpPage() {
       .then(data => {
         console.log(data);
         setLoading(false);
+        console.log(data.report.id)
+        handleCreateCookie(data.report.id)
         window.open("/project");
       })
       .catch(error => {
         console.error('Erro:', error);
         setLoading(false);
       });
+  };
+
+  const handleCreateCookie = (id) => {
+    Cookies.set('projectID', id);
   };
 
   return (

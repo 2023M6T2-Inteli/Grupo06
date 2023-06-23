@@ -60,10 +60,10 @@ export default function ProjectPage() {
                   style={{ display: "flex", marginTop: "20px" }}
                 >
                   <Card bordered>
-                    <h3 style={{ fontSize: "11px" }}>Medição de Gás: {content.gasAvg}</h3>
+                    <h3 style={{ fontSize: "14px" }}>Medição de Gás: {content.gasValues && content.gasValues.length > 0 ? content.gasValues[content.gasValues.length - 1].gasValue : null}</h3>
                   </Card>
                   <Card bordered>
-                    <h3 style={{ fontSize: "11px" }}> Status Operação: {content.isFinished == 0 ? ("Em Andamento"):("Encerrado")}</h3>
+                    <h3 style={{ fontSize: "14px" }}> Status Operação: {content.isFinished == 0 ? ("Em Andamento"):("Encerrado")}</h3>
                   </Card>
                 </Space>
                 <Row style={{ marginTop: "40px" }}>
@@ -111,16 +111,28 @@ export default function ProjectPage() {
                 style={{ display: "flex" }}
               >
                 <Card bordered>
-                  <h3 style={{ fontSize: "11px" }}>Titulo: {content.reportName}</h3>
+                  <Row>
+                  <h3 style={{ fontSize: "14px" }}>Titulo: </h3>
+                  <p style={{ fontSize: "14px", fontWeight:500 }}>{content.reportName}</p>
+                  </Row>
                 </Card>
                 <Card bordered>
-                  <h3 style={{ fontSize: "11px" }}> Tipo de Área: {content.typePlace == 1 ? ("Tubo") : ("Sala")}</h3>
+                  <Row>
+                    <h3 style={{ fontSize: "14px" }}> Tipo de Área: </h3>
+                    <p style={{ fontSize: "14px", fontWeight:500 }}>{content.typePlace == 1 ? ("Tubo") : ("Sala")}</p>
+                  </Row>
                 </Card>
                 <Card bordered>
-                  <h3 style={{ fontSize: "11px" }}> Responsável: {content.operator}</h3>
+                  <Row>
+                    <h3 style={{ fontSize: "14px" }}> Responsável: </h3>
+                    <p style={{ fontSize: "14px", fontWeight:500 }}> {content.operator}</p>
+                  </Row>
                 </Card>
                 <Card bordered>
-                  <h3 style={{ fontSize: "11px" }}> Data: {content.createdAt}</h3>
+                  <Row>
+                    <h3 style={{ fontSize: "14px" }}> Data: </h3>
+                    <p style={{ fontSize: "14px", fontWeight:500 }}>{content.createdAt}</p>
+                  </Row>
                 </Card>
               </Space>
             </Card>

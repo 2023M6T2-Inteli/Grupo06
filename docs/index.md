@@ -36,32 +36,89 @@
 - [Arquitetura do sistema](#arquitetura-do-sistema)
   - [Requisitos funcionais e não funcionais](#requisitos-funcionais-e-não-funcionais)
     - [Funcionais](#funcionais)
-    - [Não funcionais](#não-funcionais)
+    - [Requisitos não funcionais](#requisitos-não-funcionais)
   - [Viabilidade técnica](#viabilidade-técnica)
   - [Proposta geral](#proposta-geral)
   - [Diagrama de blocos](#diagrama-de-blocos)
     - [Tabela de componentes](#tabela-de-componentes)
 - [Navegação e segurança](#navegação-e-segurança)
-  - [Controle de navegação no Nav2](#controle-de-navegação-no-nav2)
-  - [Segurança e sistema anticolisão](#segurança-e-sistema-anticolisão)
-    - [Outras rotinas](#outras-rotinas)
+    - [Controle de navegação no Nav2](#controle-de-navegação-no-nav2)
+    - [Segurança e sistema anticolisão](#segurança-e-sistema-anticolisão)
+      - [Outras rotinas](#outras-rotinas)
 - [Visão computacional](#visão-computacional)
   - [Pipeline de pré-processamento](#pipeline-de-pré-processamento)
 - [Riscos e fluxo de erros](#riscos-e-fluxo-de-erros)
+  - [Riscos relacionados a hardware](#riscos-relacionados-a-hardware)
+  - [Riscos relacionados a software](#riscos-relacionados-a-software)
 - [Desenvolvimento de interface gráfica](#desenvolvimento-de-interface-gráfica)
   - [Tecnologias Utilizadas](#tecnologias-utilizadas)
-    - [Documentação Next.js](#documentação-nextjs)
-    - [Documentação Ant Design](#documentação-ant-design)
+      - [Documentação Next.js](#documentação-nextjs)
+      - [Documentação Ant Design](#documentação-ant-design)
   - [Mockup](#mockup)
-  - [Acionamento de Interface - Servidor com Next.js](#acionamento-de-interface---servidor-com-nextjs)
-- [Backend](#backend)
-- [Api e rotas](#apis-e-rotas)
+    - [Acionamento de Interface - Servidor com Next.js](#acionamento-de-interface---servidor-com-nextjs)
+  - [Backend](#backend)
+  - [APIs e Rotas](#apis-e-rotas)
+    - [Rota `/positions`](#rota-positions)
+      - [Método](#método)
+      - [URL](#url)
+      - [Resposta de Sucesso](#resposta-de-sucesso)
+    - [Rota `/mission`](#rota-mission)
+      - [Método](#método-1)
+      - [URL](#url-1)
+      - [Resposta de Sucesso](#resposta-de-sucesso-1)
+    - [Rota `/upload-image`](#rota-upload-image)
+      - [Método](#método-2)
+      - [URL](#url-2)
+      - [Parâmetros da Requisição](#parâmetros-da-requisição)
+      - [Resposta de Sucesso](#resposta-de-sucesso-2)
+    - [Rota `/video`](#rota-video)
+      - [Método](#método-3)
+      - [URL](#url-3)
+      - [Parâmetros da Requisição](#parâmetros-da-requisição-1)
+      - [Resposta de Sucesso](#resposta-de-sucesso-3)
+    - [Rota `/list`](#rota-list)
+      - [Método](#método-4)
+      - [URL](#url-4)
+      - [Resposta de Sucesso](#resposta-de-sucesso-4)
+    - [Rota `/upload`](#rota-upload)
+      - [Método](#método-5)
+      - [URL](#url-5)
+      - [Parâmetros da Requisição](#parâmetros-da-requisição-2)
+      - [Resposta de Sucesso](#resposta-de-sucesso-5)
+    - [Rota `/images`](#rota-images)
+      - [Método](#método-6)
+      - [URL](#url-6)
+      - [Resposta de Sucesso](#resposta-de-sucesso-6)
+    - [Rota `/api/report/`](#rota-apireport)
+      - [Método](#método-7)
+      - [Parâmetros da Requisição](#parâmetros-da-requisição-3)
+      - [Resposta de Sucesso](#resposta-de-sucesso-7)
+    - [Rota `/api/report/`](#rota-apireport-1)
+      - [Método](#método-8)
+      - [Parâmetros da Requisição](#parâmetros-da-requisição-4)
+      - [Resposta de Sucesso](#resposta-de-sucesso-8)
+    - [Rota `/api/report/{reportId}`](#rota-apireportreportid)
+      - [Método](#método-9)
+      - [Parâmetros da Requisição](#parâmetros-da-requisição-5)
+      - [Resposta de Sucesso](#resposta-de-sucesso-9)
+    - [Rota `/api/report/{reportId}`](#rota-apireportreportid-1)
+      - [Método](#método-10)
+      - [Parâmetros da Requisição](#parâmetros-da-requisição-6)
+      - [Resposta de Sucesso](#resposta-de-sucesso-10)
+    - [Rota `/api/report/{reportId}`](#rota-apireportreportid-2)
+      - [Método](#método-11)
+      - [Parâmetros da Requisição](#parâmetros-da-requisição-7)
+      - [Resposta de Sucesso](#resposta-de-sucesso-11)
 - [Referências](#referências)
 
 # Entendimento de negócios
 
+O AGV para Inspeção de Espaços Confinados é um sistema inovador desenvolvido pela nossa equipe de engenharia da computação no Inteli, especialmente para a Gerdau. Esse projeto foi concluído em apenas 10 semanas, demonstrando a eficiência e agilidade da nossa equipe.
+
+Nosso AGV (Automated Guided Vehicle) é um robô autônomo projetado para realizar inspeções precisas e seguras em espaços confinados, com foco especial em tubulações. Ele utiliza tecnologias avançadas para oferecer resultados confiáveis e auxiliar na manutenção preventiva e no monitoramento contínuo das estruturas.
+
 ## Matriz de oceano azul
-- A matriz Oceano Azul é um conceito estratégico que se refere à busca por novos mercados e oportunidades de negócio, onde a concorrência é irrelevante ou inexistente. Ao contrário do Oceano Vermelho, onde as empresas competem em um mercado saturado e disputam a mesma fatia de clientes, o Oceano Azul envolve a criação de um novo espaço de mercado, onde as empresas podem crescer e prosperar.
+A matriz Oceano Azul é um conceito estratégico que se refere à busca por novos mercados e oportunidades de negócio, onde a concorrência é irrelevante ou inexistente. Ao contrário do Oceano Vermelho, onde as empresas competem em um mercado saturado e disputam a mesma fatia de clientes, o Oceano Azul envolve a criação de um novo espaço de mercado, onde as empresas podem crescer e prosperar.
 
 Utilizamos a matriz oceano azul no projeto de AGV para que nossa equipe possa descobrir novas oportunidades de mercado e criar um produto único e de alta qualidade, diferente dos concorrentes. Também podemos entender o que o cliente precisa e adaptar o produto para atender às suas necessidades e expectativas.
 
@@ -257,11 +314,16 @@ Por fim, Donatello é um AGV movido por baterias recarregáveis, diminuindo o im
 
 ### Proposta inovadora
 
-Uma excelente forma de ampliar a inovação nesse projeto seria implementar a transmissão dos vídeos em tempo real para óculos VR de última geração, com tecnologia de ponta. Isso proporcionaria ao técnico uma experiência inspecionando o ambiente de maneira imersiva e aprimorada, ampliando sua percepção e entendimento do espaço confinado. Essa tecnologia não só seria aplicável para as inspeções pré e pós-manutenção, mas também para o treinamento de novos técnicos, permitindo que eles adquiram conhecimentos e se familiarizem com o ambiente antes mesmo de adentrá-lo.
+Uma excelente forma de ampliar a inovação nesse projeto seria implementar a transmissão dos vídeos em tempo real para óculos de Realidade Aumentada (RA) de última geração, com tecnologia de ponta. Isso proporcionaria ao técnico uma experiência inspecionando o ambiente de maneira imersiva e aprimorada, ampliando sua percepção e entendimento do espaço confinado. Essa tecnologia não só seria aplicável para as inspeções pré e pós-manutenção, mas também para o treinamento de novos técnicos, permitindo que eles adquiram conhecimentos e se familiarizem com o ambiente antes mesmo de adentrá-lo.
 
-O uso de óculos VR possibilitaria que outras pessoas, como engenheiros e gestores, visualizassem a inspeção em tempo real de forma mais detalhada e abrangente, facilitando a tomada de decisões mais informadas. Essa inovação pode trazer uma grande vantagem competitiva para a empresa, acrescentando valor ao produto final e potencializando a eficiência do processo de manutenção.
+O uso de óculos de RA possibilitaria que outras pessoas, como engenheiros e gestores, visualizassem a inspeção em tempo real de forma mais detalhada e abrangente, facilitando a tomada de decisões mais informadas. Essa inovação pode trazer uma grande vantagem competitiva para a empresa, acrescentando valor ao produto final e potencializando a eficiência do processo de manutenção.
 
 Além disso, é importante salientar que o uso de tecnologia de ponta como essa pode melhorar a segurança dos funcionários, reduzindo o risco de acidentes de trabalho em áreas confinadas e diminuindo a necessidade de interrupção do trabalho para correção de problemas. A implementação dessa tecnologia pode, portanto, não apenas ser benéfica para a empresa, mas também para a segurança e bem-estar de seus funcionários.
+
+A realidade aumentada também apresenta uma série de aplicações promissoras em outras indústrias. Por exemplo, no setor de arquitetura e construção, os óculos de RA podem ser usados ​​para visualizar modelos em 3D de edifícios e estruturas em tempo real, permitindo que os arquitetos e engenheiros analisem e façam ajustes precisos antes da construção física, economizando tempo e recursos.
+
+Na área da medicina, a realidade aumentada pode ser empregada para ajudar cirurgiões durante procedimentos complexos. Os óculos de RA podem fornecer informações em tempo real sobre a anatomia do paciente, orientações cirúrgicas e dados vitais, permitindo uma intervenção mais precisa e reduzindo os riscos envolvidos.
+
 
 ### Possibilidades de reuso
 
@@ -279,33 +341,48 @@ Nesse sentido, alguns exemplos de reuso incluem:
 
 # Arquitetura do sistema
 
-A arquitetura da solução para o projeto de AGV de inspeção de espaços confinados será composta por três principais elementos: hardware, software e comunicação. O hardware incluirá o próprio AGV, equipado com sensores de colisão, sensores de gás, câmeras de vídeo, sensores de temperatura e um sistema de monitoramento das condições atmosféricas do ambiente. O software será responsável por controlar o movimento do AGV, detectar obstáculos e alterar a rota do AGV quando necessário. Também será responsável pela interface com o usuário, permitindo o controle remoto do AGV e a visualização dos dados e relatórios gerados durante a inspeção. Por fim, a comunicação será realizada via rede sem fio, permitindo a transmissão dos dados e relatórios gerados em tempo real para o gestor responsável pelo monitoramento do sistema. Com essa arquitetura, o sistema será capaz de realizar a inspeção de forma autônoma, segura e eficiente, proporcionando ao usuário final a tranquilidade e agilidade necessárias para a realização de uma manutenção confiável.
+A arquitetura da solução para o projeto de AGV de inspeção de espaços confinados será composta por três principais elementos: hardware, software e comunicação. O hardware incluirá o próprio AGV, equipado com sensores de colisão, sensores de gás e câmeras de vídeo. O software será responsável por controlar o movimento do AGV, detectar obstáculos e alterar a rota do AGV quando necessário. Também será responsável pela interface com o usuário, permitindo o controle remoto do AGV e a visualização dos dados e relatórios gerados durante a inspeção. Por fim, a comunicação será realizada via rede sem fio, permitindo a transmissão dos dados e relatórios gerados em tempo real para o gestor responsável pelo monitoramento do sistema. Com essa arquitetura, o sistema será capaz de realizar a inspeção de forma autônoma, segura e eficiente, proporcionando ao usuário final a tranquilidade e agilidade necessárias para a realização de uma manutenção confiável.
 
 ## Requisitos funcionais e não funcionais
 
 ### Funcionais
 
-1. Detecção de condições atmosféricas, incluindo quantidade de oxigênio, presença de gases tóxicos e temperatura, em diferentes pontos no espaço confinado;
-2. Verificação de condições de segurança da NR33;
-3. Inspeção antes e após a manutenção;
-4. Certificação de que equipamentos de manutenção não foram esquecidos no espaço confinado após o término da operação;
-5. Sensor na base do robô para detectar colisões;
-6. Rotina de retorno ao ponto inicial em caso de erros e/ou colisões;
-7. Movimentação determinada por trilha em fitas;
-8. Movimentação opcional por controle remoto;
-9. Dashboard com apresentação dos dados coletados em tempo real;
-10. Dashboard com vídeo em tempo real;
-11. Geração de relatórios em PDF;
-12. Alerta sonoro na interface gráfica em caso de erros e/ou colisões.
+**Detecção de gases tóxicos em diferentes pontos no espaço confinado:**
+O sistema deve ser capaz de monitorar as condições atmosféricas em várias áreas do espaço confinado, proporcionando informações precisas sobre a presença de gases tóxicos. Essa funcionalidade permite que os técnicos avaliem os riscos e tomem medidas adequadas para garantir a segurança durante as atividades de manutenção.
 
-### Não funcionais
+**Inspeção antes e após a manutenção:**
+O sistema deve permitir a realização de inspeções detalhadas antes e depois das atividades de manutenção. Essa funcionalidade ajuda a documentar o estado do espaço confinado ao longo do tempo, fornecendo um histórico útil para análises posteriores e planejamento de manutenção futura.
 
-1. Performance otimizada para garantir a eficiência do processo de inspeção: o sistema deve ser capaz de executar as inspeções de forma eficiente, com uma taxa de sucesso de pelo menos 95%.
-2. Confiabilidade na detecção de condições atmosféricas: o sistema deve ser capaz de detectar com precisão a quantidade de oxigênio e a presença de gases tóxicos com uma margem de erro de no máximo 5%.
-3. Funcionamento confiável em ambientes com falta de regularidade (tubulações):poderá haver o sistema deve ser capaz de navegar em tubulações com uma margem de erro de no máximo 10%.
-4. Rápido tempo de resposta em detecção de obstáculos: o sistema deve ser capaz de detectar obstáculos em no máximo 1 segundo.
-5. Confiança na precisão da detecção de obstáculos: o sistema deve ser capaz de detectar obstáculos com pelo menos 95% de precisão.
-6. Interação com usuário intuitiva: a interface deve ser fácil de usar e compreender para o usuário final (executante da manutenção) e gestor (dash/relatórios).
+**Uso do LIDAR para detectar obstáculos e evitar colisões:**
+O sistema deve utilizar tecnologia LIDAR (Detecção e Alcance por Luz) para detectar obstáculos no ambiente do espaço confinado e evitar colisões. O LIDAR permite ao sistema criar um mapa digitalizado do ambiente em tempo real, identificando com precisão a presença de objetos que possam representar riscos para o robô de inspeção.
+
+**Movimentação determinada por sequência de pontos em mapa digitalizado do ambiente:**
+O sistema deve utilizar o mapa digitalizado do ambiente para planejar a movimentação do robô de inspeção. O robô deve seguir uma sequência de pontos pré-determinada, garantindo uma cobertura completa do espaço confinado durante a inspeção. Essa funcionalidade permite uma navegação eficiente e precisa do robô.
+
+**Dashboard com apresentação dos dados coletados em tempo real:**
+O sistema deve fornecer um dashboard que apresente os dados coletados durante a inspeção em tempo real. O dashboard ajuda os técnicos e gestores a acompanhar o progresso da inspeção e tomar decisões informadas com base nos dados atualizados.
+
+**Dashboard com vídeo em tempo real:**
+Além dos dados coletados, o sistema deve fornecer um dashboard que exiba vídeo em tempo real da inspeção. Isso permite que os técnicos e gestores visualizem a inspeção de forma remota, facilitando a compreensão das condições do espaço confinado e auxiliando na tomada de decisões.
+
+### Requisitos não funcionais
+**Performance otimizada para garantir a eficiência do processo de inspeção:**
+O sistema deve ser otimizado para executar as inspeções de forma eficiente, garantindo uma taxa de sucesso de pelo menos 95%. Isso inclui a capacidade de processar rapidamente os dados coletados, gerar relatórios e fornecer respostas em tempo real.
+
+**Confiabilidade na detecção de condições atmosféricas:**
+O sistema deve ser altamente confiável na detecção da presença de gases tóxicos. A margem de erro para essas medições deve ser no máximo 5%, garantindo a precisão e a segurança durante a inspeção.
+
+**Funcionamento confiável em ambientes com falta de regularidade (tubulações):**
+O sistema deve ser capaz de operar de forma confiável em ambientes com falta de regularidade, como tubulações. Ele deve ser capaz de navegar nessas áreas com uma margem de erro de no máximo 10%, garantindo a cobertura completa do espaço confinado durante a inspeção.
+
+**Rápido tempo de resposta na detecção de obstáculos:**
+O sistema deve ser capaz de detectar obstáculos com rapidez, respondendo em no máximo 1 segundo. Isso ajuda a evitar colisões e garante a eficiência da inspeção.
+
+**Confiança na precisão da detecção de obstáculos:**
+O sistema deve ser altamente preciso na detecção de obstáculos, com pelo menos 95% de precisão. Isso assegura que o robô de inspeção possa identificar corretamente os obstáculos e tomar medidas adequadas para evitá-los.
+
+**Interação com usuário intuitiva:**
+A interface do sistema deve ser intuitiva e fácil de usar para os usuários finais, incluindo os executantes da manutenção e os gestores. Isso facilita o entendimento das informações apresentadas no dashboard, a interpretação dos dados coletados e a tomada de decisões com base nas informações fornecidas.
 
 ## Viabilidade técnica
 

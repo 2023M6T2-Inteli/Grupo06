@@ -1,14 +1,11 @@
 # Manual do Usuário | Donatello AGV
 
 
-## Especificações do sistema
-
-
-### Introdução do sistema
+## Introdução do sistema
 O Donatello é um AGV (Autonomous Ground Vehicle) desenvolvido para a inspeção de espaços confinados, especialmente tubulações da Gerdau. Ele foi construído utilizando a plataforma TurtleBot3, ROS2 (Robot Operating System 2), Nav2 (Navigation2), Raspberry Pi, sensores de qualidade do ar, uma câmera e um modelo de detecção de rachaduras treinado com Yolov8 utilizando OpenCV. O robô pode ser controlado manualmente por meio de uma interface gráfica ou seguir uma rota previamente determinada em um mapa. Os sensores enviam dados continuamente para o front-end, fornecendo informações sobre as condições atmosféricas para garantir a segurança dos operadores. O sistema de IA detecta rachaduras, e a câmera permite que o técnico visualize o ambiente remotamente.
 
 
-### Componentes e especificações
+## Componentes e especificações
 
 - TurtleBot3
 - Raspberry Pi
@@ -17,15 +14,9 @@ O Donatello é um AGV (Autonomous Ground Vehicle) desenvolvido para a inspeção
 - Modelo de detecção de rachaduras treinado com Yolov8 e OpenCV
 - Software ROS2 (Robot Operating System 2) e Nav2 (Navigation2)
 
+## Guia de Montagem e Inicialização do Sistema
 
-## Manual Operacional
-
-### Guia de Montagem e Inicialização do Sistema
-
-
-**Para o robô**
-=======
-#### Robô
+### Robô
 1. Abertura do Robô:
 
 
@@ -74,7 +65,7 @@ Insira a senha correspondente ao usuário configurado no Raspberry Pi e você te
 Observação: Neste manual, daremos enfoque à solução headless utilizando SSH para a conexão com o Raspberry Pi.
 
 
-## Interface gráfica
+### Interface gráfica
 
 Para instalar um frontend utilizando a estrutura do Next.js, siga as seguintes etapas:
 
@@ -87,15 +78,15 @@ Para instalar um frontend utilizando a estrutura do Next.js, siga as seguintes e
     ```
 3. Então, acesse o site em [localhost:3000.com](localhost:3000.com)
 
-# Execução do Servidor Backend
+### Backend
 
-## Requisitos de Sistema
+#### Requisitos de Sistema
 
 Antes de prosseguir com a instalação, certifique-se de ter os seguintes requisitos instalados:
 
 - [uvicorn](https://www.uvicorn.org/)
 
-## Instalação
+#### Instalação
 
 Siga as etapas abaixo para instalar o servidor backend:
 
@@ -113,7 +104,7 @@ Siga as etapas abaixo para instalar o servidor backend:
    pip install "fastapi[standard]"
    ```
 
-## Executando o Servidor Backend
+#### Executando o servidor
 
 Para executar o servidor backend da aplicação, siga estas etapas:
 
@@ -145,8 +136,7 @@ Para executar o servidor backend da aplicação, siga estas etapas:
 Parabéns! Agora você pode executar o servidor backend da aplicação web e interagir com as informações do veículo.
 
 
-**Para o modelo de AI**
-=======
+#### Modelo IA
 
 1. Certifique-se de ter o Python3.9 e pip instalados em seu sistema. 
 2. Navegue para a pasta raiz do backend e rode:
@@ -213,7 +203,8 @@ source ~/.bashrc
 ### Troubleshooting
 
 **Erro de importação de mapa no Rviz**
-Então, rode o seguinte:
+
+Rode o seguinte:
 
 
 ```
@@ -249,10 +240,9 @@ robot_model_type: "nav2_amcl::DifferentialMotionModel"
 
 Não se esqueça de dar source no ~/.bashrc antes de continuar!
 
-### Instruções operacionais
+## Instruções operacionais
 
-**Movimentação manual do robô**
-=======
+### Movimentação manual do robô
 
 Antes de comandar o TurtleBot3, é necessário configurar a variável de ambiente que define o modelo do robô. Execute o seguinte comando no terminal:
 
@@ -288,7 +278,7 @@ Agora você pode usar as teclas do teclado para controlar o movimento do robô.
 
 
 
-# **Mapeamento de ambiente**
+### Mapeamento de ambiente
 
 
 Em três terminais paralelos:
@@ -341,7 +331,7 @@ ros2 run nav2_map_server map_saver_cli -f <nome-do-mapa>
 Se tudo deu certo, é para ter um arquivo ".pmg" e ".yaml" na pasta "maps".
 
 
-**Abrir o mapa em si**
+### Abrir o mapa em si
 Em terminais paralelos, abra o Gazebo com o Turtlebot World e carregue o mapa gerado no RViz:
 
 
@@ -361,10 +351,10 @@ ros2 launch turtlebot3_navigation2 navigation2.launch.py use_sim_time:=True map:
 Feito isso, é só setar o ponto inicial e movimentar o robô normalmente pela interface gráfica ou API em Python.
 
 
-### Considerações de segurança
+## Considerações de segurança
 
 
-**Riscos operacionais**
+### Riscos operacionais
 
 
 Ao operar o Donatello AGV, é importante estar ciente dos possíveis riscos operacionais. Aqui estão alguns exemplos de riscos que devem ser considerados:
@@ -394,13 +384,13 @@ Ao operar o Donatello AGV, é importante estar ciente dos possíveis riscos oper
 É fundamental estar ciente desses riscos e tomar as devidas precauções ao operar o Donatello AGV. Certifique-se de seguir todas as instruções fornecidas neste manual do usuário e adotar práticas de segurança adequadas para minimizar os riscos associados à operação do robô.
 
 
-**Adequação do local**
+### Adequação do local
 
 
 Antes de operar o Donatello AGV, certifique-se de que o local de operação esteja adequado para evitar riscos desnecessários. Considere a presença de obstáculos, condições atmosféricas adversas ou outros fatores que possam afetar a segurança do robô e dos operadores.
 
 
-**Guia de prevenção**
+### Guia de prevenção
 - Siga sempre as instruções operacionais fornecidas neste manual.
 - Mantenha distância segura do Donatello AGV durante a operação.
 - Nunca force os movimentos do robô além de suas capacidades.

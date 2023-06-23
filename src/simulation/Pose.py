@@ -1,4 +1,3 @@
-from max_diffs import MAX_DIFF
 from turtlesim.msg import Pose as TPose
 
 # Define a classe Pose, que representa uma posição no mundo
@@ -21,4 +20,4 @@ class Pose(TPose):
         return self
     
     def __eq__(self, other):
-        return abs(self.x - other.x) <= MAX_DIFF and abs(self.y - other.y) <= MAX_DIFF
+        return abs(self.x - other.x) <= 0.1 and abs(self.y - other.y) <= 0.1

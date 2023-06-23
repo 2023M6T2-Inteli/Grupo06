@@ -1,2 +1,0 @@
-projectIsRunning = False 
-currentProjectId = None 

@@ -27,11 +27,19 @@ export default function MapPage() {
         ctx.fillStyle = 'green';
         console.log("Drawing player at: (" + px + ", " + py + ")");
         ctx.fillRect(px, py, 20, 20);
+
+      const draw_line = (lin) => {
+        for (var i = 0; i < lin.length; i++) {
+          ctx.fillStyle = 'black';
+          ctx.fillRect(px, py, 5, 5);
+        }
+      }
     }
 
     let first_time = true;
     let position = {"x": 0.00, "y": 0.00, "theta": 0.00};
     let first_position = {...position};
+    let line = {}
 
     var get_position = async () => {
 
@@ -72,6 +80,10 @@ export default function MapPage() {
       const posT = position.theta + first_position.theta;
 
       draw_player(posX, posY);
+
+      line.push([posX, posY]);
+
+      draw_line(line);
       requestAnimationFrame(animation);
     }
 

@@ -45,6 +45,9 @@ app.include_router(reportsRouter, tags=['Reports'], prefix='/report')
 app.include_router(imagesRouter, tags=['Images'], prefix='/image')
 app.include_router(gasRouter, tags=['Gas'], prefix='/gas')
 
+@app.get("/")
+async def root():
+    return {"message": "Hello World"}
 
 
 # Executa o servidor

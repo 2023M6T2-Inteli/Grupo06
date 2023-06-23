@@ -1,8 +1,8 @@
 import React, { Fragment, useState, useEffect, useRef } from "react";
 import { Row, Col, Table, Card, Button} from "antd";
 import { NavBar } from "../../components/NavBar";
-import DownloadIcon from "@mui/icons-material/Download";
-import BotControllerNav from "../../../../simulation/.vscode";
+//import DownloadIcon from "@mui/icons-material/Download";
+//import BotControllerNav from "../../../../simulation/.vscode";
 
 export default function MapPage() {
   const Canvas = () => {
@@ -12,7 +12,9 @@ export default function MapPage() {
     const canvas_height = 600;
 
     let position = 0
-    
+    let pos_x = 10
+    let pos_y = 10
+
     useEffect(() => {
       const canvas = canvasRef.current
       const ctx = canvas.getContext('2d')
@@ -45,7 +47,6 @@ export default function MapPage() {
   return (
     <Fragment>
         <NavBar></NavBar>
-
         <Card style={{padding: 50}}>
         <Canvas></Canvas>
         </Card>

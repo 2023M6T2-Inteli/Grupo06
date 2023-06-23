@@ -3,6 +3,7 @@ import requests
 import matplotlib.pyplot as plt
 import numpy as np
 from datetime import datetime
+import time
 
 # Configurações da porta serial
 porta = '/dev/ttyACM0'  # Substitua pela porta correta
@@ -20,7 +21,7 @@ valores_analogicos = []
 medias_moveis = []
 
 # Número de amostras para calcular a média móvel
-janela = 3
+janela = 5
 
 # Lista para armazenar as médias móveis por porcentagem
 media_mov_porc = []
@@ -59,18 +60,23 @@ try:
                 # Armazena a média móvel na lista
                 medias_moveis.append(media_movel)
                 media_mov_porc.append(porcentagem)
-
+    
+                
+                indice = len(media_mov_porc) - 1
                 # Realiza o envio do valor analógico para o backend
-                payload = {'valor_analogico': valor_analogico, 'timestamp': str(datetime.now())}
+                
+                payload = {'gasValue': media_mov_porc[indice]}
                 response = requests.post(f"{backend_url}", json=payload)
                 if response.status_code != 201:
                     print('Falha ao enviar valor analógico para o backend:', response.text)
 
-
-            if len(valores_analogicos) >= 3 :
+                # Pausa por 1 segundo antes de continuar
+                time.sleep(1)
+             
+            if len(valores_analogicos) >= 5:
                 continuar = False
 
-            # # Atualiza o gráfico com os valores atuais e as médias móveis
+            # Atualiza o gráfico com os valores atuais e as médias móveis
             # ax.clear()
             # #ax.plot(valores_analogicos, label='Valores Analógicos')
             # #ax.plot(medias_moveis, label='Médias Móveis')

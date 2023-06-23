@@ -8,10 +8,47 @@
 </tr>
 </table>
 
-# Organização do Diretório de Documentação
+# Sistema de Inspeção de Espaços Confinados para a Gerdau
 
-Este diretório é destinado para armazenar a documentação elaborada ao longo do projeto. Aqui é possível encontrar o manual do usuário e o relatório do projeto. O relatório do projeto é gerado automaticamente utilizando o github pages com a tecnologia Jekyll. Para alterar os itens do relatório, basta modificar o arquivo `index.md` que encontra-se nesta pasta. Para acessar o relatório renderizado, basta acessar este [link](https://2023m5t2-inteli.github.io/template/) (lembre-se de modificar o link quando criar o seu repositório). Preencha aqui quaisquer detalhes a mais devem ser considerados acerca da organização do seu diretório de documentação.
+Este repositório contém uma solução de inspeção de espaços confinados para a Gerdau, que utiliza um AGV (Autonomous Ground Vehicle) conectado a um dashboard para visualização dos dados coletados em tempo real e historicamente. O objetivo principal dessa solução é garantir a segurança do ambiente durante a inspeção, aumentar a acurácia na medição de gases e evitar gargalos operacionais.
 
+## Documentação
 
+A documentação completa desse sistema pode ser encontrada [aqui](https://github.com/2023M6T2-Inteli/lincore/blob/main/docs/index.md#miss%C3%A3o-do-projeto).
+
+## Manual do Usuário
+
+Para obter informações detalhadas sobre como utilizar o sistema, consulte o [Manual do Usuário](https://github.com/2023M6T2-Inteli/lincore/blob/main/docs/Manual.md).
+
+## Features
+
+O sistema possui as seguintes features:
+
+- **Leitura de Nível de Gás Ambiente em Tempo Real:** Permite monitorar o nível de gases presentes no ambiente de forma contínua e em tempo real.
+- **Dashboard de Visualização de Dados da Inspeção Atual:** Apresenta os dados coletados pelo AGV durante a inspeção atual em um formato visualmente intuitivo.
+- **Histórico de Dashboards:** Permite acessar dashboards históricos de inspeções anteriores, facilitando a comparação e análise dos dados coletados ao longo do tempo.
+- **Visão Computacional para Análise de Rachaduras nas Paredes do Ambiente:** Utiliza a tecnologia YoloV8 para detectar e analisar rachaduras nas paredes do espaço confinado, fornecendo informações importantes para manutenção preventiva.
+
+## Tecnologias Utilizadas
+
+O sistema faz uso das seguintes tecnologias:
+
+- **FastAPI:** Framework web utilizado para desenvolver a API que alimenta o dashboard e fornece os dados coletados pelo AGV.
+- **YoloV8:** Um modelo de rede neural utilizado para detecção e análise de objetos, nesse caso, rachaduras nas paredes do ambiente.
+- **ROS2:** Middleware de comunicação utilizado para integrar o AGV e os sensores ao sistema.
+- **NAV2:** Pacote de navegação para o ROS2, responsável pelo planejamento de rotas e movimentação do AGV no espaço confinado.
+- **Next.js:** Framework de desenvolvimento web utilizado para criar o frontend do dashboard, proporcionando uma experiência de usuário moderna e responsiva.
+- **SQL:** Linguagem de consulta estruturada utilizada para manipulação de dados no banco de dados.
+- **Supabase:** Serviço de armazenamento online de imagens utilizado para armazenar imagens capturadas pelo AGV durante a inspeção.
+- **AWS:** Amazon Web Services, utilizado para armazenar o banco de dados em um serviço de RDS (Relational Database Service).
+- **Robô: Turtlebot3 Burguer:** Robô utilizado como AGV para realizar a inspeção dos espaços confinados, equipado com sensores de gás e câmera para captura de imagens.
+
+## Instalação e Configuração
+
+Para instalar e configurar o sistema, siga as instruções detalhadas no [Guia de Instalação](https://github.com/2023M6T2-Inteli/lincore/blob/main/docs/index.md#miss%C3%A3o-do-projeto).
+
+## Contribuição
+
+Contribuições para o aprimoramento deste sistema são bem-vindas. Sinta-se à vontade para enviar pull requests e relatar problemas.
 
 

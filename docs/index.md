@@ -39,8 +39,9 @@
     - [Requisitos não funcionais](#requisitos-não-funcionais)
   - [Viabilidade técnica](#viabilidade-técnica)
   - [Proposta geral](#proposta-geral)
-  - [Diagrama de blocos](#diagrama-de-blocos)
+  - [Diagrama de blocos (versão 1)](#diagrama-de-blocos-versão-1)
     - [Tabela de componentes](#tabela-de-componentes)
+  - [Diagrama de blocos (versão 2)](#diagrama-de-blocos-versão-2)
 - [Navegação e segurança](#navegação-e-segurança)
     - [Controle de navegação no Nav2](#controle-de-navegação-no-nav2)
     - [Segurança e sistema anticolisão](#segurança-e-sistema-anticolisão)
@@ -396,7 +397,7 @@ Por fim, o software utilizado para controlar o roteamento da movimentação rob�
 
 O objeto da proposta geral do sistema é o desenvolvimento de um AGV (Automated Guided Vehicle) para inspeção pré-manutenção e pós-manutenção de espaços confinados, com foco em tubulações. O sistema será capaz de examinar as condições atmosféricas em diferentes pontos, detectar a presença de gases e a quantidade de oxigênio, além de alertar o operador sobre possíveis obstáculos para sua locomoção na tubulação. A interface com dados e vídeo em tempo real permitirá a geração de relatórios em PDF e vídeos da inspeção. O sistema será projetado para melhorar as condições de segurança do operador e a eficiência do processo de inspeção, reduzindo o tempo necessário para realizar a inspeção e evitando a possibilidade de esquecimento de ferramentas ou equipamentos no interior dos tubos. O usuário final do sistema será o executante da manutenção, enquanto o usuário indireto será o gestor responsável por visualizar os dados e relatórios gerados pelo sistema.
 
-## Diagrama de blocos
+## Diagrama de blocos (versão 1)
 
 <p align="center">
 <img src = "../media/arquitetura/arquitetura_sprint_1.jpg">
@@ -439,6 +440,16 @@ O objeto da proposta geral do sistema é o desenvolvimento de um AGV (Automated 
 | PR-SF (POST e rede local - sem fio)                                    |                                                                                                            O serviço de POST faz requisições HTTP do tipo POST para o servidor através da rede local                                                                                                            | Conexão                 |
 | BRR-SF (Browser e rede local - sem fio)                                |                                                                                                               A interface gráfica é acessada através do browser, na rede local conectada ao Wi-Fi                                                                                                               | Conexão                 |
 | RS-SF (Rede local e servidor - sem fio)                                |                                                                                                           A rede local se conecta com o Wi-Fi e, através dele, com o servidor para fazer requisições                                                                                                            | Conexão                 |
+
+## Diagrama de blocos (versão 2)
+
+<img src = "../media/arquitetura/arquitetura_sprint_5.jpg">
+
+Ao final do projeto, redesenhamos o diagrama de blocos do Donatello com as atualizações realizadas no decorrer do módulo. As principais mudanças foram:
+
+1. Criação de pub/sub para envio, processamento e upload de imagens da câmera;
+2. Comunicação pyserial entre Arduino e Raspberry Pi do TurtleBot3, com postagem em HTTP para o servidor;
+3. Navegação com Nav2, utilizando o sensor LiDAR para detectar obstáculos e contorná-los.
 
 # Navegação e segurança
 

@@ -5,14 +5,39 @@
 O Donatello é um AGV (Autonomous Ground Vehicle) desenvolvido para a inspeção de espaços confinados, especialmente tubulações da Gerdau. Ele foi construído utilizando a plataforma TurtleBot3, ROS2 (Robot Operating System 2), Nav2 (Navigation2), Raspberry Pi, sensores de qualidade do ar, uma câmera e um modelo de detecção de rachaduras treinado com Yolov8 utilizando OpenCV. O robô pode ser controlado manualmente por meio de uma interface gráfica ou seguir uma rota previamente determinada em um mapa. Os sensores enviam dados continuamente para o front-end, fornecendo informações sobre as condições atmosféricas para garantir a segurança dos operadores. O sistema de IA detecta rachaduras, e a câmera permite que o técnico visualize o ambiente remotamente.
 
 
-## Componentes e especificações
+
+## Componentes
+
+   Abaixo se encontra os componentes de hardware que usamos no robô. Para acessar as especificações completas, acesse o manual oficial de cada componente.
+
+### Hardware
 
 - TurtleBot3
+
+   ![robot](../media/img/robotFront.jpg)
+   [*Manual Turtlebot*](https://emanual.robotis.com/docs/en/platform/turtlebot3/features/#specifications)
+   
+
 - Raspberry Pi
+
+   ![raspberry-py](../media/img/raspberry-py.jpg)
+   [*Manual Raspberry*](https://www.raspberrypi.com/products/raspberry-pi-4-model-b/specifications/)
+
 - Sensores de qualidade do ar
+
+   ![sensor-gas](../media/img/sensor-mq135.jpg)
+   [*datasheets*](https://datasheetspdf.com/pdf/605077/Hanwei/MQ135/1)
+
 - Câmera Dobot
+
+   ![camera](../media/img/robotFrontCam.jpg)
+   [*Manual Dobot*](https://www.dobot-robots.com/products/education/magician-lite.html)
+
+### Software
+
 - Modelo de detecção de rachaduras treinado com Yolov8 e OpenCV
 - Software ROS2 (Robot Operating System 2) e Nav2 (Navigation2)
+
 
 ## Guia de Montagem e Inicialização do Sistema
 

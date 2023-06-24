@@ -118,6 +118,10 @@ O AGV para Inspeção de Espaços Confinados é um sistema inovador desenvolvido
 
 Nosso AGV (Automated Guided Vehicle) é um robô autônomo projetado para realizar inspeções precisas e seguras em espaços confinados, com foco especial em tubulações. Ele utiliza tecnologias avançadas para oferecer resultados confiáveis e auxiliar na manutenção preventiva e no monitoramento contínuo das estruturas.
 
+
+## Desafio
+## Solução Proposta 
+
 ## Matriz de oceano azul
 A matriz Oceano Azul é um conceito estratégico que se refere à busca por novos mercados e oportunidades de negócio, onde a concorrência é irrelevante ou inexistente. Ao contrário do Oceano Vermelho, onde as empresas competem em um mercado saturado e disputam a mesma fatia de clientes, o Oceano Azul envolve a criação de um novo espaço de mercado, onde as empresas podem crescer e prosperar.
 
@@ -666,200 +670,158 @@ Essa descrição visa fornecer um entendimento claro das funcionalidades e capac
 
 ## APIs e Rotas 
 
-### Rota `/positions`
 
-Retorna um array de posições.
+O arquivo main.py é o arquivo principal do servidor FastAPI. Ele importa bibliotecas necessárias, configura as rotas e middleware do CORS e executa o servidor usando o uvicorn.run(app). Além disso, ele inclui os roteadores adicionais, como reportsRouter, imagesRouter e gasRouter, para lidar com rotas relacionadas a relatórios, imagens e valores de gas, respectivamente.
 
-#### Método
-`GET`
+O arquivo report.py contém as rotas relacionadas aos reports. Ele importa as dependências necessárias, como modelos e esquemas, e define as rotas usando o APIRouter. As rotas incluem operações como obter todos os reports, obter o último report, criar um novo report, atualizar um report existente, obter um report pelo ID e excluir um report pelo ID.
 
-#### URL
-`/positions`
+O arquivo images.py contém as rotas relacionadas às imagens. Ele também importa as dependências necessárias, como modelos e esquemas, e define as rotas usando o APIRouter. A rota principal é /upload, que permite o upload de uma imagem. Essa rota verifica se há um projeto em andamento e, em seguida, salva a imagem no armazenamento e atualiza o banco de dados com as informações da imagem.
 
-#### Resposta de Sucesso
-- Código: `200 OK`
-- Conteúdo: Array de posições armazenadas
+O arquivo gas.py contém as rotas relacionadas aos valores de gas. Ele importa as dependências necessárias, como modelos e esquemas, e define as rotas usando o APIRouter. As rotas incluem operações como obter todos os valores de gas, criar um novo valor de gas e excluir um valor de gas pelo ID. O arquivo verifica se há um projeto em andamento antes de permitir a criação de um novo valor de gas.
 
-### Rota `/mission`
+Em resumo, a estrutura geral é a seguinte:
 
-Retorna o comando ou a posição.
+O arquivo main.py é o ponto de entrada do servidor FastAPI e lida com a configuração geral do servidor.
+O arquivo report.py contém as rotas relacionadas aos reports, como obter, criar, atualizar e excluir reports.
+O arquivo images.py contém as rotas relacionadas às imagens, como o upload de imagens para armazenamento.
+O arquivo gas.py contém as rotas relacionadas aos valores de gas, como obter, criar e excluir valores de gas.
 
-#### Método
-`GET`
+### Documentação de Rotas do Backend
 
-#### URL
-`/mission`
+A seguir estão as rotas disponíveis no backend, juntamente com as informações sobre os métodos, tipos de dados esperados, URLs de acesso e retornos esperados.
 
-#### Resposta de Sucesso
-- Código: `200 OK`
-- Conteúdo: Comando ou posição atual
+## Documentação de Rotas do Backend
 
-### Rota `/upload-image`
+A seguir estão as rotas disponíveis no backend, juntamente com as informações sobre os métodos, tipos de dados esperados, URLs de acesso e retornos esperados.
 
-Envia todas as imagens de detecção de rachaduras para uma pasta de armazenamento local no dispositivo.
+### Arquivo (`report.py`)
 
-#### Método
-`POST`
+### `/report`
 
-#### URL
-`/upload-image`
+#### `GET /report`
 
-#### Parâmetros da Requisição
-- `image`: Arquivo de imagem (bytes)
+- **Descrição:** Retorna todos os reports.
+- **Parâmetros de consulta:**
+  - `limit` (opcional): Limita o número de reports retornados.
+  - `search` (opcional): Filtra os reports por um termo de pesquisa.
 
-#### Resposta de Sucesso
-- Código: `200 OK`
-- Conteúdo: Mensagem de sucesso
+#### `GET /report/last`
 
-### Rota `/video`
+- **Descrição:** Retorna o último report.
+- **Retorno esperado:**
+  - `last`: Objeto contendo as informações do último report.
 
-Retorna um fluxo de vídeo com os resultados da detecção de rachaduras.
+#### `POST /report`
 
-#### Método
-`GET`
+- **Descrição:** Cria um novo report.
+- **Corpo da solicitação:**
+  - `payload`: Dados do report a ser criado.
+- **Retorno esperado:**
+  - `status`: Mensagem de status indicando o sucesso da criação.
+  - `report`: Objeto contendo as informações do report criado.
 
-#### URL
-`/video`
+#### `GET /report/finish`
 
-#### Parâmetros da Requisição
-- `request`: Objeto de solicitação
+- **Descrição:** Finaliza o report atual.
+- **Retorno esperado:**
+  - `status`: Mensagem de status indicando o sucesso da finalização.
+  - `gasAvg`: Valor médio de gasAvg calculado a partir dos valores de gasValues do report.
 
-#### Resposta de Sucesso
-- Código: `200 OK`
-- Conteúdo: Fluxo de vídeo com resultados da detecção
+#### `PUT /report/{reportId}`
 
-### Rota `/list`
+- **Descrição:** Atualiza um report existente.
+- **Parâmetros de caminho:**
+  - `reportId`: ID do report a ser atualizado.
+- **Corpo da solicitação:**
+  - `payload`: Dados do report atualizado.
+- **Retorno esperado:**
+  - `status`: Mensagem de status indicando o sucesso da atualização.
+  - `report`: Objeto contendo as informações do report atualizado.
 
-Lista todas as imagens do bucket hospedado na plataforma SupaBase.
+#### `GET /report/{reportId}`
 
-#### Método
-`GET`
+- **Descrição:** Retorna um report pelo ID.
+- **Parâmetros de caminho:**
+  - `reportId`: ID do report a ser retornado.
+- **Retorno esperado:**
+  - `status`: Mensagem de status indicando o sucesso da obtenção.
+  - `report`: Objeto contendo as informações do report.
 
-#### URL
-`/list`
+#### `DELETE /report/{reportId}`
 
-#### Resposta de Sucesso
-- Código: `200 OK`
-- Conteúdo: Lista de imagens do bucket
+- **Descrição:** Exclui um report pelo ID.
+- **Parâmetros de caminho:**
+  - `reportId`: ID do report a ser excluído.
+- **Retorno esperado:**
+  - Código de status HTTP 204 (No Content) indicando o sucesso da exclusão.
 
-### Rota `/upload`
+### Arquivo (`image.py`)
+### `/image`
 
-Faz o upload de um arquivo.
+#### `POST /image/upload`
 
-#### Método
-`POST`
+- **Descrição:** Realiza o upload de uma imagem.
+- **Corpo da solicitação:**
+  - `content`: Arquivo de imagem a ser enviado.
+- **Retorno esperado:**
+  - `status`: Mensagem de status indicando o sucesso do upload.
 
-#### URL
-`/upload`
+---
+### Arquivo (`gas.py`)
+### `/gas`
 
-#### Parâmetros da Requisição
-- `content`: Arquivo a ser enviado (UploadFile)
+#### `GET /gas`
 
-#### Resposta de Sucesso
-- Código: `200 OK`
-- Conteúdo: Status "ok"
+- **Descrição:** Retorna todos os valores de gas.
+- **Retorno esperado:**
+  - `status`: Mensagem de status indicando o sucesso da obtenção.
+  - `results`: Número de valores de gas retornados.
+  - `gas value`: Lista de objetos contendo as informações dos valores de gas.
 
-### Rota `/images`
+#### `POST /gas`
 
-Faz o upload de todas as imagens presentes em uma pasta no bucket do Supabase.
+- **Descrição:** Cria um novo valor de gas.
+- **Corpo da solicitação:**
+  - `payload`: Dados do valor de gas a ser criado.
+- **Retorno esperado:**
+  - `status`: Mensagem de status indicando o sucesso da criação.
+  - `gas value`: Objeto contendo as informações do valor de gas criado.
 
-#### Método
-`POST`
+#### `DELETE /gas/{gasId}`
 
-#### URL
-`/images`
+- **Descrição:** Exclui um valor de gas pelo ID.
+- **Parâmetros de caminho:**
+  - `gasId`: ID do valor de gas a ser excluído.
+- **Retorno esperado:**
+  - Código de status HTTP 204 (No Content) indicando o sucesso da exclusão.
 
-#### Resposta de Sucesso
-- Código: `200 OK`
-- Conteúdo: Mensagem de sucesso
 
 
-### Rota `/api/report/`
+# Sistemas de Comunicação - Integração 
 
-Retorna todos os relatórios existentes.
+## Robô e Servidor Locais
 
-#### Método
-`GET`
+### Movimentação do Robô 
+1. **Comunicação via Wifi**: O computador local se conecta via SSH com o sistema do robô para o envio e acionamento dos códigos de controle de movimentação.
+2. **Envio de Rotas**: O computador local se conecta via SSH com o sistema do robô para o envio e acionamento dos códigos que definem as rotas de movimentação.
 
-#### Parâmetros da Requisição
-- `db` (opcional): Conexão com o banco de dados (Session)
+### Captura de Imagem 
+1. **Comunicação via Wifi**: O robô atua como um publisher, enviando imagens capturadas por sua câmera por meio de uma conexão Wi-Fi.
+2. **Servidor com FastAPI**: O servidor local atua como um subscriber, recebendo as imagens enviadas pelo robô e processando-as.
 
-#### Resposta de Sucesso
-- Código: `200 OK`
-- Conteúdo: 
-  - `status`: "success"
-  - `results`: Número de relatórios encontrados
-  - `reports`: Array contendo os relatórios encontrados
+### Captura de Dados - Sensor de Gases 
+1. **Comunicação via HTTP**: O robô realiza o envio dos dados coletados pelo sensor de gases por meio de requisições HTTP.
+2. **Recepção de Dados - Servidor Local**: O servidor local recebe os dados enviados pelo robô e os processa.
 
+## Servidor de Dados com Servidor de Interface 
 
-### Rota `/api/report/`
+### Envio/Recebimento de Dados para o Banco 
+1. **Servidor com FastAPI**: O servidor local atua como intermediário para a comunicação entre o robô e o banco de dados. Ele recebe os dados do robô e os envia para o banco de dados.
+2. **Servidor com FastAPI**: O servidor local se comunica diretamente com o banco de dados, recebendo e enviando os dados relacionados a relatórios, imagens e sensores. Esses dados são registrados no banco de dados hospedado na AWS RDS (Amazon Web Services Relational Database Service).
 
-Cria um novo relatório.
-
-#### Método
-`POST`
-
-#### Parâmetros da Requisição
-- `payload`: Dados do relatório a ser criado (schemas.ReportBaseSchema)
-- `db` (opcional): Conexão com o banco de dados (Session)
-
-#### Resposta de Sucesso
-- Código: `201 Created`
-- Conteúdo:
-  - `status`: "success"
-  - `report`: Relatório recém-criado
-
-
-### Rota `/api/report/{reportId}`
-
-Edita um relatório existente.
-
-#### Método
-`PATCH`
-
-#### Parâmetros da Requisição
-- `reportId`: ID do relatório a ser editado (str)
-- `payload`: Dados do relatório a serem atualizados (schemas.ReportBaseSchema)
-- `db` (opcional): Conexão com o banco de dados (Session)
-
-#### Resposta de Sucesso
-- Código: `200 OK`
-- Conteúdo:
-  - `status`: "success"
-  - `report`: Relatório atualizado
-
-
-### Rota `/api/report/{reportId}`
-
-Retorna um relatório específico com base no ID.
-
-#### Método
-`GET`
-
-#### Parâmetros da Requisição
-- `reportId`: ID do relatório a ser retornado (str)
-- `db` (opcional): Conexão com o banco de dados (Session)
-
-#### Resposta de Sucesso
-- Código: `200 OK`
-- Conteúdo:
-  - `status`: "success"
-  - `report`: Relatório encontrado
-
-
-### Rota `/api/report/{reportId}`
-
-Deleta um relatório com base no ID.
-
-#### Método
-`DELETE`
-
-#### Parâmetros da Requisição
-- `reportId`: ID do relatório a ser deletado (str)
-- `db` (opcional): Conexão com o banco de dados (Session)
-
-#### Resposta de Sucesso
-- Código: `204 No Content`
+### Armazenamento de Imagens - Cloud 
+1. **Servidor com FastAPI**: O servidor local se comunica com o subscriber e recebe as imagens capturadas pelo robô. Essas imagens são enviadas para uma rota de POST que cria o registro das imagens vinculadas a um projeto no banco de dados. Simultaneamente, a imagem é enviada para o Supabase (Sistema de Armazenamento em Nuvem), e o registro da URL da imagem é feito no banco de dados. Essa operação é realizada por meio de uma única API, garantindo a padronização e consistência dos dados.
+ 
 
 
 # Referências

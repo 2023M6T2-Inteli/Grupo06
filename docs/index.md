@@ -751,6 +751,7 @@ A seguir estão as rotas disponíveis no backend, juntamente com as informaçõe
 - **Retorno esperado:**
   - Código de status HTTP 204 (No Content) indicando o sucesso da exclusão.
 
+---
 ### Arquivo (`image.py`)
 ### `/image`
 

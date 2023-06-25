@@ -118,10 +118,6 @@ O AGV para Inspeção de Espaços Confinados é um sistema inovador desenvolvido
 
 Nosso AGV (Automated Guided Vehicle) é um robô autônomo projetado para realizar inspeções precisas e seguras em espaços confinados, com foco especial em tubulações. Ele utiliza tecnologias avançadas para oferecer resultados confiáveis e auxiliar na manutenção preventiva e no monitoramento contínuo das estruturas.
 
-
-## Desafio
-## Solução Proposta 
-
 ## Matriz de oceano azul
 A matriz Oceano Azul é um conceito estratégico que se refere à busca por novos mercados e oportunidades de negócio, onde a concorrência é irrelevante ou inexistente. Ao contrário do Oceano Vermelho, onde as empresas competem em um mercado saturado e disputam a mesma fatia de clientes, o Oceano Azul envolve a criação de um novo espaço de mercado, onde as empresas podem crescer e prosperar.
 
@@ -821,7 +817,25 @@ A seguir estão as rotas disponíveis no backend, juntamente com as informaçõe
 
 ### Armazenamento de Imagens - Cloud 
 1. **Servidor com FastAPI**: O servidor local se comunica com o subscriber e recebe as imagens capturadas pelo robô. Essas imagens são enviadas para uma rota de POST que cria o registro das imagens vinculadas a um projeto no banco de dados. Simultaneamente, a imagem é enviada para o Supabase (Sistema de Armazenamento em Nuvem), e o registro da URL da imagem é feito no banco de dados. Essa operação é realizada por meio de uma única API, garantindo a padronização e consistência dos dados.
- 
+
+# Demo
+
+1. Demonstração do Robô Seguindo as Rotas Indicadas e Acionamento da Câmera 
+- Captura de Imagens 
+- Seguindo as Rotas Indicadas
+
+[Vídeo de Demonstração](https://www.youtube.com/watch?v=vvZcJ2QK70Y)
+
+2. Demonstração do Sistema de Navegação 
+- Aplicação de otimização de rotas com simulação via Gazebo e Nav2. 
+
+[Vídeo de Demonstração](https://www.youtube.com/watch?v=7KZUgU7lbeU)
+
+3. Demonstração do Envio de Imagens para Armazenamento em Cloud 
+- Armazenamento Local de Imagens 
+- Armazenamento em Cloud de Imagens Analisadas via YoloV8
+
+[Vídeo de Demonstração](https://www.youtube.com/watch?v=mAX59i0bJE0)
 
 
 # Referências

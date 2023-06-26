@@ -686,10 +686,6 @@ O arquivo gas.py contém as rotas relacionadas aos valores de gas, como obter, c
 
 A seguir estão as rotas disponíveis no backend, juntamente com as informações sobre os métodos, tipos de dados esperados, URLs de acesso e retornos esperados.
 
-## Documentação de Rotas do Backend
-
-A seguir estão as rotas disponíveis no backend, juntamente com as informações sobre os métodos, tipos de dados esperados, URLs de acesso e retornos esperados.
-
 ### Arquivo (`report.py`)
 
 ### `/report`

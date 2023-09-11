@@ -1,0 +1,13 @@
+1. Demonstração do Robô Seguindo as Rotas Indicadas e Acionamento da Câmera
+- Captura de Imagens
+- Seguindo as Rotas Indicadas
+Vídeo de Demonstração: https://www.youtube.com/watch?v=vvZcJ2QK70Y
+
+2. Demonstração do Sistema de Navegação
+- Aplicação de otimização de rotas com simulação via Gazebo e Nav2.
+Vídeo de Demonstração: https://www.youtube.com/watch?v=7KZUgU7lbeU
+
+3. Demonstração do Envio de Imagens para Armazenamento em Cloud
+- Armazenamento Local de Imagens
+- Armazenamento em Cloud de Imagens Analisadas via YoloV8
+Vídeo de Demonstração: https://www.youtube.com/watch?v=mAX59i0bJE0
